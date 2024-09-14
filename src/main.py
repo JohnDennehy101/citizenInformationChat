@@ -21,7 +21,7 @@ def main():
 
     print(f"Valid urls found in home_page.html: {len(valid_links_for_scraping)}")
 
-    for i in range(0, 50):
+    for i in range(0, len(valid_links_for_scraping)):
         request_sent = False
         link = valid_links_for_scraping[i]
 
@@ -49,10 +49,6 @@ def main():
             sleep_time = random.uniform(2, 4)
             print(f"Breaking between requests for {sleep_time} seconds")
             sleep(sleep_time)
-
-
-
-
 
 
 

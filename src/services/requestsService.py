@@ -13,7 +13,7 @@ class RequestsService:
         return r
 
     def construct_url(self, link):
-        if link.startswith("https"):
+        if link.startswith("https") or link.startswith("http"):
             return link
         else:
             return f"{self.base_url}{link}"
