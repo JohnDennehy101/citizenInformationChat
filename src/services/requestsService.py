@@ -9,10 +9,14 @@ class RequestsService:
         self.base_url = url
     
     def make_request(self, link):
-        final_url = self.construct_url(link)
-        logger.info(f"Making request to url: {final_url}")
-        r = requests.get(final_url)
-        return r
+        try:
+            final_url = self.construct_url(link)
+            logger.info(f"Making request to url: {final_url}")
+            r = requests.get(final_url)
+            return r
+        except:
+            return None
+            logger.info(f"URL did not result in correct response: {final_url}")
 
     def construct_url(self, link):
         if link.startswith("https") or link.startswith("http"):

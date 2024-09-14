@@ -2,27 +2,29 @@ import os
 import urllib.parse
 import re
 import logging
+import json
 logger = logging.getLogger(__name__)
 
 
 class FileService:
-    # Initiate with directory where to store files
-    # in constructor, create directory if it does not exist
-
-    # Method to write to file with provided file name
-    def __init__(self, files_directory):
-        self.files_directory = files_directory
-        os.makedirs(files_directory, exist_ok=True)
+    
+    # Method to create directory before trying to write to it
+    def create_file_directory(self, directory_path):
+        os.makedirs(directory_path, exist_ok=True)
     
     # Method to read from file with provided file name
-    def read_from_file(self, file_name):
+    def read_from_file(self, file_path, file_name):
         file_opened = False
         try:
-            relative_file_path = os.path.join(self.files_directory, file_name)
-
-            file = open(f"../{relative_file_path}", "r")
+            file_extension = os.path.splitext(file_name)[1].lower()
+            relative_file_path = os.path.join(file_path, file_name)
+            file = open(f"{relative_file_path}", "r")
             file_opened = True
-            file_contents = file.read()
+            if file_extension == ".json":
+                file_contents = json.load(file)
+            else:
+                file_contents = file.read()
+
             return file_contents
         except FileNotFoundError:
             logger.info(f"{file_name} was not found")
@@ -33,11 +35,11 @@ class FileService:
                 file.close()
     
     # Method to write to file with provided file name and provided content
-    def write_to_file(self, new_file_name, new_file_contents):
+    def write_to_file(self, new_file_path, new_file_name, new_file_contents):
         file_opened = False
         try:
-            relative_file_path = os.path.join(self.files_directory, new_file_name)
-            file = open(f"../{relative_file_path}", "w", encoding="utf-8")
+            relative_file_path = os.path.join(new_file_path, new_file_name)
+            file = open(f"{relative_file_path}", "w", encoding="utf-8")
             file_opened = True
             file.write(new_file_contents)
             return True
@@ -54,12 +56,57 @@ class FileService:
             if file_opened:
                 file.close()
 
+    def append_to_file(self, new_file_path, new_file_name, new_file_contents):
+        file_opened = False
+        try:
+            file_extension = os.path.splitext(new_file_name)[1].lower()
+            relative_file_path = os.path.join(new_file_path, new_file_name)
+
+            if file_extension == ".json":
+                with open(relative_file_path, "r+", encoding="utf-8") as file:
+                    try:
+                        file_contents = json.load(file)
+
+                    except json.JSONDecodeError:
+                        file_contents = []
+                    
+                    new_url = new_file_contents.get("url")
+                    url_already_exists = any(item.get("url") == new_url for item in file_contents if isinstance(item, dict))
+
+                    if not url_already_exists:
+                        if isinstance(file_contents, list):
+                            file_contents.append(new_file_contents)
+                        else:
+                            file_contents.update(new_file_contents)
+
+                    file.seek(0)
+
+                    json.dump(file_contents, file, indent=4)
+                    file.truncate()
+            else:
+                with open(relative_file_path, "a", encoding="utf-8") as file:
+                    file.write(new_file_contents)
+
+            return True
+        except FileNotFoundError:
+            logger.info(f"{new_file_name} was not found")
+            return False
+        except ValueError:
+            logger.info(f"{new_file_name} error in opening")
+            return False
+        except IOError as e:
+            logger.info(f"An I/O error occurred: {e}")
+            return False
+        finally:
+            if file_opened:
+                file.close()
+
 
     # Method to check if file name exists
-    def check_file_existence(self, file_name):
-        file_path = os.path.join(self.files_directory, file_name)
+    def check_file_existence(self, file_path ,file_name):
+        file_path = os.path.join(file_path, file_name)
 
-        if os.path.isfile(f"../{file_path}"):
+        if os.path.isfile(f"{file_path}"):
             return True
 
         return False
