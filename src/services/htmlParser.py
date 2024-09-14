@@ -1,4 +1,7 @@
+import re
 from bs4 import BeautifulSoup
+import logging
+logger = logging.getLogger(__name__)
 
 class HTMLParser:
     def __init__(self, html_content):
@@ -10,6 +13,6 @@ class HTMLParser:
         return valid_links
     
     def valid_link(self, link):
-        if not link or link.startswith("#") or link.startswith("javascript:") or link.startswith("tel:"):
+        if not link or link.startswith("#") or link.startswith("javascript:") or link.startswith("tel:") or re.match(r"https?:\/\/", link) and not "citizensinformation.ie" in link:
             return False
         return True

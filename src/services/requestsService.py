@@ -1,6 +1,8 @@
 
 
 import requests
+import logging
+logger = logging.getLogger(__name__)
 
 class RequestsService:
     def __init__(self, url):
@@ -8,7 +10,7 @@ class RequestsService:
     
     def make_request(self, link):
         final_url = self.construct_url(link)
-        print(f"Making request to url: {final_url}")
+        logger.info(f"Making request to url: {final_url}")
         r = requests.get(final_url)
         return r
 

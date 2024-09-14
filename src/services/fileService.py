@@ -1,6 +1,9 @@
 import os
 import urllib.parse
 import re
+import logging
+logger = logging.getLogger(__name__)
+
 
 class FileService:
     # Initiate with directory where to store files
@@ -22,9 +25,9 @@ class FileService:
             file_contents = file.read()
             return file_contents
         except FileNotFoundError:
-            print("The file was not found")
+            logger.info(f"{file_name} was not found")
         except ValueError:
-            print("It was not possible to open the file")
+            logger.info(f"{file_name} was not possible to open")
         finally:
             if file_opened:
                 file.close()
@@ -39,13 +42,13 @@ class FileService:
             file.write(new_file_contents)
             return True
         except FileNotFoundError:
-            print("The file was not found")
+            logger.info(f"{new_file_name} was not found")
             return False
         except ValueError:
-            print("It was not possible to open the file")
+            logger.info(f"{new_file_name} error in opening")
             return False
         except IOError as e:
-            print(f"An I/O error occurred: {e}")
+            logger.info(f"An I/O error occurred: {e}")
             return False
         finally:
             if file_opened:
@@ -64,7 +67,9 @@ class FileService:
 
     # Method to sanitise file name
     def sanitise_file_name(self, name):
-        parsed_url = urllib.parse.urlparse(name)
+        parsed_url = re.sub(r"https?:\/\/(www\.)?citizensinformation\.ie", "", name)
+        parsed_url = re.sub(r"\.php", "_", parsed_url)
+        parsed_url = urllib.parse.urlparse(parsed_url)
 
         web_domain = parsed_url.netloc.replace("www.", "")
         url_path = parsed_url.path.strip('/').replace("/", "_")
@@ -84,7 +89,9 @@ class FileService:
         else:
             page_name = f"{web_domain}.html"
 
-        page_name = re.sub(r'[^\w\-_\.]', '_', page_name)
+        page_name = re.sub(r"[^\w_\.]", "_", page_name)
+
+        page_name = re.sub(r"__", "_", page_name)
 
         page_name = page_name.lstrip("_")
 
