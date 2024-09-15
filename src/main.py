@@ -37,9 +37,7 @@ def main():
 
     metadata_service = MetadataService()
 
-    # This commented out line used to run all
-    # for file_name in scraped_file:
-    for file_name in scraped_files[:10]:
+    for file_name in scraped_files:
         page_contents = file_service.read_from_file(HTML_DIRECTORY_PATH, file_name)
 
         page_html_parser = HTMLParser(page_contents)
