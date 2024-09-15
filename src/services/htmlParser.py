@@ -13,6 +13,6 @@ class HTMLParser:
         return valid_links
     
     def valid_link(self, link):
-        if not link or link.startswith("#") or link.startswith("javascript:") or link.startswith("tel:") or re.match(r"https?:\/\/", link) and not "citizensinformation.ie" in link:
+        if not link or link.startswith("#") or link.startswith("javascript:") or link.startswith("whatsapp") or link.startswith("tel:") or re.match(r"https?:\/\/", link) and not "citizensinformation.ie" in link:
             return False
         return True

@@ -39,7 +39,7 @@ def main():
 
     # This commented out line used to run all
     # for file_name in scraped_file:
-    for file_name in scraped_files[:5]:
+    for file_name in scraped_files[:10]:
         page_contents = file_service.read_from_file(HTML_DIRECTORY_PATH, file_name)
 
         page_html_parser = HTMLParser(page_contents)
@@ -99,7 +99,6 @@ def main():
                     
                 file_service.write_to_file(METADATA_DIRECTORY_PATH, "file_metadata.json", new_files_metadata)
                 logger.info(f"Writing {sanitised_file_name} metadata successful")
-
 
 
 if __name__ == "__main__":
