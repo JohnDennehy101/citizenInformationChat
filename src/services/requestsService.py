@@ -12,7 +12,7 @@ class RequestsService:
         try:
             final_url = self.construct_url(link)
             logger.info(f"Making request to url: {final_url}")
-            r = requests.get(final_url)
+            r = requests.get(final_url, timeout=3)
             return r
         except:
             return None
@@ -20,6 +20,8 @@ class RequestsService:
 
     def construct_url(self, link):
         if link.startswith("https") or link.startswith("http"):
+            return link
+        elif link.startswith("centres"):
             return link
         else:
             return f"{self.base_url}{link}"
