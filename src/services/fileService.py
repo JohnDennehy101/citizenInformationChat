@@ -21,11 +21,13 @@ class FileService:
             file = open(f"{relative_file_path}", "r")
             file_opened = True
             if file_extension == ".json":
-                file_contents = json.load(file)
+                try:
+                    file_contents = json.load(file)
+                except ValueError: 
+                    file_contents = []
             else:
                 file_contents = file.read()
-
-            return file_contents
+            
         except FileNotFoundError:
             logger.info(f"{file_name} was not found")
         except ValueError:
@@ -33,59 +35,22 @@ class FileService:
         finally:
             if file_opened:
                 file.close()
+            return file_contents
     
     # Method to write to file with provided file name and provided content
     def write_to_file(self, new_file_path, new_file_name, new_file_contents):
         file_opened = False
         try:
+            file_extension = os.path.splitext(new_file_name)[1].lower()
+         
             relative_file_path = os.path.join(new_file_path, new_file_name)
             file = open(f"{relative_file_path}", "w", encoding="utf-8")
             file_opened = True
-            file.write(new_file_contents)
-            return True
-        except FileNotFoundError:
-            logger.info(f"{new_file_name} was not found")
-            return False
-        except ValueError:
-            logger.info(f"{new_file_name} error in opening")
-            return False
-        except IOError as e:
-            logger.info(f"An I/O error occurred: {e}")
-            return False
-        finally:
-            if file_opened:
-                file.close()
-
-    def append_to_file(self, new_file_path, new_file_name, new_file_contents):
-        file_opened = False
-        try:
-            file_extension = os.path.splitext(new_file_name)[1].lower()
-            relative_file_path = os.path.join(new_file_path, new_file_name)
 
             if file_extension == ".json":
-                with open(relative_file_path, "r+", encoding="utf-8") as file:
-                    try:
-                        file_contents = json.load(file)
-
-                    except json.JSONDecodeError:
-                        file_contents = []
-                    
-                    new_url = new_file_contents.get("url")
-                    url_already_exists = any(item.get("url") == new_url for item in file_contents if isinstance(item, dict))
-
-                    if not url_already_exists:
-                        if isinstance(file_contents, list):
-                            file_contents.append(new_file_contents)
-                        else:
-                            file_contents.update(new_file_contents)
-
-                    file.seek(0)
-
-                    json.dump(file_contents, file, indent=4)
-                    file.truncate()
+                json.dump(new_file_contents, file, indent=4)
             else:
-                with open(relative_file_path, "a", encoding="utf-8") as file:
-                    file.write(new_file_contents)
+                file.write(new_file_contents)
 
             return True
         except FileNotFoundError:
@@ -110,7 +75,6 @@ class FileService:
             return True
 
         return False
-
 
     # Method to sanitise file name
     def sanitise_file_name(self, name):

@@ -11,10 +11,8 @@ from services.fileService import FileService
 from services.htmlParser import HTMLParser
 from services.requestsService import RequestsService
 from services.metadataService import MetadataService
-
-HTML_DIRECTORY_PATH = "data/html"
-METADATA_DIRECTORY_PATH = "data/metadata"
-SCRAPE_URL = "https://www.citizensinformation.ie"
+from datetime import datetime
+from constants import HTML_DIRECTORY_PATH, METADATA_DIRECTORY_PATH, SCRAPE_URL
 
 logger = logging.getLogger(__name__)
 
@@ -31,6 +29,10 @@ def main():
     file_service.create_file_directory(HTML_DIRECTORY_PATH)
     file_service.create_file_directory(METADATA_DIRECTORY_PATH)
 
+    # Call this to create file metadata file if it does not exist
+    if not file_service.check_file_existence(METADATA_DIRECTORY_PATH, "file_metadata.json"):
+        file_service.write_to_file(METADATA_DIRECTORY_PATH, "file_metadata.json", [])
+
     requests_service = RequestsService(SCRAPE_URL)
 
     metadata_service = MetadataService()
@@ -46,11 +48,15 @@ def main():
         
         logging.info(f"Valid urls found in {file_name}: {len(valid_links_for_scraping)}")
 
-        for i in range(0, 2):
+        for i in range(0, len(valid_links_for_scraping)):
             request_sent = False
             link = valid_links_for_scraping[i]
 
             sanitised_file_name = file_service.sanitise_file_name(link)
+
+            existing_files_metadata = file_service.read_from_file(METADATA_DIRECTORY_PATH, "file_metadata.json")
+
+            existing_url_metadata_item = metadata_service.metadata_url_exists(existing_files_metadata, link)
 
             if not file_service.check_file_existence(HTML_DIRECTORY_PATH, sanitised_file_name):
                 logging.info(f"{sanitised_file_name} does not exist, link: {link}")
@@ -65,22 +71,6 @@ def main():
 
                     if write_file_contents_successful:
                         logger.info(f"Writing {sanitised_file_name} successful")
-
-                        new_file_metadata = metadata_service.generate_metadata(link, sanitised_file_name, os.path.join(HTML_DIRECTORY_PATH, sanitised_file_name), file_name)
-
-                        new_file_metadata_json = json.dumps(new_file_metadata)
-
-                        if not file_service.check_file_existence(METADATA_DIRECTORY_PATH, "file_metadata.json"):
-                             file_service.write_to_file(METADATA_DIRECTORY_PATH, "file_metadata.json", json.dumps([]))
-
-                        #existing_metadata_json = file_service.read_from_file(METADATA_DIRECTORY_PATH, "file_metadata.json")
-
-
-                        #new_metadata_json = existing_metadata_json.append(new_file_metadata_json)
-
-                        file_service.append_to_file(METADATA_DIRECTORY_PATH, "file_metadata.json", new_file_metadata)
-
-                        logger.info(f"Writing {sanitised_file_name} metadata successful")
                     else:
                         logger.info(f"Writing {sanitised_file_name} was not successful")
 
@@ -91,6 +81,20 @@ def main():
                 sleep_time = random.uniform(2, 5)
                 logger.info(f"Breaking between requests for {sleep_time} seconds")
                 sleep(sleep_time)
+            
+            # Always run this to updated files metadata
+            if not existing_url_metadata_item:
+                url_metadata = metadata_service.generate_new_metadata_item(link, sanitised_file_name, os.path.join(HTML_DIRECTORY_PATH, sanitised_file_name), file_name)
+                url_metadata_json = json.dumps(url_metadata)
+                new_files_metadata = metadata_service.update_metadata_contents(link, existing_files_metadata, url_metadata)
+            else:
+                if sanitised_file_name not in existing_url_metadata_item["linkPageSources"]:
+                    existing_url_metadata_item["linkPageSources"].append(sanitised_file_name)
+                    existing_url_metadata_item["lastUpdated"] = datetime.now().isoformat()
+                new_files_metadata = metadata_service.update_metadata_contents(link, existing_files_metadata, existing_url_metadata_item)
+                
+            file_service.write_to_file(METADATA_DIRECTORY_PATH, "file_metadata.json", new_files_metadata)
+            logger.info(f"Writing {sanitised_file_name} metadata successful")
 
 
 
