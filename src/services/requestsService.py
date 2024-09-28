@@ -19,9 +19,7 @@ class RequestsService:
             logger.info(f"URL did not result in correct response: {final_url}")
 
     def construct_url(self, link):
-        if link.startswith("https") or link.startswith("http"):
-            return link
-        elif link.startswith("centres"):
+        if link.startswith("https") or link.startswith("http") or link.startswith("centres"):
             return link
         else:
             return f"{self.base_url}{link}"

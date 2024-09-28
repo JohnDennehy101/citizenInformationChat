@@ -1,0 +1,887 @@
+<!doctype html>
+<html lang="en-US">
+
+<head><meta charset="UTF-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(){this.triggerEvents=["keydown","mousedown","mousemove","touchmove","touchstart","touchend","wheel"],this.userEventHandler=this._triggerListener.bind(this),this.touchStartHandler=this._onTouchStart.bind(this),this.touchMoveHandler=this._onTouchMove.bind(this),this.touchEndHandler=this._onTouchEnd.bind(this),this.clickHandler=this._onClick.bind(this),this.interceptedClicks=[],window.addEventListener("pageshow",(e=>{this.persisted=e.persisted})),window.addEventListener("DOMContentLoaded",(()=>{this._preconnect3rdParties()})),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){document.hidden?e._triggerListener():(this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventHandler,{passive:!0}))),window.addEventListener("touchstart",e.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",e.touchStartHandler),document.addEventListener("visibilitychange",e.userEventHandler))}_removeUserInteractionListener(){this.triggerEvents.forEach((e=>window.removeEventListener(e,this.userEventHandler,{passive:!0}))),document.removeEventListener("visibilitychange",this.userEventHandler)}_onTouchStart(e){"HTML"!==e.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),e.target.addEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"onclick","rocket-onclick"))}_onTouchMove(e){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),e.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"rocket-onclick","onclick")}_onTouchEnd(e){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}_onClick(e){e.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"rocket-onclick","onclick"),this.interceptedClicks.push(e),e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation()}_replayClicks(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach((e=>{e.target.dispatchEvent(new MouseEvent("click",{view:e.view,bubbles:!0,cancelable:!0}))}))}_renameDOMAttribute(e,t,n){e.hasAttribute&&e.hasAttribute(t)&&(event.target.setAttribute(n,event.target.getAttribute(t)),event.target.removeAttribute(t))}_triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}_preconnect3rdParties(){let e=[];document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((t=>{if(t.hasAttribute("src")){const n=new URL(t.src).origin;n!==location.origin&&e.push({src:n,crossOrigin:t.crossOrigin||"module"===t.getAttribute("data-rocket-type")})}})),e=[...new Map(e.map((e=>[JSON.stringify(e),e]))).values()],this._batchInjectResourceHints(e,"preconnect")}async _loadEverythingNow(){this.lastBreath=Date.now(),this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async);try{await this._triggerDOMContentLoaded(),await this._triggerWindowLoad()}catch(e){}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this._replayClicks()}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._littleBreath(),new Promise((t=>{const n=document.createElement("script");[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type"),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t());try{e.parentNode.replaceChild(n,e)}catch(e){t()}}))}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){this._batchInjectResourceHints([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}_batchInjectResourceHints(e,t){var n=document.createDocumentFragment();e.forEach((e=>{if(e.src){const i=document.createElement("link");i.href=e.src,i.rel=t,"preconnect"!==t&&(i.as="script"),e.getAttribute&&"module"===e.getAttribute("data-rocket-type")&&(i.crossOrigin=!0),e.crossOrigin&&(i.crossOrigin=e.crossOrigin),n.appendChild(i)}})),document.head.appendChild(n)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(i){e["rocket"+t]=n=i}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._littleBreath(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._littleBreath(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._littleBreath(),window.dispatchEvent(new Event("rocket-load")),await this._littleBreath(),window.rocketonload&&window.rocketonload(),await this._littleBreath(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),await this._littleBreath();const e=new Event("rocket-pageshow");e.persisted=this.persisted,window.dispatchEvent(e),await this._littleBreath(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,i=document.createRange(),r=n.parentElement;let o=e.get(n);void 0===o&&(o=n.nextSibling,e.set(n,o));const s=document.createDocumentFragment();i.setStart(s,0),s.appendChild(i.createContextualFragment(t)),r.insertBefore(s,o)}}async _littleBreath(){Date.now()-this.lastBreath>45&&(await this._requestAnimFrame(),this.lastBreath=Date.now())}async _requestAnimFrame(){return document.hidden?new Promise((e=>setTimeout(e))):new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts;e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();</script>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="profile" href="https://gmpg.org/xfn/11">
+  <!-- Favicons -->
+<link rel="apple-touch-icon" sizes="57x57" href="https://threshold.ie/wp-content/themes/threshold/img/favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="https://threshold.ie/wp-content/themes/threshold/img/favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://threshold.ie/wp-content/themes/threshold/img/favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://threshold.ie/wp-content/themes/threshold/img/favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://threshold.ie/wp-content/themes/threshold/img/favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://threshold.ie/wp-content/themes/threshold/img/favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://threshold.ie/wp-content/themes/threshold/img/favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://threshold.ie/wp-content/themes/threshold/img/favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://threshold.ie/wp-content/themes/threshold/img/favicon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="https://threshold.ie/wp-content/themes/threshold/img/favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://threshold.ie/wp-content/themes/threshold/img/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="https://threshold.ie/wp-content/themes/threshold/img/favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://threshold.ie/wp-content/themes/threshold/img/favicon/favicon-16x16.png">
+<link rel="manifest" href="https://threshold.ie/wp-content/themes/threshold/img/favicon/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="https://threshold.ie/wp-content/themes/threshold/img/favicon/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+  <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<!-- This site is optimized with the Yoast SEO plugin v23.4 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>Home - Threshold</title>
+	<meta name="description" content="Threshold – Preventing Homelessness. Threshold provides free, confidential advice and support to renters in Ireland with tenancy problems and those at risk of homelessness. We believe everyone has a Right to Home." />
+	<link rel="canonical" href="https://threshold.ie/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Home - Threshold" />
+	<meta property="og:description" content="Threshold – Preventing Homelessness. Threshold provides free, confidential advice and support to renters in Ireland with tenancy problems and those at risk of homelessness. We believe everyone has a Right to Home." />
+	<meta property="og:url" content="https://threshold.ie/" />
+	<meta property="og:site_name" content="Threshold" />
+	<meta property="article:publisher" content="https://www.facebook.com/Thresholdire" />
+	<meta property="article:modified_time" content="2024-09-10T14:17:27+00:00" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@ThresholdIRE" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://threshold.ie/","url":"https://threshold.ie/","name":"Home - Threshold","isPartOf":{"@id":"https://threshold.ie/#website"},"about":{"@id":"https://threshold.ie/#organization"},"datePublished":"2022-05-10T10:41:21+00:00","dateModified":"2024-09-10T14:17:27+00:00","description":"Threshold – Preventing Homelessness. Threshold provides free, confidential advice and support to renters in Ireland with tenancy problems and those at risk of homelessness. We believe everyone has a Right to Home.","breadcrumb":{"@id":"https://threshold.ie/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://threshold.ie/"]}]},{"@type":"BreadcrumbList","@id":"https://threshold.ie/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home"}]},{"@type":"WebSite","@id":"https://threshold.ie/#website","url":"https://threshold.ie/","name":"Threshold","description":"Threshold preventing homelessness","publisher":{"@id":"https://threshold.ie/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://threshold.ie/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"},{"@type":"Organization","@id":"https://threshold.ie/#organization","name":"Threshold - Preventing Homelessness","url":"https://threshold.ie/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://threshold.ie/#/schema/logo/image/","url":"https://threshold.ie/wp-content/uploads/2022/05/logo.jpg","contentUrl":"https://threshold.ie/wp-content/uploads/2022/05/logo.jpg","width":210,"height":79,"caption":"Threshold - Preventing Homelessness"},"image":{"@id":"https://threshold.ie/#/schema/logo/image/"},"sameAs":["https://www.facebook.com/Thresholdire","https://x.com/ThresholdIRE","https://www.instagram.com/threshold_housing/","https://www.youtube.com/user/Threshold1978"]}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+
+<link rel="alternate" type="application/rss+xml" title="Threshold &raquo; Feed" href="https://threshold.ie/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Threshold &raquo; Comments Feed" href="https://threshold.ie/comments/feed/" />
+
+<!-- This site is optimized with the Schema Premium ver.1.2.6.1 - https://schema.press -->
+<script type="application/ld+json" class="schema-premium">{"@context":"https:\/\/schema.org","@type":"Organization","@id":"http:\/\/threshold.ie#organization","name":"Threshold","url":"http:\/\/threshold.ie","logo":{"@type":"ImageObject","url":"https:\/\/threshold.ie\/wp-content\/uploads\/2022\/05\/logo.jpg","width":210,"height":79,"@id":"http:\/\/threshold.ie#logo"},"image":{"@type":"ImageObject","url":"https:\/\/threshold.ie\/wp-content\/uploads\/2022\/05\/logo.jpg","width":210,"height":79,"@id":"http:\/\/threshold.ie#logo"}}</script><!-- Schema Premium Plugin -->
+
+<script>function cpLoadCSS(e,t,n){"use strict";var i=window.document.createElement("link"),o=t||window.document.getElementsByTagName("script")[0];return i.rel="stylesheet",i.href=e,i.media="only x",o.parentNode.insertBefore(i,o),setTimeout(function(){i.media=n||"all"}),i}</script><style>.cp-popup-container .cpro-overlay,.cp-popup-container .cp-popup-wrapper{opacity:0;visibility:hidden;display:none}</style><style id='wp-emoji-styles-inline-css' type='text/css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='https://threshold.ie/wp-includes/css/dist/block-library/style.min.css?ver=6.6.2' type='text/css' media='all' />
+<style id='classic-theme-styles-inline-css' type='text/css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css' type='text/css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link data-minify="1" rel='stylesheet' id='contact-form-7-css' href='https://threshold.ie/wp-content/cache/min/1/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=1727336999' type='text/css' media='all' />
+<link rel='stylesheet' id='olark-wp-css' href='https://threshold.ie/wp-content/plugins/olark-live-chat/public/css/olark-wp-public.css?ver=1.0.0' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='dashicons-css' href='https://threshold.ie/wp-content/cache/min/1/wp-includes/css/dashicons.min.css?ver=1727336999' type='text/css' media='all' />
+<script>document.addEventListener('DOMContentLoaded', function(event) {  if( typeof cpLoadCSS !== 'undefined' ) { cpLoadCSS('https://threshold.ie/wp-content/plugins/convertpro/assets/modules/css/cp-popup.min.css?ver=1.7.7', 0, 'all'); } }); </script>
+<link rel='stylesheet' id='cmplz-general-css' href='https://threshold.ie/wp-content/plugins/complianz-gdpr/assets/css/cookieblocker.min.css?ver=1722526031' type='text/css' media='all' />
+<link rel='stylesheet' id='parent-style-css' href='https://threshold.ie/wp-content/themes/bootscore-main/style.css?ver=6.6.2' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='slick-css' href='https://threshold.ie/wp-content/cache/min/1/wp-content/themes/threshold/css/slick/slick.css?ver=1727336999' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='slick-theme-css' href='https://threshold.ie/wp-content/cache/min/1/wp-content/themes/threshold/css/slick/slick-theme.css?ver=1727336999' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='bootstrap-css' href='https://threshold.ie/wp-content/cache/min/1/wp-content/themes/threshold/css/lib/bootstrap.min.css?ver=1727336999' type='text/css' media='all' />
+<link rel='stylesheet' id='bootscore-style-css' href='https://threshold.ie/wp-content/themes/threshold/style.css?ver=202305101514' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='fontawesome-css' href='https://threshold.ie/wp-content/cache/min/1/wp-content/themes/bootscore-main/css/lib/fontawesome.min.css?ver=1727336999' type='text/css' media='all' />
+<style id='rocket-lazyload-inline-css' type='text/css'>
+.rll-youtube-player{position:relative;padding-bottom:56.23%;height:0;overflow:hidden;max-width:100%;}.rll-youtube-player:focus-within{outline: 2px solid currentColor;outline-offset: 5px;}.rll-youtube-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;background:0 0}.rll-youtube-player img{bottom:0;display:block;left:0;margin:auto;max-width:100%;width:100%;position:absolute;right:0;top:0;border:none;height:auto;-webkit-transition:.4s all;-moz-transition:.4s all;transition:.4s all}.rll-youtube-player img:hover{-webkit-filter:brightness(75%)}.rll-youtube-player .play{height:100%;width:100%;left:0;top:0;position:absolute;background:url(https://threshold.ie/wp-content/plugins/wp-rocket/assets/img/youtube.png) no-repeat center;background-color: transparent !important;cursor:pointer;border:none;}
+</style>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" src="https://threshold.ie/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" src="https://threshold.ie/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js" defer></script>
+<script type="text/javascript" id="olark-wp-js-extra">
+/* <![CDATA[ */
+var olark_vars = {"site_ID":"6036-565-10-3208","expand":"0","float":"0","override_lang":"0","lang":"","api":"","mobile":"1","woocommerce":"","woocommerce_version":null,"enable_cartsaver":"0"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" src="https://threshold.ie/wp-content/cache/min/1/wp-content/plugins/olark-live-chat/public/js/olark-wp-public.js?ver=1727336999" id="olark-wp-js" defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" src="https://threshold.ie/wp-content/cache/min/1/wp-content/themes/threshold/js/custom.js?ver=1727336999" id="custom-js-js" defer></script>
+<link rel="https://api.w.org/" href="https://threshold.ie/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://threshold.ie/wp-json/wp/v2/pages/5" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://threshold.ie/xmlrpc.php?rsd" />
+
+<link rel='shortlink' href='https://threshold.ie/' />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://threshold.ie/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fthreshold.ie%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://threshold.ie/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fthreshold.ie%2F&#038;format=xml" />
+<!-- Stream WordPress user activity plugin v4.0.1 -->
+			<style>.cmplz-hidden {
+					display: none !important;
+				}</style><script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+ var _gaq = _gaq || [];
+ _gaq.push(['_setAccount', 'UA-8899572-1']);
+ _gaq.push(['_trackPageview']);
+ (function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' :
+'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(ga, s);
+ })();
+</script>
+<!-- Meta Pixel Code -->
+
+<script type="rocketlazyloadscript">
+
+!function(f,b,e,v,n,t,s)
+
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+
+n.queue=[];t=b.createElement(e);t.async=!0;
+
+t.src=v;s=b.getElementsByTagName(e)[0];
+
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+
+'https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '215284073166996');
+
+fbq('track', 'PageView');
+
+</script>
+
+<noscript><img height="1" width="1" style="display:none"
+
+src=https://www.facebook.com/tr?id=215284073166996&ev=PageView&noscript=1
+
+/></noscript>
+
+<!-- End Meta Pixel Code -->
+		<style type="text/css" id="wp-custom-css">
+			iframe.wp-embedded-content{
+	width: 100%;
+	max-width: 768px;
+}
+
+/* Open user map, display text on button by default */
+
+.open-user-map .box-wrap .map-wrap .open-add-location-overlay {
+  width: 158px !important;
+}
+
+.open-user-map .box-wrap .map-wrap .open-add-location-overlay span.btn_text {
+  opacity: 1 !important;
+}
+
+.open-user-map {
+  margin-bottom: 75px;
+}
+
+.open-user-map .box-wrap .map-wrap #oum_search_marker {
+  top: -100px;
+}
+
+.open-user-map .add-location .location-overlay-content  .oum-custom-field-html {
+0 0 10px 0;
+}
+		</style>
+		<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>
+  <!-- TruConversion for threshold.ie -->
+  <script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+      var _tip = _tip || [];
+      (function(d,s,id){
+          var js, tjs = d.getElementsByTagName(s)[0];
+          if(d.getElementById(id)) { return; }
+          js = d.createElement(s); js.id = id;
+          js.async = true;
+          js.src = d.location.protocol + '//app.truconversion.com/ti-js/16806/0decb.js';
+          tjs.parentNode.insertBefore(js, tjs);
+      }(document, 'script', 'ti-js'));
+  </script>
+
+<!-- Google Tag Manager -->
+
+<script type="rocketlazyloadscript">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+
+})(window,document,'script','dataLayer','GTM-PC44SFS');</script>
+
+<!-- End Google Tag Manager -->
+
+<!-- Google tag (gtag.js) -->
+
+<script type="rocketlazyloadscript" async src="https://www.googletagmanager.com/gtag/js?id=G-W53ZJZ6NX5"></script>
+
+<script type="rocketlazyloadscript">
+
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag(){dataLayer.push(arguments);}
+
+  gtag('js', new Date());
+
+  gtag('config', 'G-W53ZJZ6NX5');
+
+</script>
+</head>
+
+<body data-cmplz=1 class="home page-template-default page page-id-5">
+    
+  <!-- Google Tag Manager (noscript) -->
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PC44SFS"
+
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- End Google Tag Manager (noscript) -->
+  <div id="to-top"></div>
+
+  <div id="page" class="site">
+
+    <header id="masthead" class="site-header">
+
+      <div class="fixed-top bg-white">
+
+        <nav id="nav-main" class="navbar navbar-expand-xl">
+
+          <div class="container">
+
+            <!-- Navbar Brand -->
+            <a class="navbar-brand xs d-md-none" href="https://threshold.ie"><img width="210" height="79" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20210%2079'%3E%3C/svg%3E" alt="logo" class="logo xs" data-lazy-src="https://threshold.ie/wp-content/themes/threshold/img/logo/logo.jpg"><noscript><img width="210" height="79" src="https://threshold.ie/wp-content/themes/threshold/img/logo/logo.jpg" alt="logo" class="logo xs"></noscript></a>
+            <a class="navbar-brand md d-none d-md-block" href="https://threshold.ie"><img width="210" height="79" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20210%2079'%3E%3C/svg%3E" alt="logo" class="logo md" data-lazy-src="https://threshold.ie/wp-content/themes/threshold/img/logo/logo.jpg"><noscript><img width="210" height="79" src="https://threshold.ie/wp-content/themes/threshold/img/logo/logo.jpg" alt="logo" class="logo md"></noscript></a>
+
+            <!-- Offcanvas Navbar -->
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-navbar">
+              <div class="offcanvas-header bg-light">
+                <span class="h5 mb-0">Menu</span>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                <!-- Bootstrap 5 Nav Walker Main Menu -->
+                <ul id="bootscore-navbar" class="navbar-nav ms-auto "><li  id="menu-item-10" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-10"><a href="https://threshold.ie/get-help/" class="nav-link ">Get help</a></li>
+<li  id="menu-item-392" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown nav-item nav-item-392"><a href="http://threshold.ie/what-we-do/" class="nav-link  dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">What we do</a>
+<ul class="dropdown-menu  depth_0">
+	<li  id="menu-item-19" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-19"><a href="https://threshold.ie/what-we-do/" class="dropdown-item ">What we do</a></li>
+	<li  id="menu-item-249" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-249"><a href="https://threshold.ie/our-campaigns/" class="dropdown-item ">Our Campaigns</a></li>
+	<li  id="menu-item-213" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-213"><a href="https://threshold.ie/publications/" class="dropdown-item ">Publications</a></li>
+</ul>
+</li>
+<li  id="menu-item-1969" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown nav-item nav-item-1969"><a href="http://threshold.ie/how-you-can-help/" class="nav-link  dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">How you can help</a>
+<ul class="dropdown-menu  depth_0">
+	<li  id="menu-item-4157" class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-4157"><a href="https://donate.threshold.ie/donate/~my-donation?_cv=1" class="dropdown-item ">Make a Donation</a></li>
+	<li  id="menu-item-4158" class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-4158"><a href="https://threshold.ie/fundraising-campaign/diy-fundraising/" class="dropdown-item ">Organise a Fundraiser</a></li>
+	<li  id="menu-item-4156" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-4156"><a href="https://threshold.ie/how-you-can-help/taxgiving/" class="dropdown-item ">Tax Efficient Giving</a></li>
+	<li  id="menu-item-1971" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-1971"><a href="https://threshold.ie/corporate-partners/" class="dropdown-item ">Corporate Partners</a></li>
+	<li  id="menu-item-4159" class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-4159"><a href="https://threshold.ie/fundraising-campaign/listening-library/" class="dropdown-item ">Support the &#8220;Listening Library&#8221;</a></li>
+	<li  id="menu-item-1970" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-1970"><a href="https://threshold.ie/leave-a-gift-in-your-will/" class="dropdown-item ">Leave a gift in your Will</a></li>
+	<li  id="menu-item-18" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-18"><a href="https://threshold.ie/how-you-can-help/" class="dropdown-item ">Discover more ways to help</a></li>
+</ul>
+</li>
+<li  id="menu-item-1796" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown nav-item nav-item-1796"><a href="http://threshold.ie/about-us/" class="nav-link  dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About us</a>
+<ul class="dropdown-menu  depth_0">
+	<li  id="menu-item-17" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-17"><a href="https://threshold.ie/about-us/" class="dropdown-item ">About us</a></li>
+	<li  id="menu-item-191" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-191"><a href="https://threshold.ie/our-team/" class="dropdown-item ">Our team</a></li>
+	<li  id="menu-item-2972" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-2972"><a href="https://threshold.ie/our-board/" class="dropdown-item ">Our board</a></li>
+	<li  id="menu-item-2018" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-2018"><a href="https://threshold.ie/careers/" class="dropdown-item ">Careers</a></li>
+</ul>
+</li>
+<li  id="menu-item-178" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children dropdown nav-item nav-item-178"><a href="https://threshold.ie/news-stories/" class="nav-link  dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News &#038; stories</a>
+<ul class="dropdown-menu  depth_0">
+	<li  id="menu-item-179" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-179"><a href="https://threshold.ie/news/" class="dropdown-item ">News</a></li>
+	<li  id="menu-item-23" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-23"><a href="https://threshold.ie/stories/" class="dropdown-item ">Stories</a></li>
+</ul>
+</li>
+</ul>                <!-- Bootstrap 5 Nav Walker Main Menu End -->
+              </div>
+            </div>
+
+
+            <div class="header-actions d-flex align-items-center">
+
+              <!-- Navbar Toggler -->
+              <button class="btn btn-outline-secondary d-xl-none ms-md-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-navbar" aria-controls="offcanvas-navbar">
+                <i class="fas fa-bars"></i><span class="visually-hidden-focusable">Menu</span>
+              </button>
+
+              <!-- Search Toggler Mobile -->
+              <button class="btn top-nav-search-md" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-search" aria-expanded="false" aria-controls="collapse-search">
+                <i class="icon-search"></i><span class="visually-hidden-focusable">Search</span>
+              </button>
+
+              <!-- Top Nav Widget -->
+              <div class="top-nav-widget">
+                                  <div>
+                    <div id="custom_html-2" class="widget_text widget widget_custom_html"><div class="widget-title d-none">Donate</div><div class="textwidget custom-html-widget"><a href=" https://donate.threshold.ie/donate/" class="btn btn-primary btn-submit" rel="noopener">Donate<span class="btn-icon"></span></a></div></div>                  </div>
+                              </div>
+
+            </div><!-- .header-actions -->
+
+          </div><!-- .container -->
+
+        </nav><!-- .navbar -->
+
+        <!-- Top Nav Search Mobile Collapse -->
+        <div class="collapse container" id="collapse-search">
+                      <div class="row">
+              <div class="col-md-6 offset-md-6">
+                <div class="top-nav-search"><div class="widget-title d-none">Search</div><form class="searchform" method="get" action="https://threshold.ie/" class="form-inline">
+  <div class="form-item"><input type="text" name="s" class="form-control"></div>
+  <div class="form-submit"><button type="submit" class="input-group-text btn btn-primary"><span class="text">Search</span><i class="fas fa-search"></i></button></div>
+</form></div>              </div>
+            </div>
+                  </div>
+
+      </div><!-- .fixed-top .bg-light -->
+
+    </header><!-- #masthead -->
+
+    <div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    
+    <!-- Hook to add something nice -->
+    
+    <main id="main" class="site-main">
+
+      
+    <section class="section section-hero bg-type-color" style="background-color:#ffffff;">
+      <div class="container">
+                  <div class="row align-items-center">
+            <div class="col-md-6">
+                              <h1 class="hero-title">Prevent Homelessness </h1>
+                                                          <div class="text"><h2>At Threshold, we believe that everyone has a right to a home. We are committed to preventing homelessness before it even starts. We provide free advice and support to people in housing difficulty and those at risk of losing their rented home.</h2></div>
+                                            <div class="cta">
+                  <a href="https://threshold.ie/get-help/" class="btn btn-primary"><span class="btn-text">Get Help</span><span class="btn-icon"></span></a>
+                </div>
+                          </div>
+
+            <div class="col-md-6">
+              <div class="image-col">
+                                  <div class="circle-1" style="background-color:#0f635c"></div>
+                                <div class="image-holder">
+                  <div class="overlay-image rounded-circle">
+                                          <div class="circle-2" style="background-color:#58b4ad"></div>
+                                                               <div class="overlay" style="background-color: rgb(164,47,67);"></div>
+                                      </div>
+                  <div class="image" >
+                    <div class="image-inner rounded-circle" style="border:1px solid rgb(164,47,67);">
+                      <img width="768" height="768" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20768%20768'%3E%3C/svg%3E" alt="Conor & Vicky with their family - Threshold clients" data-lazy-src="https://threshold.ie/wp-content/uploads/2022/09/home-family-lrg-01-768x768-1.png"><noscript><img width="768" height="768" src="https://threshold.ie/wp-content/uploads/2022/09/home-family-lrg-01-768x768-1.png" alt="Conor & Vicky with their family - Threshold clients"></noscript>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+              </div>
+    </section>
+  
+      
+      	<section class="sections">
+										
+								<div class="section-row row-need-help">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-10 offset-lg-2 col-xl-8 offset-xl-4">
+							<div class="inner">
+								
+													<h3 class="row-head">Support Us</h3>
+																			<div class="text">Your support will help us answer the next call from someone facing homelessness.
+</div>
+																			<div class="more"><a href="https://donate.threshold.ie/donate/" class="btn btn-outline">Donate<span class="btn-icon"></span></a></div>
+													</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+										
+								<div class="section-row row-heading-textarea " style="background-color:#113434;">
+				<div class="container">
+					<div class="row">
+													<div class="col-md-4 col-lg-4"><div class="row-head"><h3>Together we can prevent homelessness before it starts. </h3></div></div>
+																			<div class="col-md-6 col-lg-6"><div class="text"><p>Threshold is the only organisation in Ireland advocating for the prevention of homelessness. We know that the best way to keep people from losing their homes is to support renters. We work tirelessly resolving tenancy problems to keep people in their homes and out of homelessness.</p>
+</div></div>
+											</div>
+									</div>
+			</div>
+		
+										
+												<div class="section-row row-callouts m-carousel-holder">
+					<div class="container d-md-none">
+						<div class="row">
+							<div class="col">
+								<div class="carousel-nav">
+									<div class="prev">Previous</div>
+									<div class="next">Next</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="container">
+						<div class="row m-carousel">
+															<div class="col-md-4 callout-holder">
+									<div class="callout rounded callout-0">
+										<div class="inner">
+																							<div class="image rounded-circle">
+													<img width="768" height="546" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20768%20546'%3E%3C/svg%3E" alt="" data-lazy-src="https://threshold.ie/wp-content/uploads/2022/05/article-img-1-768x546.jpg"><noscript><img width="768" height="546" src="https://threshold.ie/wp-content/uploads/2022/05/article-img-1-768x546.jpg" alt=""></noscript>
+												</div>
+																																		<h3 class="head">Fundraise for Threshold</h3>
+																																		<div class="text"><p>Learn more about how you can raise vital funds to help support renters and prevent homelessness.</p>
+</div>
+																																		<div class="more text-right">
+													<a href="http://threshold.ie//how-you-can-help/" class="btn-more">More</a>
+												</div>
+												<a class="teaser-link rounded" href="http://threshold.ie//how-you-can-help/" rel="bookmark" title="Fundraise for Threshold"></a>
+																					</div>
+									</div>
+								</div>
+															<div class="col-md-4 callout-holder">
+									<div class="callout rounded callout-1">
+										<div class="inner">
+																							<div class="image rounded-circle">
+													<img width="768" height="768" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20768%20768'%3E%3C/svg%3E" alt="Campaign for Threshold" data-lazy-src="https://threshold.ie/wp-content/uploads/2022/09/home-campaign.jpg"><noscript><img width="768" height="768" src="https://threshold.ie/wp-content/uploads/2022/09/home-campaign.jpg" alt="Campaign for Threshold"></noscript>
+												</div>
+																																		<h3 class="head">Our Campaigns</h3>
+																																		<div class="text"><p>We’re working to make much-needed changes, including new legislation that will create a fairer deal for renters. Join us.</p>
+</div>
+																																		<div class="more text-right">
+													<a href="http://threshold.ie//our-campaigns/" class="btn-more">More</a>
+												</div>
+												<a class="teaser-link rounded" href="http://threshold.ie//our-campaigns/" rel="bookmark" title="Our Campaigns"></a>
+																					</div>
+									</div>
+								</div>
+															<div class="col-md-4 callout-holder">
+									<div class="callout rounded callout-2">
+										<div class="inner">
+																							<div class="image rounded-circle">
+													<img width="768" height="768" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20768%20768'%3E%3C/svg%3E" alt="Threshold News" data-lazy-src="https://threshold.ie/wp-content/uploads/2022/09/home-latest-news.jpg"><noscript><img width="768" height="768" src="https://threshold.ie/wp-content/uploads/2022/09/home-latest-news.jpg" alt="Threshold News"></noscript>
+												</div>
+																																		<h3 class="head">Latest News</h3>
+																																		<div class="text"><p>Stay up to date with our homeless prevention work, housing reform policies, and campaigns.</p>
+</div>
+																																		<div class="more text-right">
+													<a href="http://threshold.ie//news/" class="btn-more">More</a>
+												</div>
+												<a class="teaser-link rounded" href="http://threshold.ie//news/" rel="bookmark" title="Latest News"></a>
+																					</div>
+									</div>
+								</div>
+													</div>
+					</div>
+				</div>
+					
+										
+																<div class="section-row row-story-home">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-4 ">
+								<h3 class="head">Stories</h3>
+							</div>
+							<div class="col-md-7">
+																	<div class="text">
+										<p>This is the story of just one of the thousands of people and families our expert service advisors have been able to help from the brink of homelessness.</p>
+									</div>
+															</div>
+						</div>
+						<div class="row details">
+							<div class="col-md-5 col-lg-4 ">
+								<div class="image rounded-circle"><img width="364" height="364" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20364%20364'%3E%3C/svg%3E" class="attachment-768x768 size-768x768 wp-post-image" alt="" decoding="async" fetchpriority="high" data-lazy-srcset="https://threshold.ie/wp-content/uploads/2022/11/new-story.png 364w, https://threshold.ie/wp-content/uploads/2022/11/new-story-300x300.png 300w, https://threshold.ie/wp-content/uploads/2022/11/new-story-150x150.png 150w" data-lazy-sizes="(max-width: 364px) 100vw, 364px" data-lazy-src="https://threshold.ie/wp-content/uploads/2022/11/new-story.png" /><noscript><img width="364" height="364" src="https://threshold.ie/wp-content/uploads/2022/11/new-story.png" class="attachment-768x768 size-768x768 wp-post-image" alt="" decoding="async" fetchpriority="high" srcset="https://threshold.ie/wp-content/uploads/2022/11/new-story.png 364w, https://threshold.ie/wp-content/uploads/2022/11/new-story-300x300.png 300w, https://threshold.ie/wp-content/uploads/2022/11/new-story-150x150.png 150w" sizes="(max-width: 364px) 100vw, 364px" /></noscript></div>
+							</div>
+							<div class="col-md-7">
+								<div class="inner">
+																			<div class="teaser-text">
+											I know I’m much more than that. I know all about the years I’ve worked as a nurse – a job I love dearly. I know about the rare medical condition that forced me to stop work. I know how dedicated I am to raising my Aoife, how much she means to me.										</div>
+																		<div class="name">
+										Niamh & Aoife’s Story, Threshold Client									</div>
+								</div>
+								<div class="more">
+									<a href="https://threshold.ie/story/niamh-aoifes-story/" class="btn btn-primary">Niamh & Aoife’s Story<span class="btn-icon"></span></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+					
+										
+								<div class="section-row row-columns">
+				<div class="container">
+					<div class="row align-items-center">
+													<div class="col-md-6 col-lg-5 col-xl-5">
+																		<h3 class="row-head">You can help Threshold prevent homelessness.  </h3>
+																									<div class="text">Give today and together we can stand up for people at risk of losing their homes.</div>
+																									<div class="more"><a href="https://donate.threshold.ie/donate/~my-donation" class="btn btn-outline">Make a donation<span class="btn-icon"></span></a></div>
+															</div>
+																			<div class="col-md-6 col-lg-5 offset-lg-2 col-xl-5 offset-xl-2">
+								<div class="image rounded-circle">
+									<img width="496" height="496" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20496%20496'%3E%3C/svg%3E" alt="" data-lazy-src="https://threshold.ie/wp-content/uploads/2022/06/donation-img.jpg"><noscript><img width="496" height="496" src="https://threshold.ie/wp-content/uploads/2022/06/donation-img.jpg" alt=""></noscript>
+								</div>
+							</div>
+											</div>
+				</div>
+		
+		</section>
+
+      
+      <!-- Content Bottom Widget -->
+              <section class="section-content-bottom">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12 col-lg-10 offset-lg-1">
+                <div class="widgets">
+                  <div id="text-10" class="widget widget_text"><div class="widget-title h1">Join our email list</div>			<div class="textwidget"><p id="signup">Keep current with issues affecting renters &amp; receive updates on the difference we’re making with your support.</p>
+
+<div class="wpcf7 no-js" id="wpcf7-f169-o1" lang="en-US" dir="ltr">
+<div class="screen-reader-response"><p role="status" aria-live="polite" aria-atomic="true"></p> <ul></ul></div>
+<form action="/#wpcf7-f169-o1" method="post" class="wpcf7-form init" aria-label="Contact form" novalidate="novalidate" data-status="init">
+<div style="display: none;">
+<input type="hidden" name="_wpcf7" value="169" />
+<input type="hidden" name="_wpcf7_version" value="5.9.8" />
+<input type="hidden" name="_wpcf7_locale" value="en_US" />
+<input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f169-o1" />
+<input type="hidden" name="_wpcf7_container_post" value="0" />
+<input type="hidden" name="_wpcf7_posted_data_hash" value="" />
+</div>
+<div class="form-item">
+	<p><label for="your-name" class="">First name</label><span class="wpcf7-form-control-wrap" data-name="first-name"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control" id="your-name" aria-required="true" aria-invalid="false" placeholder="First name" value="" type="text" name="first-name" /></span>
+	</p>
+</div>
+<div class="form-item">
+	<p><label for="your-email" class="">First name</label><span class="wpcf7-form-control-wrap" data-name="email"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email form-control" id="your-email" aria-required="true" aria-invalid="false" placeholder="Your email" value="" type="email" name="email" /></span>
+	</p>
+</div>
+<div class="form-item-hidden">
+	<p><!-- Mailchimp for WordPress v4.9.16 - https://www.mc4wp.com/ --><input type="hidden" name="_mc4wp_subscribe_contact-form-7" value="0" /><span class="mc4wp-checkbox mc4wp-checkbox-contact-form-7 " ><label><input type="checkbox" name="_mc4wp_subscribe_contact-form-7" value="1" checked="checked"  /><span>Sign me up for the newsletter!</span></label></span><!-- / Mailchimp for WordPress -->
+	</p>
+</div>
+<div class="form-submit">
+	<p><input class="wpcf7-form-control wpcf7-submit has-spinner" type="submit" value="Sign up" />
+	</p>
+</div><p style="display: none !important;" class="akismet-fields-container" data-prefix="_wpcf7_ak_"><label>&#916;<textarea name="_wpcf7_ak_hp_textarea" cols="45" rows="8" maxlength="100"></textarea></label><input type="hidden" id="ak_js_1" name="_wpcf7_ak_js" value="152"/><script type="rocketlazyloadscript">document.getElementById( "ak_js_1" ).setAttribute( "value", ( new Date() ).getTime() );</script></p><div class="wpcf7-response-output" aria-hidden="true"></div>
+</form>
+</div>
+
+</div>
+		</div>                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+          </main><!-- #main -->
+
+  </div><!-- #primary -->
+</div><!-- #content -->
+
+<footer>
+
+  <div class="bootscore-footer bg-dark-green">
+    <div class="container">
+
+      <!-- Top Footer Widget -->
+      
+      <div class="row">
+
+        <!-- Footer 1 Widget -->
+        <div class="col-sm-6 col-lg-3">
+                      <div>
+              <div class="footer_widget"><h2 class="widget-title h6">Contact</h2>			<div class="textwidget"><p><strong>Advice:</strong><br />
+<a href="https://threshold.ie/get-help/">Get Help</a><br />
+Freephone Helpline:<br />
+<a href="tel:1800 454 454">1800 454 454</a><br />
+International Helpline:<br />
+<a href="tel:00 353 91 563080">00 353 91 563080</a></p>
+<p><strong>Fundraising:</strong><br />
+<a href="https://threshold.ie/get-in-touch/">Contact our Fundraising Team</a></p>
+</div>
+		</div>            </div>
+                  </div>
+
+        <!-- Footer 2 Widget -->
+        <div class="col-sm-6 col-lg-3">
+                      <div>
+              <div class="footer_widget"><h2 class="widget-title h6">Follow us</h2>			<div class="textwidget"><ul class="social-links">
+<li class="facebook"><a href="https://www.facebook.com/Thresholdire" target="_blank" rel="noopener">Facebook</a></li>
+<li class="instagram"><a href="https://www.instagram.com/threshold_housing/" target="_blank" rel="noopener">Instagram</a></li>
+<li class="twitter"><a href="https://twitter.com/ThresholdIRE" target="_blank" rel="noopener">Twitter</a></li>
+<li class="youtube"><a href="https://www.youtube.com/user/Threshold1978" target="_blank" rel="noopener">Youtube</a></li>
+</ul>
+</div>
+		</div>            </div>
+                  </div>
+
+        <!-- Footer 3 Widget -->
+        <div class="col-sm-6 col-lg-3">
+                      <div>
+              <div class="footer_widget"><h2 class="widget-title h6">About Threshold</h2><div class="menu-about-container"><ul id="menu-about" class="menu"><li id="menu-item-30" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-30"><a rel="privacy-policy" href="https://threshold.ie/privacy-policy/">Privacy Policy</a></li>
+<li id="menu-item-1751" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1751"><a href="https://threshold.ie/cookies/">Cookies Policy</a></li>
+<li id="menu-item-32" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32"><a href="https://threshold.ie/donor-charter/">Donor Charter</a></li>
+</ul></div></div>            </div>
+                  </div>
+
+        <!-- Footer 4 Widget -->
+        <div class="col-sm-6 col-lg-3">
+                      <div>
+              <div class="footer_widget"><img width="150" height="85" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20150%2085'%3E%3C/svg%3E" class="image wp-image-4286  attachment-250x141 size-250x141" alt="Employer Excellence Awards 2024 Finalist" style="max-width: 100%; height: auto;" decoding="async" data-lazy-src="https://threshold.ie/wp-content/uploads/2024/09/12-e1727192069464-125-e1727193252147.png" /><noscript><img width="150" height="85" src="https://threshold.ie/wp-content/uploads/2024/09/12-e1727192069464-125-e1727193252147.png" class="image wp-image-4286  attachment-250x141 size-250x141" alt="Employer Excellence Awards 2024 Finalist" style="max-width: 100%; height: auto;" decoding="async" /></noscript></div><div class="footer_widget"><a href="https://charitiesinstitute.ie/pages/triple-lock-standard"><img width="150" height="91" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20150%2091'%3E%3C/svg%3E" class="image wp-image-4192  attachment-full size-full" alt="" style="max-width: 100%; height: auto;" decoding="async" data-lazy-src="https://threshold.ie/wp-content/uploads/2024/08/Cii_TRIPLE_LOCK_TAB_BLACK-e1727193288272.png" /><noscript><img width="150" height="91" src="https://threshold.ie/wp-content/uploads/2024/08/Cii_TRIPLE_LOCK_TAB_BLACK-e1727193288272.png" class="image wp-image-4192  attachment-full size-full" alt="" style="max-width: 100%; height: auto;" decoding="async" /></noscript></a></div>            </div>
+                  </div>
+        <!-- Footer Widgets End -->
+
+      </div>
+
+      <!-- Bootstrap 5 Nav Walker Footer Menu -->
+            <!-- Bootstrap 5 Nav Walker Footer Menu End -->
+  </div>
+
+      <div class="footer-text">
+      <div class="container">
+        <div class="col-md-12">
+          <div class="border-top footer-text-holder">
+            <div class="bg-white">
+              <div class="row align-items-center">
+                <div id="text-8" class="widget widget_text">			<div class="textwidget"><p>The Scheme to Support National Organizations is funded by the Government of Ireland through the Department of Rural and Community Development</p>
+</div>
+		</div><div id="media_image-2" class="widget widget_media_image"><a href="#"><img width="149" height="48" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20149%2048'%3E%3C/svg%3E" class="image wp-image-308  attachment-full size-full" alt="" style="max-width: 100%; height: auto;" decoding="async" data-lazy-src="https://threshold.ie/wp-content/uploads/2022/05/riatlas-logo.jpg" /><noscript><img width="149" height="48" src="https://threshold.ie/wp-content/uploads/2022/05/riatlas-logo.jpg" class="image wp-image-308  attachment-full size-full" alt="" style="max-width: 100%; height: auto;" decoding="async" /></noscript></a></div><div id="media_image-3" class="widget widget_media_image"><a href="#"><img width="142" height="58" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20142%2058'%3E%3C/svg%3E" class="image wp-image-307  attachment-full size-full" alt="" style="max-width: 100%; height: auto;" decoding="async" data-lazy-src="https://threshold.ie/wp-content/uploads/2022/05/pobal-logo.jpg" /><noscript><img width="142" height="58" src="https://threshold.ie/wp-content/uploads/2022/05/pobal-logo.jpg" class="image wp-image-307  attachment-full size-full" alt="" style="max-width: 100%; height: auto;" decoding="async" /></noscript></a></div>              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  <div class="footer-copyright">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div>
+            <div class="copyright-text">&copy;&nbsp;2024 - Threshold</div>
+                            <div class="footer_bottom_widget">			<div class="textwidget"><p>Revenue (Charities Unit) (CHY): 6279. Charities Regulatory Authority (CRA) : 20011031. First Floor 25-28 Strand Street Great, Dublin 1, D01 XP04.</p>
+</div>
+		</div>                      </div>
+        </div>
+        <div class="col-md-4 text-md-end mt-2 mt-md-0">
+          <a href="https://54degrees.com">Website by 54 Degrees</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div><!-- #page -->
+<div class="breakpoint-alias"></div>
+
+
+<!-- Consent Management powered by Complianz | GDPR/CCPA Cookie Consent https://wordpress.org/plugins/complianz-gdpr -->
+<div id="cmplz-cookiebanner-container"><div class="cmplz-cookiebanner cmplz-hidden banner-1 bottom-right-view-preferences optin cmplz-center cmplz-categories-type-view-preferences" aria-modal="true" data-nosnippet="true" role="dialog" aria-live="polite" aria-labelledby="cmplz-header-1-optin" aria-describedby="cmplz-message-1-optin">
+	<div class="cmplz-header">
+		<div class="cmplz-logo"></div>
+		<div class="cmplz-title" id="cmplz-header-1-optin">Manage Cookie Consent</div>
+		<div class="cmplz-close" tabindex="0" role="button" aria-label="Close dialog">
+			<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>
+		</div>
+	</div>
+
+	<div class="cmplz-divider cmplz-divider-header"></div>
+	<div class="cmplz-body">
+		<div class="cmplz-message" id="cmplz-message-1-optin">To provide the best experiences, we use technologies like cookies to store and/or access device information. Consenting to these technologies will allow us to process data such as browsing behavior or unique IDs on this site. Not consenting or withdrawing consent, may adversely affect certain features and functions.</div>
+		<!-- categories start -->
+		<div class="cmplz-categories">
+			<details class="cmplz-category cmplz-functional" >
+				<summary>
+						<span class="cmplz-category-header">
+							<span class="cmplz-category-title">Functional</span>
+							<span class='cmplz-always-active'>
+								<span class="cmplz-banner-checkbox">
+									<input type="checkbox"
+										   id="cmplz-functional-optin"
+										   data-category="cmplz_functional"
+										   class="cmplz-consent-checkbox cmplz-functional"
+										   size="40"
+										   value="1"/>
+									<label class="cmplz-label" for="cmplz-functional-optin" tabindex="0"><span class="screen-reader-text">Functional</span></label>
+								</span>
+								Always active							</span>
+							<span class="cmplz-icon cmplz-open">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"  height="18" ><path d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"/></svg>
+							</span>
+						</span>
+				</summary>
+				<div class="cmplz-description">
+					<span class="cmplz-description-functional">The technical storage or access is strictly necessary for the legitimate purpose of enabling the use of a specific service explicitly requested by the subscriber or user, or for the sole purpose of carrying out the transmission of a communication over an electronic communications network.</span>
+				</div>
+			</details>
+
+			<details class="cmplz-category cmplz-preferences" >
+				<summary>
+						<span class="cmplz-category-header">
+							<span class="cmplz-category-title">Preferences</span>
+							<span class="cmplz-banner-checkbox">
+								<input type="checkbox"
+									   id="cmplz-preferences-optin"
+									   data-category="cmplz_preferences"
+									   class="cmplz-consent-checkbox cmplz-preferences"
+									   size="40"
+									   value="1"/>
+								<label class="cmplz-label" for="cmplz-preferences-optin" tabindex="0"><span class="screen-reader-text">Preferences</span></label>
+							</span>
+							<span class="cmplz-icon cmplz-open">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"  height="18" ><path d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"/></svg>
+							</span>
+						</span>
+				</summary>
+				<div class="cmplz-description">
+					<span class="cmplz-description-preferences">The technical storage or access is necessary for the legitimate purpose of storing preferences that are not requested by the subscriber or user.</span>
+				</div>
+			</details>
+
+			<details class="cmplz-category cmplz-statistics" >
+				<summary>
+						<span class="cmplz-category-header">
+							<span class="cmplz-category-title">Statistics</span>
+							<span class="cmplz-banner-checkbox">
+								<input type="checkbox"
+									   id="cmplz-statistics-optin"
+									   data-category="cmplz_statistics"
+									   class="cmplz-consent-checkbox cmplz-statistics"
+									   size="40"
+									   value="1"/>
+								<label class="cmplz-label" for="cmplz-statistics-optin" tabindex="0"><span class="screen-reader-text">Statistics</span></label>
+							</span>
+							<span class="cmplz-icon cmplz-open">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"  height="18" ><path d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"/></svg>
+							</span>
+						</span>
+				</summary>
+				<div class="cmplz-description">
+					<span class="cmplz-description-statistics">The technical storage or access that is used exclusively for statistical purposes.</span>
+					<span class="cmplz-description-statistics-anonymous">The technical storage or access that is used exclusively for anonymous statistical purposes. Without a subpoena, voluntary compliance on the part of your Internet Service Provider, or additional records from a third party, information stored or retrieved for this purpose alone cannot usually be used to identify you.</span>
+				</div>
+			</details>
+			<details class="cmplz-category cmplz-marketing" >
+				<summary>
+						<span class="cmplz-category-header">
+							<span class="cmplz-category-title">Marketing</span>
+							<span class="cmplz-banner-checkbox">
+								<input type="checkbox"
+									   id="cmplz-marketing-optin"
+									   data-category="cmplz_marketing"
+									   class="cmplz-consent-checkbox cmplz-marketing"
+									   size="40"
+									   value="1"/>
+								<label class="cmplz-label" for="cmplz-marketing-optin" tabindex="0"><span class="screen-reader-text">Marketing</span></label>
+							</span>
+							<span class="cmplz-icon cmplz-open">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"  height="18" ><path d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"/></svg>
+							</span>
+						</span>
+				</summary>
+				<div class="cmplz-description">
+					<span class="cmplz-description-marketing">The technical storage or access is required to create user profiles to send advertising, or to track the user on a website or across several websites for similar marketing purposes.</span>
+				</div>
+			</details>
+		</div><!-- categories end -->
+			</div>
+
+	<div class="cmplz-links cmplz-information">
+		<a class="cmplz-link cmplz-manage-options cookie-statement" href="#" data-relative_url="#cmplz-manage-consent-container">Manage options</a>
+		<a class="cmplz-link cmplz-manage-third-parties cookie-statement" href="#" data-relative_url="#cmplz-cookies-overview">Manage services</a>
+		<a class="cmplz-link cmplz-manage-vendors tcf cookie-statement" href="#" data-relative_url="#cmplz-tcf-wrapper">Manage {vendor_count} vendors</a>
+		<a class="cmplz-link cmplz-external cmplz-read-more-purposes tcf" target="_blank" rel="noopener noreferrer nofollow" href="https://cookiedatabase.org/tcf/purposes/">Read more about these purposes</a>
+			</div>
+
+	<div class="cmplz-divider cmplz-footer"></div>
+
+	<div class="cmplz-buttons">
+		<button class="cmplz-btn cmplz-accept">Accept</button>
+		<button class="cmplz-btn cmplz-deny">Deny</button>
+		<button class="cmplz-btn cmplz-view-preferences">View preferences</button>
+		<button class="cmplz-btn cmplz-save-preferences">Save preferences</button>
+		<a class="cmplz-btn cmplz-manage-options tcf cookie-statement" href="#" data-relative_url="#cmplz-manage-consent-container">View preferences</a>
+			</div>
+
+	<div class="cmplz-links cmplz-documents">
+		<a class="cmplz-link cookie-statement" href="#" data-relative_url="">{title}</a>
+		<a class="cmplz-link privacy-statement" href="#" data-relative_url="">{title}</a>
+		<a class="cmplz-link impressum" href="#" data-relative_url="">{title}</a>
+			</div>
+
+</div>
+</div>
+					<div id="cmplz-manage-consent" data-nosnippet="true"><button class="cmplz-btn cmplz-hidden cmplz-manage-consent manage-consent-1">Manage consent</button>
+
+</div><script type="rocketlazyloadscript" data-rocket-type="text/javascript" src="https://threshold.ie/wp-includes/js/dist/hooks.min.js?ver=2810c76e705dd1a53b18" id="wp-hooks-js"></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" src="https://threshold.ie/wp-includes/js/dist/i18n.min.js?ver=5e580eb46a90c2b997e6" id="wp-i18n-js"></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="wp-i18n-js-after">
+/* <![CDATA[ */
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" src="https://threshold.ie/wp-content/cache/min/1/wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=1727336999" id="swv-js" defer></script>
+<script type="text/javascript" id="contact-form-7-js-extra">
+/* <![CDATA[ */
+var wpcf7 = {"api":{"root":"https:\/\/threshold.ie\/wp-json\/","namespace":"contact-form-7\/v1"},"cached":"1"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" src="https://threshold.ie/wp-content/cache/min/1/wp-content/plugins/contact-form-7/includes/js/index.js?ver=1727336999" id="contact-form-7-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-browser-checker-js-after">
+/* <![CDATA[ */
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+/* ]]> */
+</script>
+<script type="text/javascript" id="rocket-preload-links-js-extra">
+/* <![CDATA[ */
+var RocketPreloadLinksConfig = {"excludeUris":"\/(?:.+\/)?feed(?:\/(?:.+\/?)?)?$|\/(?:.+\/)?embed\/|\/(index\\.php\/)?wp\\-json(\/.*|$)|\/refer\/|\/go\/|\/recommend\/|\/recommends\/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm","siteUrl":"https:\/\/threshold.ie","onHoverDelay":"100","rateThrottle":"3"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-preload-links-js-after">
+/* <![CDATA[ */
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" src="https://threshold.ie/wp-content/themes/threshold/js/lib/min/slick.min.js?ver=6.6.2" id="slick-js-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" src="https://threshold.ie/wp-content/themes/bootscore-main/js/lib/bootstrap.bundle.min.js?ver=202202041252" id="bootstrap-js" defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" src="https://threshold.ie/wp-content/cache/min/1/wp-content/themes/bootscore-main/js/theme.js?ver=1727336999" id="bootscore-script-js" defer></script>
+<script type="text/javascript" id="cmplz-cookiebanner-js-extra">
+/* <![CDATA[ */
+var complianz = {"prefix":"cmplz_","user_banner_id":"1","set_cookies":[],"block_ajax_content":"","banner_version":"17","version":"7.1.0","store_consent":"","do_not_track_enabled":"","consenttype":"optin","region":"eu","geoip":"","dismiss_timeout":"","disable_cookiebanner":"","soft_cookiewall":"","dismiss_on_scroll":"","cookie_expiry":"365","url":"https:\/\/threshold.ie\/wp-json\/complianz\/v1\/","locale":"lang=en&locale=en_US","set_cookies_on_root":"","cookie_domain":"","current_policy_id":"16","cookie_path":"\/","categories":{"statistics":"statistics","marketing":"marketing"},"tcf_active":"","placeholdertext":"Click to accept {category} cookies and enable this content","css_file":"https:\/\/threshold.ie\/wp-content\/uploads\/complianz\/css\/banner-{banner_id}-{type}.css?v=17","page_links":{"eu":{"cookie-statement":{"title":"Cookies Policy","url":"https:\/\/threshold.ie\/cookies\/"},"privacy-statement":{"title":"Privacy Policy","url":"https:\/\/threshold.ie\/privacy-policy\/"}}},"tm_categories":"1","forceEnableStats":"","preview":"","clean_cookies":"","aria_label":"Click to accept {category} cookies and enable this content"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" defer data-rocket-type="text/javascript" src="https://threshold.ie/wp-content/plugins/complianz-gdpr/cookiebanner/js/complianz.min.js?ver=1722526031" id="cmplz-cookiebanner-js"></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="cmplz-cookiebanner-js-after">
+/* <![CDATA[ */
+        
+            document.addEventListener("cmplz_enable_category", function () {
+                document.querySelectorAll('[data-rocket-lazyload]').forEach(obj => {
+                    if (obj.hasAttribute('data-lazy-src')) {
+                        obj.setAttribute('src', obj.getAttribute('data-lazy-src'));
+                    }
+                });
+            });
+        
+		
+/* ]]> */
+</script>
+<script type="text/javascript" id="cp-popup-script-js-extra">
+/* <![CDATA[ */
+var cp_ajax = {"url":"https:\/\/threshold.ie\/wp-admin\/admin-ajax.php","ajax_nonce":"b47fbcd70e","assets_url":"https:\/\/threshold.ie\/wp-content\/plugins\/convertpro\/assets\/","not_connected_to_mailer":"This form is not connected with any mailer service! Please contact web administrator.","timer_labels":"Years,Months,Weeks,Days,Hours,Minutes,Seconds","timer_labels_singular":"Year,Month,Week,Day,Hour,Minute,Second","image_on_ready":"","cpro_mx_valid":"0","invalid_email_id":"Invalid Email Address!"};
+var cp_pro = {"inactive_time":"60"};
+var cp_pro_url_cookie = {"days":"30"};
+var cp_ga_object = {"ga_auth_type":"universal-ga","ga_category_name":"54 Conversion","ga_event_name":"CONVERTPRO"};
+var cp_v2_ab_tests = {"cp_v2_ab_tests_object":[]};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" defer="defer" src="https://threshold.ie/wp-content/plugins/convertpro/assets/modules/js/cp-popup.min.js?ver=1.7.7" id="cp-popup-script-js"></script>
+				<!-- This is minified version of cp-ga-front.js file located at convertpro-addon/analytics/assets/js/cp-ga-front.js if you want to make changes to this, edit cp-ga-front.js file, minify it and paste code here -->
+
+				<script type="rocketlazyloadscript" data-rocket-type="text/javascript">window.addEventListener('DOMContentLoaded', function() {
+				!function(e){e(window).on("cp_after_popup_open",(function(e,t,o,n){var c=jQuery('.cp-popup-container[data-style="cp_style_'+n+'"]').data("styleslug");cpUpdateImpressions(c)})),cpUpdateImpressions=function(e){var t=cp_ga_object.ga_category_name;cpCreateGoogleAnalyticEvent(t,"impression",e)},cpIsModuleOnScreen=function(e){var t=jQuery(window),o={top:t.scrollTop(),left:t.scrollLeft()};o.right=o.left+t.width(),o.bottom=o.top+t.height();var n=e.offset();return n.right=n.left+e.outerWidth(),n.bottom=n.top+e.outerHeight(),!(o.right<n.left||o.left>n.right||o.bottom<n.top||o.top>n.bottom)},e(document).on("cp_after_form_submit",(function(e,t,o,n){if(!0===o.success){var c=cp_ga_object.ga_category_name;cpCreateGoogleAnalyticEvent(c,"conversion",n)}})),cpCreateGoogleAnalyticEvent=function(e,t,o){var n="gtag";void 0!==cp_ga_object.ga_auth_type&&"gtm-code"===cp_ga_object.ga_auth_type&&(n="gtm-code"),"undefined"!=typeof dataLayer&&"gtm-code"==n?dataLayer.push({event:cp_ga_object.ga_event_name,eventCategory:e,eventAction:t,eventLabel:o,eventValue:"1",nonInteraction:!0}):"gtag"==n&&"undefined"!=typeof gtag&&gtag("event",t,{event_label:o,event_category:e,non_interaction:!0})},cp_track_inline_modules=function(){jQuery(".cp-popup-container.cp-module-before_after, .cp-popup-container.cp-module-inline, .cp-popup-container.cp-module-widget").each((function(){var e=jQuery(this);e.data("style").replace("cp_style_","");if(cpIsModuleOnScreen(e)&&!e.hasClass("cp-impression-counted")){var t=e.data("styleslug");cpUpdateImpressions(t),e.addClass("cp-impression-counted")}}))},e(document).ready((function(){cp_track_inline_modules()})),e(document).on("scroll",(function(e){cp_track_inline_modules()}))}(jQuery);
+				});</script>
+				<script>window.lazyLoadOptions=[{elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}},{elements_selector:".rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,}];window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://threshold.ie/wp-content/plugins/wp-rocket/assets/js/lazyload/17.5/lazyload.min.js"></script><script>function lazyLoadThumb(e){var t='<img data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"></noscript>',a='<button class="play" aria-label="play Youtube video"></button>';return t.replace("ID",e)+a}function lazyLoadYoutubeIframe(){var e=document.createElement("iframe"),t="ID?autoplay=1";t+=0===this.parentNode.dataset.query.length?'':'&'+this.parentNode.dataset.query;e.setAttribute("src",t.replace("ID",this.parentNode.dataset.src)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),this.parentNode.parentNode.replaceChild(e,this.parentNode)}document.addEventListener("DOMContentLoaded",function(){var e,t,p,a=document.getElementsByClassName("rll-youtube-player");for(t=0;t<a.length;t++)e=document.createElement("div"),e.setAttribute("data-id",a[t].dataset.id),e.setAttribute("data-query", a[t].dataset.query),e.setAttribute("data-src", a[t].dataset.src),e.innerHTML=lazyLoadThumb(a[t].dataset.id),a[t].appendChild(e),p=e.querySelector('.play'),p.onclick=lazyLoadYoutubeIframe});</script><div class="device-xs d-block d-sm-none"></div>
+<div class="device-sm d-none d-sm-block  d-md-none"></div>
+<div class="device-md d-none d-md-block d-lg-none"></div>
+<div class="device-lg d-none d-lg-block d-xl-none"></div>
+<div class="device-xl d-none d-xl-block d-xxl-none"></div>
+</body>
+</html>
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1727488219 -->
