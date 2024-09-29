@@ -6,6 +6,10 @@
 python -m unittest discover -s tests
 ```
 
+##### Scraping
+
+Sitemap is at https://www.citizensinformation.ie/sitemap.xml
+
 ##### TODO
 
 - Handle request failures (slowing down scrape - have timeout of 3 seconds but it adds up over hundreds of pages - about 150 links per page)
