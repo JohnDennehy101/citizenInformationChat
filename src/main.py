@@ -4,6 +4,7 @@ import re
 import os
 import json
 import logging
+import argparse
 from bs4 import BeautifulSoup
 from numpy import random
 from time import sleep
@@ -17,86 +18,113 @@ from constants import HTML_DIRECTORY_PATH, METADATA_DIRECTORY_PATH, SCRAPE_URL
 logger = logging.getLogger(__name__)
 
 def main():
+    scrape_action = False
+    process_action = False
+
     logging.basicConfig(filename="webscrapercitizensinformation.log",  format='%(asctime)s %(levelname)-8s %(message)s',
     level=logging.INFO,
     datefmt='%Y-%m-%d %H:%M:%S')
 
-    scraped_files = [f for f in os.listdir(HTML_DIRECTORY_PATH) if os.path.isfile(os.path.join(HTML_DIRECTORY_PATH, f))]
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+            "-s",
+            "--scrape",
+            action="store_true")
+    parser.add_argument(
+            "-p",
+            "--process",
+            action="store_true")
+    parsed_args = parser.parse_args()
 
-    file_service = FileService()
+    if parsed_args.scrape:
+        scrape_action = True
 
-    # Call this to make sure that directories are created where the data will be stored
-    file_service.create_file_directory(HTML_DIRECTORY_PATH)
-    file_service.create_file_directory(METADATA_DIRECTORY_PATH)
+    if parsed_args.process:
+        process_action = True
+    
 
-    # Call this to create file metadata file if it does not exist
-    if not file_service.check_file_existence(METADATA_DIRECTORY_PATH, "file_metadata.json"):
-        file_service.write_to_file(METADATA_DIRECTORY_PATH, "file_metadata.json", [])
+    if scrape_action:
+        logging.info("*" * 5 + f"Beginning scraping process" + "*" * 5 )
+        scraped_files = [f for f in os.listdir(HTML_DIRECTORY_PATH) if os.path.isfile(os.path.join(HTML_DIRECTORY_PATH, f))]
 
-    requests_service = RequestsService(SCRAPE_URL)
+        file_service = FileService()
 
-    metadata_service = MetadataService()
+        # Call this to make sure that directories are created where the data will be stored
+        file_service.create_file_directory(HTML_DIRECTORY_PATH)
+        file_service.create_file_directory(METADATA_DIRECTORY_PATH)
 
-    for file_name in scraped_files:
-        page_contents = file_service.read_from_file(HTML_DIRECTORY_PATH, file_name)
+        # Call this to create file metadata file if it does not exist
+        if not file_service.check_file_existence(METADATA_DIRECTORY_PATH, "file_metadata.json"):
+            file_service.write_to_file(METADATA_DIRECTORY_PATH, "file_metadata.json", [])
 
-        page_html_parser = HTMLParser(page_contents)
+        requests_service = RequestsService(SCRAPE_URL)
 
-        valid_links_for_scraping = page_html_parser.extract_valid_links()
-        
-        logging.info("*" * 5 + f" Valid urls found in {file_name}: {len(valid_links_for_scraping)} " + "*" * 5 )
+        metadata_service = MetadataService()
 
-        for i in range(0, len(valid_links_for_scraping)):
-            request_sent = False
-            link = valid_links_for_scraping[i]
+        for file_name in scraped_files:
+            page_contents = file_service.read_from_file(HTML_DIRECTORY_PATH, file_name)
 
-            # This is required as there are relative path links in the documents e.g. ../en/social-welfare
-            link = re.sub(r"\.\./(?:\.\./)*en", "/en", link)
+            page_html_parser = HTMLParser(page_contents)
 
-            sanitised_file_name = file_service.sanitise_file_name(link)
-
-            existing_files_metadata = file_service.read_from_file(METADATA_DIRECTORY_PATH, "file_metadata.json")
-
-            existing_url_metadata_item = metadata_service.metadata_url_exists(existing_files_metadata, link)
-
-            if not file_service.check_file_existence(HTML_DIRECTORY_PATH, sanitised_file_name):
-                logging.info(f"{sanitised_file_name} does not exist, link: {link}")
-                request_sent = True
-
-                # Make Request
-                response = requests_service.make_request(link)
-
-                if response:
-                    # Write to file
-                    write_file_contents_successful = file_service.write_to_file(HTML_DIRECTORY_PATH, sanitised_file_name, response.text)
-
-                    if write_file_contents_successful:
-                        logger.info(f"Writing {sanitised_file_name} successful")
-                    else:
-                        logger.info(f"Writing {sanitised_file_name} was not successful")
-
-            else:
-                logger.info(f"{sanitised_file_name} already exists, skipping...")
-
-            if request_sent:
-                sleep_time = random.uniform(2, 5)
-                logger.info(f"Breaking between requests for {sleep_time} seconds")
-                sleep(sleep_time)
+            valid_links_for_scraping = page_html_parser.extract_valid_links()
             
-            # Always run this to updated files metadata - only if file exists - has been created or updated
-            if file_service.check_file_existence(HTML_DIRECTORY_PATH, sanitised_file_name):
-                if not existing_url_metadata_item:
-                    url_metadata = metadata_service.generate_new_metadata_item(link, sanitised_file_name, os.path.join(HTML_DIRECTORY_PATH, sanitised_file_name), file_name)
-                    url_metadata_json = json.dumps(url_metadata)
-                    new_files_metadata = metadata_service.update_metadata_contents(link, existing_files_metadata, url_metadata)
+            logging.info("*" * 5 + f" Valid urls found in {file_name}: {len(valid_links_for_scraping)} " + "*" * 5 )
+
+            for i in range(0, len(valid_links_for_scraping)):
+                request_sent = False
+                link = valid_links_for_scraping[i]
+
+                # This is required as there are relative path links in the documents e.g. ../en/social-welfare
+                link = re.sub(r"\.\./(?:\.\./)*en", "/en", link)
+
+                sanitised_file_name = file_service.sanitise_file_name(link)
+
+                existing_files_metadata = file_service.read_from_file(METADATA_DIRECTORY_PATH, "file_metadata.json")
+
+                existing_url_metadata_item = metadata_service.metadata_url_exists(existing_files_metadata, link)
+
+                if not file_service.check_file_existence(HTML_DIRECTORY_PATH, sanitised_file_name):
+                    logging.info(f"{sanitised_file_name} does not exist, link: {link}")
+                    request_sent = True
+
+                    # Make Request
+                    response = requests_service.make_request(link)
+
+                    if response:
+                        # Write to file
+                        write_file_contents_successful = file_service.write_to_file(HTML_DIRECTORY_PATH, sanitised_file_name, response.text)
+
+                        if write_file_contents_successful:
+                            logger.info(f"Writing {sanitised_file_name} successful")
+                        else:
+                            logger.info(f"Writing {sanitised_file_name} was not successful")
+
                 else:
-                    if sanitised_file_name not in existing_url_metadata_item["linkPageSources"]:
-                        existing_url_metadata_item["linkPageSources"].append(sanitised_file_name)
-                        existing_url_metadata_item["lastUpdated"] = datetime.now().isoformat()
-                    new_files_metadata = metadata_service.update_metadata_contents(link, existing_files_metadata, existing_url_metadata_item)
-                    
-                file_service.write_to_file(METADATA_DIRECTORY_PATH, "file_metadata.json", new_files_metadata)
-                logger.info(f"Writing {sanitised_file_name} metadata successful")
+                    logger.info(f"{sanitised_file_name} already exists, skipping...")
+
+                if request_sent:
+                    sleep_time = random.uniform(2, 5)
+                    logger.info(f"Breaking between requests for {sleep_time} seconds")
+                    sleep(sleep_time)
+                
+                # Always run this to updated files metadata - only if file exists - has been created or updated
+                if file_service.check_file_existence(HTML_DIRECTORY_PATH, sanitised_file_name):
+                    if not existing_url_metadata_item:
+                        url_metadata = metadata_service.generate_new_metadata_item(link, sanitised_file_name, os.path.join(HTML_DIRECTORY_PATH, sanitised_file_name), file_name)
+                        url_metadata_json = json.dumps(url_metadata)
+                        new_files_metadata = metadata_service.update_metadata_contents(link, existing_files_metadata, url_metadata)
+                    else:
+                        if sanitised_file_name not in existing_url_metadata_item["linkPageSources"]:
+                            existing_url_metadata_item["linkPageSources"].append(sanitised_file_name)
+                            existing_url_metadata_item["lastUpdated"] = datetime.now().isoformat()
+                        new_files_metadata = metadata_service.update_metadata_contents(link, existing_files_metadata, existing_url_metadata_item)
+                        
+                    file_service.write_to_file(METADATA_DIRECTORY_PATH, "file_metadata.json", new_files_metadata)
+                    logger.info(f"Writing {sanitised_file_name} metadata successful")
+    
+    if process_action:
+        logging.info("*" * 5 + f"Beginning processing process" + "*" * 5 )
+
 
 
 if __name__ == "__main__":
