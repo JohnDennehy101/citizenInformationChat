@@ -12,8 +12,9 @@ from services.fileService import FileService
 from services.htmlParser import HTMLParser
 from services.requestsService import RequestsService
 from services.metadataService import MetadataService
+from services.markdownService import MarkdownService
 from datetime import datetime
-from constants import HTML_DIRECTORY_PATH, METADATA_DIRECTORY_PATH, SCRAPE_URL
+from constants import HTML_DIRECTORY_PATH, MARKDOWN_DIRECTORY_PATH, METADATA_DIRECTORY_PATH, SCRAPE_URL
 
 logger = logging.getLogger(__name__)
 
@@ -43,19 +44,22 @@ def main():
         process_action = True
     
 
+    file_service = FileService()
+
+    # Call this to make sure that directories are created where the data will be stored
+    file_service.create_file_directory(HTML_DIRECTORY_PATH)
+    file_service.create_file_directory(METADATA_DIRECTORY_PATH)
+    file_service.create_file_directory(MARKDOWN_DIRECTORY_PATH)
+
+    scraped_files = [f for f in os.listdir(HTML_DIRECTORY_PATH) if os.path.isfile(os.path.join(HTML_DIRECTORY_PATH, f))]
+
+    # Call this to create file metadata file if it does not exist
+    if not file_service.check_file_existence(METADATA_DIRECTORY_PATH, "file_metadata.json"):
+        file_service.write_to_file(METADATA_DIRECTORY_PATH, "file_metadata.json", [])
+    
+
     if scrape_action:
         logging.info("*" * 5 + f"Beginning scraping process" + "*" * 5 )
-        scraped_files = [f for f in os.listdir(HTML_DIRECTORY_PATH) if os.path.isfile(os.path.join(HTML_DIRECTORY_PATH, f))]
-
-        file_service = FileService()
-
-        # Call this to make sure that directories are created where the data will be stored
-        file_service.create_file_directory(HTML_DIRECTORY_PATH)
-        file_service.create_file_directory(METADATA_DIRECTORY_PATH)
-
-        # Call this to create file metadata file if it does not exist
-        if not file_service.check_file_existence(METADATA_DIRECTORY_PATH, "file_metadata.json"):
-            file_service.write_to_file(METADATA_DIRECTORY_PATH, "file_metadata.json", [])
 
         requests_service = RequestsService(SCRAPE_URL)
 
@@ -124,6 +128,36 @@ def main():
     
     if process_action:
         logging.info("*" * 5 + f"Beginning processing process" + "*" * 5 )
+
+        markdown_service = MarkdownService()
+
+        for file_name in scraped_files:
+
+            if not file_service.check_file_existence(MARKDOWN_DIRECTORY_PATH, file_name):
+                logging.info(f"Markdown file does not exist for {file_name}")
+
+                page_contents = file_service.read_from_file(HTML_DIRECTORY_PATH, file_name)
+
+                page_html_parser = HTMLParser(page_contents)
+
+                sanitised_html_content = page_html_parser.sanitise_html_content()
+
+                # Initialise to None
+                markdown_response = None
+
+                if sanitised_html_content:
+                    markdown_response = markdown_service.convert_html_to_markdown(sanitised_html_content)
+                else:
+                    logger.info(f"Error when sanitising html for file {file_name}")
+
+                if markdown_response:
+                    # Write to markdown file
+                    write_file_contents_successful = file_service.write_to_file(MARKDOWN_DIRECTORY_PATH, file_name, markdown_response)
+
+                    if write_file_contents_successful:
+                        logger.info(f"Writing {file_name} markdown successful")
+                    else:
+                        logger.info(f"Writing {file_name} markdown was not successful")
 
 
 
