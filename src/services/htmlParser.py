@@ -25,3 +25,26 @@ class HTMLParser:
             (re.match(r"https?:\/\/", link) and not "citizensinformation.ie" in link)):
             return False
         return True
+    
+    def sanitise_html_content(self):
+        try:
+            cookie_banner_element = self.soup_instance.find("div", id="cookies-banner")
+
+            if cookie_banner_element:
+                cookie_banner_element.extract()
+            
+            cookie_modal_element = self.soup_instance.find("div", id="modal_cookies")
+
+            if cookie_modal_element:
+                cookie_modal_element.extract()
+            
+            invisible_links = self.soup_instance.find_all("a", class_="invisible")
+
+            for link in invisible_links:
+                link.extract()
+
+            return self.soup_instance.prettify()
+
+        except Exception as e:
+            logger.info(f"Error sanitising html: {e}")
+            return None
