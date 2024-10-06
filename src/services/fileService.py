@@ -3,6 +3,8 @@ import urllib.parse
 import re
 import logging
 import json
+import shutil
+
 logger = logging.getLogger(__name__)
 
 
@@ -11,6 +13,17 @@ class FileService:
     # Method to create directory before trying to write to it
     def create_file_directory(self, directory_path):
         os.makedirs(directory_path, exist_ok=True)
+    
+    def clear_file_directory(self, directory_path):
+        for filename in os.listdir(directory_path):
+            file_path = os.path.join(directory_path, filename)
+            try:
+                if os.path.isfile(file_path) or os.path.islink(file_path):
+                    os.unlink(file_path)
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)
+            except Exception as e:
+                print('Failed to delete %s. Reason: %s' % (file_path, e))
     
     # Method to read from file with provided file name
     def read_from_file(self, file_path, file_name):

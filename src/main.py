@@ -14,13 +14,16 @@ from services.requestsService import RequestsService
 from services.metadataService import MetadataService
 from services.markdownService import MarkdownService
 from datetime import datetime
-from constants import HTML_DIRECTORY_PATH, MARKDOWN_DIRECTORY_PATH, METADATA_DIRECTORY_PATH, SCRAPE_URL
+from constants import CHUNK_DIRECTORY_PATH, HTML_DIRECTORY_PATH, MARKDOWN_DIRECTORY_PATH, METADATA_DIRECTORY_PATH, SCRAPE_URL
 
 logger = logging.getLogger(__name__)
 
 def main():
     scrape_action = False
     process_action = False
+    delete_markdown_files = False
+    delete_chunk_files = False
+    chunk_action = False
 
     logging.basicConfig(filename="webscrapercitizensinformation.log",  format='%(asctime)s %(levelname)-8s %(message)s',
     level=logging.INFO,
@@ -35,6 +38,19 @@ def main():
             "-p",
             "--process",
             action="store_true")
+    parser.add_argument(
+            "-c",
+            "--chunk",
+            action="store_true")
+    parser.add_argument(
+            "-dmf",
+            "--delete-markdown-files",
+            action="store_true")
+    parser.add_argument(
+            "-dcf",
+            "--delete-chunk-files",
+            action="store_true")
+
     parsed_args = parser.parse_args()
 
     if parsed_args.scrape:
@@ -43,20 +59,41 @@ def main():
     if parsed_args.process:
         process_action = True
     
+    if parsed_args.delete_markdown_files:
+        delete_markdown_files = True
+    
+    if parsed_args.chunk:
+        chunk_action = True
+    
+    if parsed_args.delete_chunk_files:
+        delete_chunk_files = True
 
     file_service = FileService()
+    markdown_service = MarkdownService()
 
     # Call this to make sure that directories are created where the data will be stored
     file_service.create_file_directory(HTML_DIRECTORY_PATH)
     file_service.create_file_directory(METADATA_DIRECTORY_PATH)
     file_service.create_file_directory(MARKDOWN_DIRECTORY_PATH)
+    file_service.create_file_directory(CHUNK_DIRECTORY_PATH)
 
     scraped_files = [f for f in os.listdir(HTML_DIRECTORY_PATH) if os.path.isfile(os.path.join(HTML_DIRECTORY_PATH, f))]
+    markdown_files = [f for f in os.listdir(MARKDOWN_DIRECTORY_PATH) if os.path.isfile(os.path.join(MARKDOWN_DIRECTORY_PATH, f))]
 
     # Call this to create file metadata file if it does not exist
     if not file_service.check_file_existence(METADATA_DIRECTORY_PATH, "file_metadata.json"):
         file_service.write_to_file(METADATA_DIRECTORY_PATH, "file_metadata.json", [])
+
     
+    if delete_markdown_files:
+        logging.info("*" * 5 + f"Clearing markdown files directory" + "*" * 5 )
+        file_service.clear_file_directory(MARKDOWN_DIRECTORY_PATH)
+        logging.info("*" * 5 + f"Successfully cleared markdown files directory" + "*" * 5 )
+    
+    if delete_chunk_files:
+        logging.info("*" * 5 + f"Clearing chunk files directory" + "*" * 5 )
+        file_service.clear_file_directory(CHUNK_DIRECTORY_PATH)
+        logging.info("*" * 5 + f"Successfully cleared chunk files directory" + "*" * 5 )
 
     if scrape_action:
         logging.info("*" * 5 + f"Beginning scraping process" + "*" * 5 )
@@ -129,8 +166,6 @@ def main():
     if process_action:
         logging.info("*" * 5 + f"Beginning processing process" + "*" * 5 )
 
-        markdown_service = MarkdownService()
-
         for file_name in scraped_files:
 
             if not file_service.check_file_existence(MARKDOWN_DIRECTORY_PATH, file_name):
@@ -158,6 +193,35 @@ def main():
                         logger.info(f"Writing {file_name} markdown successful")
                     else:
                         logger.info(f"Writing {file_name} markdown was not successful")
+    
+    if chunk_action:
+        count_a = 0
+        logging.info("*" * 5 + f"Beginning chunking process" + "*" * 5 )
+
+        for file_name in markdown_files:
+
+            count_a += 1
+
+            if count_a == 2:
+                break
+
+            if not file_service.check_file_existence(CHUNK_DIRECTORY_PATH, file_name):
+                logging.info(f"Chunk file does not exist for {file_name}")
+
+                markdown_content = file_service.read_from_file(MARKDOWN_DIRECTORY_PATH, file_name)
+
+                if markdown_content:
+                    chunked_markdown_content = markdown_service.chunk_markdown(markdown_content)
+
+                    file_service.create_file_directory(f'{CHUNK_DIRECTORY_PATH}/{file_name}')
+
+                    for i, chunk in enumerate(chunked_markdown_content, start=1):
+                        write_file_contents_successful = file_service.write_to_file(f'{CHUNK_DIRECTORY_PATH}/{file_name}', f'chunk_{i}.md', chunk)
+
+                        if write_file_contents_successful:
+                            logger.info(f"Writing {f'chunk{i}'} chunk for {file_name} successful")
+                        else:
+                            logger.info(f"Writing {f'chunk_{i}'} chunk for {file_name} was not successful")
 
 
 

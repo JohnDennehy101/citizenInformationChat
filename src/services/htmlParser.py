@@ -37,6 +37,18 @@ class HTMLParser:
 
             if cookie_modal_element:
                 cookie_modal_element.extract()
+
+            
+            nav_item_element = self.soup_instance.find("li", class_="nav-item")
+
+            if nav_item_element:
+                nav_item_element.extract()
+            
+
+            footer_element = self.soup_instance.find("footer")
+
+            if footer_element:
+                footer_element.extract()
             
             invisible_links = self.soup_instance.find_all("a", class_="invisible")
 
