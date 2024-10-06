@@ -1,0 +1,1 @@
+##  Gluais téarmaí teicniúla úsáidte

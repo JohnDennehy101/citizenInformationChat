@@ -1,0 +1,6 @@
+##  Other supports for people parenting alone
+
+**General information** |  **Specific information about extra social welfare benefits**  
+---|---  
+[ Extra social welfare benefits ](../../../../en/social-welfare/social-welfare-payments/extra-social-welfare-benefits/additional-social-welfare-benefits/) |  [ Free travel Household Benefits Package ](../../../../en/social-welfare/social-welfare-payments/extra-social-welfare-benefits/household-benefits-package/) [ Fuel Allowance ](../../../../en/social-welfare/social-welfare-payments/extra-social-welfare-benefits/fuel-allowance/) [ Diet and Heating Supplements ](../../../../en/social-welfare/social-welfare-payments/supplementary-welfare-schemes/diet-and-heating-supplements/) [ Exceptional and Urgent Needs Payment ](../../../../en/social-welfare/social-welfare-payments/supplementary-welfare-schemes/additional-needs-payment/) [ Back to School Clothing and Footwear Allowance ](../../../../en/social-welfare/social-welfare-payments/social-welfare-payments-to-families-and-children/back-to-school-clothing-and-footwear-allowance/)  
+  

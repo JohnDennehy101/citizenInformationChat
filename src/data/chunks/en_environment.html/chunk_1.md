@@ -1,0 +1,15 @@
+**English** |  Gaeilge 
+
+**You are here:** [ Home ](/en/) > Environment
+
+#  Environment
+
+  * [ Waste and recycling ](/en/environment/waste-and-recycling/)
+  * [ Farming and managing land ](/en/environment/land/)
+  * [ Pets, wildlife and biodiversity ](/en/environment/pets-and-wildlife/)
+  * [ Environmental grants and schemes for your home ](/en/environment/environmental-grants-and-schemes-for-your-home/)
+  * [ Pollution ](/en/environment/pollution/)
+  * [ Coasts and waterways ](/en/environment/coasts-and-waterways/)
+  * [ Health and safety in your environment ](/en/environment/buildings-and-structures/)
+  * [ Environment and the law ](/en/environment/environment-and-the-law/)
+  * [ Climate change ](/en/environment/climate-change/)

@@ -1,0 +1,5 @@
+###  Your household
+
+  * You must [ qualify for social housing support ](/en/housing/local-authority-and-social-housing/applying-for-local-authority-housing/) in the local authority area that the home is located. As part of this requirement, your net household income must not exceed certain limits, depending on which part of the country you live in and how many adults and children there are in your household. The income limits for different locations and households are in [ this table ](https://www.gov.ie/en/publication/fcb86-social-housing-support-table-of-income-limits-2-june-2016/) . Net household income is your household income after taxes and social insurance have been taken off. You must apply for social housing support **before** submitting an application to the mortgage-to-rent scheme. 
+  * You must not own any other property or have assets in excess of €20,000. 
+  * You must have a long-term [ right to remain in the State (pdf). ](http://www.housing.old.gov.ie/sites/default/files/migrated-files/en/Publications/DevelopmentandHousing/Housing/FileDownLoad%2C29412%2Cen.pdf)

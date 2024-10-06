@@ -1,0 +1,14 @@
+**English** |  Gaeilge 
+
+**You are here:** [ Home ](/en/) > Education and Training
+
+#  Education and Training
+
+  * [ Irish education system ](/en/education/the-irish-education-system/)
+  * [ Pre-school education and childcare ](/en/education/pre-school-education-and-childcare/)
+  * [ Primary and post-primary education ](/en/education/primary-and-post-primary-education/)
+  * [ State examinations ](/en/education/state-examinations/)
+  * [ Further education and training ](/en/education/further-education-and-training/)
+  * [ Third-level education ](/en/education/third-level-education/)
+  * [ Special education needs ](/en/education/special-education-needs/)
+  * [ European education programmes ](/en/education/european-education-programmes/)

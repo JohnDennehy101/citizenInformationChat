@@ -38,12 +38,15 @@ class HTMLParser:
             if cookie_modal_element:
                 cookie_modal_element.extract()
 
-            
-            nav_item_element = self.soup_instance.find("li", class_="nav-item")
+            cookie_footer_wrapper_element = self.soup_instance.find("div", class_="cookiejs-footer-wrapper")
 
-            if nav_item_element:
-                nav_item_element.extract()
+            if cookie_footer_wrapper_element:
+                cookie_footer_wrapper_element.extract()
             
+            nav_item_elements = self.soup_instance.find_all("nav")
+
+            for nav_item in nav_item_elements:
+                nav_item.extract()
 
             footer_element = self.soup_instance.find("footer")
 
@@ -54,6 +57,16 @@ class HTMLParser:
 
             for link in invisible_links:
                 link.extract()
+            
+            image_elements = self.soup_instance.find_all("img")
+
+            logo_link_element = self.soup_instance.find("span", class_="logo_link")
+
+            if logo_link_element:
+                logo_link_element.extract()
+
+            for image_element in image_elements:
+                image_element.extract()
 
             return self.soup_instance.prettify()
 

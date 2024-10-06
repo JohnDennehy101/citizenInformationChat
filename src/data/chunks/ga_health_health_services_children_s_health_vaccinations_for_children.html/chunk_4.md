@@ -1,0 +1,13 @@
+###  Sceideal imdhíonta do pháistí
+
+**Aois** |  **Áit** |  **Vacsaíniú**  
+---|---|---  
+2 mhí  |  DG  |  Vacsaíniú **6 in 1** ( [ diftéire ](http://www.hse.ie/eng/health/immunisation/pubinfo/babychildimm/vaccprevdisease/diphtheria/) , [ teiteanas ](http://www.hse.ie/eng/health/immunisation/pubinfo/babychildimm/vaccprevdisease/tetanus/) , [ triuch ](http://www.hse.ie/eng/health/immunisation/pubinfo/babychildimm/vaccprevdisease/whoopingcough/) , [ polaimiailítis ](http://www.hse.ie/eng/health/immunisation/pubinfo/babychildimm/vaccprevdisease/polio/) . [ HiB (Haemophilus Influenzae Cineál B agus Heipitíteas B) ](http://www.hse.ie/eng/health/immunisation/pubinfo/babychildimm/vaccprevdisease/hepb/) in aon instealladh amháin) móide vacsaíniú i gcoinne galar niúmacocúil in instealladh ar leith. Tugtar vacsaíní do naíonáin a bheirtear ó 1 Deireadh Fómhair 2016 ar aghaidh freisin i gcoinne Meiningeacocúil B agus galair rótaivíris.   
+4 mhí  |  DG  |  Ina theannta sin, is amhlaidh a vacsaínítear naíonáin a rugadh roimh 1 Deireadh Fómhair 2016 i gcoinne [ Meiningeacocúil C ](http://www.hse.ie/eng/health/immunisation/pubinfo/babychildimm/vaccprevdisease/menc/) . Tugtar vacsaíní do naíonáin a bheirtear tar éis 1 Deireadh Fómhair i gcoinne Meiningeacocúil B agus galair rótaivíris.   
+6 mhí  |  DG  |  **6 in 1** (diftéire, teiteanas, tiuch (pertussis), póilió, HIB (Haemophilus Influenzae cineál B) agus Heipitíteas B a thugtar mar instealladh amháin) agus vacsaín freisin i gcoinne Galair Niúmacocúil. Tugtar vacsaín do naíonáin freisin a bheirtear an 1 Deireadh Fómhair nó dá éis sin i gcoinne Meiningeacocúil C.   
+12 mhí  |  DG  |  An vacsaín [ MMR (bruitíneach, leicneach agus rubella) ](http://www.hse.ie/eng/health/immunisation/pubinfo/babychildimm/vaccprevdisease/mmr/) . Ina theannta sin, tugtar an vacsaín i gcoinne Galair Niúmacocúil do naíonáin a rugadh roimh 1 Deireadh Fómhair 2016. Tugtar vacsaín i gcoinne Meiningeacocúil B do naíonáin a bheirtear an 1 Deireadh Fómhair nó dá éis sin.   
+13 mhí  |  DG  |  Vacsaíniú i gcoinne Meiningíteas C agus HiB (Haemophilus Influenzae Cineál B).Tugtar an vacsaín i gcoinne Galair Niúmacocúil do naíonáin a bheirtear an 1 Deireadh Fómhair 2016 nó ina dhiaidh sin.   
+4-5 bliana  |  DG nó scoil  |  4 in 1 (diftéire, teiteanas, triuch agus polaimiailítis) móide MMR (bruitíneach, leicneach agus bruitíneach dhearg)   
+11-14 bliana  |  Scoil  |  Td (teiteanas agus dáileog íseal diftéire), [ Meiningíteas ACWY ](https://www.hse.ie/eng/health/immunisation/pubinfo/schoolprog/menacwy/menacwyschoolprog.html)  
+Cailíní sa chéad bhliain i scoileanna dara leibhéal  |  Scoil  |  HPV (vacsaín i gcoinne an víreas daonna papilloma)   
+  

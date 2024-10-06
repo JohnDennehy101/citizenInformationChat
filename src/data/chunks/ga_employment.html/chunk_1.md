@@ -1,0 +1,14 @@
+English  | **Gaeilge**
+
+**Anseo atá tú:** [ Baile ](/ga/) > Fostaíocht
+
+#  Fostaíocht
+
+  * [ Cineálacha Fostaíochta ](/ga/employment/types-of-employment/)
+  * [ Tosú ag obair agus athrú jabanna ](/ga/employment/starting-work-and-changing-job/)
+  * [ Cearta agus Coinníollacha Oibre ](/ga/employment/employment-rights-and-conditions/)
+  * [ Cothroime i gcúrsaí oibre ](/ga/employment/equality-in-work/)
+  * [ Fostaíocht agus míchumas ](/ga/employment/employment-and-disability/)
+  * [ Cur i bhfeidhm agus cúiteamh ](/ga/employment/enforcement-and-redress/)
+  * [ Dífhostaíocht agus Iomarcaíocht ](/ga/employment/unemployment-and-redundancy/)
+  * [ Dul ar scor ](/ga/employment/retirement/)

@@ -1,0 +1,7 @@
+####  Other schemes that count towards the qualifying period
+
+  * If you were getting basic [ Supplementary Welfare Allowance (SWA) ](/en/social-welfare/supplementary-welfare-schemes/supplementary-welfare-allow/) before getting one of the payments listed above, the time on SWA can also count towards the qualifying period for CE, provided there are no breaks between different payments – for example, if you spent 2 months on SWA followed immediately by 10 months on Jobseeker’s Allowance. 
+  * If you were getting [ Carer's Allowance (CA) ](/en/social-welfare/carers/carers-allowance/) , [ half-rate Carers Allowance ](/en/social-welfare/carers/half-rate-carers-allowance/) or [ Carers Benefit ](/en/social-welfare/carers/carers-benefit/) the time spent on these payments can also count towards the eligibility period, but your caring responsibilities must have ceased and you must currently be getting one of the qualifying payments . 
+  * Time spent on a CE-qualifying disability-related payment can count towards the eligibility period, provided there is no break – for example, if you spent 3 months on Illness Benefit followed immediately by 9 months on Jobseeker’s Allowance. 
+  * Time spent on a recognised training course such as SOLAS/ETB, a VTOS course, Youthreach or in prison may count as part of the qualifying period. 
+  * People on the JobPath programme and the Tús scheme are eligible for CE. 

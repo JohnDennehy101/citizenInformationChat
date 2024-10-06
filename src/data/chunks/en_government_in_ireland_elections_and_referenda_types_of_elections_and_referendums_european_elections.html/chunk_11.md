@@ -1,0 +1,30 @@
+###  European Parliament
+
+European Union House  
+12- 14 Lower Mount Street  
+Dublin  
+D02 W710
+
+**Tel:** (0)1 605 79 00 (IE)
+
+**Homepage:** [ https://www.europarl.europa.eu/ireland
+](https://www.europarl.europa.eu/ireland)
+
+**Email:** [ epdublin@europarl.europa.eu ](mailto:epdublin@europarl.europa.eu)
+
+_**Page edited:** 26 August 2024 _
+
+[
+](https://facebook.com/sharer/sharer.php?u=https://www.citizensinformation.ie/en/government-
+in-ireland/elections-and-referenda/types-of-elections-and-
+referendums/european-elections/?utm_source=sharebutton_facebook) [
+](https://twitter.com/intent/tweet/?text=European%20elections&url=https://www.citizensinformation.ie/en/government-
+in-ireland/elections-and-referenda/types-of-elections-and-
+referendums/european-elections/?utm_source=sharebutton_twitter) [
+](whatsapp://send?text=https://www.citizensinformation.ie/en/government-in-
+ireland/elections-and-referenda/types-of-elections-and-referendums/european-
+elections/?utm_source=sharebutton_whatsapp) [
+](mailto:?subject=European%20elections&body=https://www.citizensinformation.ie/en/government-
+in-ireland/elections-and-referenda/types-of-elections-and-
+referendums/european-elections/?utm_source=sharebutton_email) [
+](javascript:void\(0\))

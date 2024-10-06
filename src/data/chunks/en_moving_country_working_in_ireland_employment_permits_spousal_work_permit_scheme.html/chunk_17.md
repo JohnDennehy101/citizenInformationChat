@@ -1,0 +1,22 @@
+###  Related documents
+
+  * [ _Worksheet: How to calculate your Working Family Payment_ ](/en/social-welfare/irish-social-welfare-system/case-studies-checklists/worksheet-how-to-calculate-your-family-income-supplement/)
+
+This worksheet is to help you to work out the amount of Working Family Payment
+you may get.
+
+1570.0795
+
+  * [ _Back to Work Family Dividend_ ](/en/social-welfare/families-and-children/back-to-work-family-dividend/)
+
+The Back to Work Family Dividend is a weekly payment to help people with
+children move from social welfare into work.
+
+1421.135
+
+  * [ _Worksheet: One-Parent Family Payment and income from work_ ](/en/social-welfare/irish-social-welfare-system/case-studies-checklists/worksheet-one-parent-family-payment-and-income-from-work/)
+
+This worksheet shows the effect of income from work on your One-Parent Family
+Payment.
+
+1363.3297

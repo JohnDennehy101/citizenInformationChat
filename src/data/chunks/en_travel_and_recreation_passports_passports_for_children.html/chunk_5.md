@@ -1,0 +1,9 @@
+###  Proving your child’s identity
+
+  * When your online application is completed, you will be asked to print a Child Passport Identity and Consent Form 
+  * If you are applying in Ireland, this form must be signed by an " [ appropriate witness ](https://www.ireland.ie/en/dfa/passports/how-to-get-your-application-witnessed/) ". A member of the Garda Síochána must complete the Identity Verification Form for a child's first passport. Remember to bring your child’s birth certificate with you to the Garda station. 
+  * If you are applying outside Ireland, the form can be witnessed by a person in one of the [ occupations listed on the Passport Online site, ](https://www.ireland.ie/en/dfa/passports/how-to-get-your-application-witnessed/) or on the verification form itself. 
+  * The Passport Service must get consent from all the child’s guardians before it can issue a child’s passport. See "Guardian Consent" below for how guardian consent works. 
+  * Your child's other guardian (if there is one) can ask another appropriate witness to witness their consent separately if they wish. 
+  * If your child is 7 years old or above, your child will sign the form in the presence of the witness (you can sign the form on your child’s behalf for younger children). 
+  * The guardian who completes the online application and declaration must accompany the child when their identity is being verified. This guardian will be identified as ‘Guardian A’ on the Child Passport Identity and Consent Form. You (Guardian A) MUST use the same witness to verify the child’s identity and witness your consent. If you are applying in Ireland, this must be a member of the Garda Síochána for a child's first passport. The second guardian ‘Guardian B’ can use the same witness, or a different witness, to give their consent. 

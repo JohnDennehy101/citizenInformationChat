@@ -1,0 +1,8 @@
+###  Rialacha
+
+Chun iarratas a dhéanamh ar cheadúnas foghlaimeora le haghaidh aon fheithicle,
+ní mór duit:
+
+  * **Bheith i ngnáthchónaí in Éirinn** . Meastar [ go bhfuil gnáthchónaí ort ](https://www.ndls.ie/learner-driver/my-first-learner-permit.html) in Éirinn má tá cónaí ort anseo de ghnáth ar feadh 185 lá ar a laghad i ngach bliain féilire. 
+  * **An riachtanas aoise a chomhlíonadh** . Sular féidir leat iarratas a dhéanamh ar cheadúnas chun feithicil a thiomáint in Éirinn, caithfidh tú a bheith in aois áirithe. Má tá tú faoi 16 bliana d’aois, ní féidir leat aon fheithicil a úsáid in áit phoiblí. Le haghaidh tuilleadh faisnéise, [ féach ár ndoiciméad ar chatagóirí mótarfheithiclí agus aois íosta tiománaithe. ](/ga/travel-and-recreation/motoring/driver-licensing/categories-of-motor-vehicles-and-minimum-age-of-drivers-in-ireland/)
+  * **Pas a a fháil sa tástáil teoirice tiománaí** . Sula ndéanann siad iarratas ar cheadúnas foghlaimeora, ní mór d’iarrthóirí pas a fháil i dtástáil teoirice tiomána [ oiriúnach don chatagóir feithicle (pdf) ](https://theorytest.ie/wp-content/uploads/theory-test-ireland-dtt-application-form-cars-bikes-110918.pdf) ar mian leo a bheith ceadúnaithe chun tiomána. Baineann an riail seo le duine ar bith a dhéanann iarratas ar chéad cheadúnas foghlaimeora in aon chatagóir feithicle. Má chuaigh do cheadúnas foghlaimeora in éag cúig bliana nó níos mó ó shin, ní mór duit pas a fháil i dtástáil teoirice arís sula n-eiseofar ceadúnas foghlaimeora nua. Is féidir leat níos mó a léamh faoin [ tástáil teoirice tiománaí ](/ga/travel-and-recreation/motoring/driving-tests/driver-theory-test/) . 

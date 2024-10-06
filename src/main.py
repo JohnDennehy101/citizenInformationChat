@@ -195,15 +195,9 @@ def main():
                         logger.info(f"Writing {file_name} markdown was not successful")
     
     if chunk_action:
-        count_a = 0
         logging.info("*" * 5 + f"Beginning chunking process" + "*" * 5 )
 
         for file_name in markdown_files:
-
-            count_a += 1
-
-            if count_a == 2:
-                break
 
             if not file_service.check_file_existence(CHUNK_DIRECTORY_PATH, file_name):
                 logging.info(f"Chunk file does not exist for {file_name}")

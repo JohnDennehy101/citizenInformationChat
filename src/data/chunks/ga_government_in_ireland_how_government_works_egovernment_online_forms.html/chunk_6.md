@@ -1,0 +1,17 @@
+##  Travel and Recreation
+
+  * [ Driver theory test ](http://www.theorytest.ie/driver-theory-test/)
+  * [ Driving test ](http://www.rsa.ie/en/RSA/Learner-Drivers/The-Driving-Test/Apply-online/)
+  * [ Learner permits and driving licences ](https://www.ndls.ie/important-forms.html)
+  * [ International driving permit ](http://www.theaa.ie/AA/Motoring-advice/Driving-in-Europe/International-driving-permit.aspx)
+  * [ Motor tax online ](https://www.motortax.ie/OMT/welcome.do)
+  * [ Motor tax and other vehicle forms ](https://www.motortax.ie/OMT/omt.do)
+  * [ National car test (NCT) ](https://www.ncts.ie/bookings/)
+  * [ Revenue - vehicles for people with disabilities ](https://www.ros.ie/myaccount-web/sign_in.html?execution=e1s1)
+  * [ Taxi complaints ](http://www.transportforireland.ie/taxi/taxi-compliments-complaints/)
+  * [ Leap cards ](https://www.leapcard.ie/en/Home.aspx)
+  * [ European Health Insurance Card (EHIC) ](http://www.hse.ie/eng/services/list/1/schemes/EHIC/apply/)
+  * [ Passport renewal and passport cards ](https://www.ireland.ie/en/dfa/passports/passport-online/)
+  * [ Visa applications ](https://www.visas.inis.gov.ie/avats/OnlineHome.aspx)
+  * [ State fishing licence ](http://www.fishinginireland.info/salmon/salmon_licence.htm)
+  * [ Hunting licences ](http://www.npws.ie/licences/hunting)
