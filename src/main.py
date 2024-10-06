@@ -13,60 +13,20 @@ from services.htmlParser import HTMLParser
 from services.requestsService import RequestsService
 from services.metadataService import MetadataService
 from services.markdownService import MarkdownService
+from utils.config import read_command_arguments
 from datetime import datetime
 from constants import CHUNK_DIRECTORY_PATH, HTML_DIRECTORY_PATH, MARKDOWN_DIRECTORY_PATH, METADATA_DIRECTORY_PATH, SCRAPE_URL
 
 logger = logging.getLogger(__name__)
 
 def main():
-    scrape_action = False
-    process_action = False
-    delete_markdown_files = False
-    delete_chunk_files = False
-    chunk_action = False
-
     logging.basicConfig(filename="webscrapercitizensinformation.log",  format='%(asctime)s %(levelname)-8s %(message)s',
     level=logging.INFO,
     datefmt='%Y-%m-%d %H:%M:%S')
 
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-            "-s",
-            "--scrape",
-            action="store_true")
-    parser.add_argument(
-            "-p",
-            "--process",
-            action="store_true")
-    parser.add_argument(
-            "-c",
-            "--chunk",
-            action="store_true")
-    parser.add_argument(
-            "-dmf",
-            "--delete-markdown-files",
-            action="store_true")
-    parser.add_argument(
-            "-dcf",
-            "--delete-chunk-files",
-            action="store_true")
+    flags = read_command_arguments()
 
-    parsed_args = parser.parse_args()
-
-    if parsed_args.scrape:
-        scrape_action = True
-
-    if parsed_args.process:
-        process_action = True
-    
-    if parsed_args.delete_markdown_files:
-        delete_markdown_files = True
-    
-    if parsed_args.chunk:
-        chunk_action = True
-    
-    if parsed_args.delete_chunk_files:
-        delete_chunk_files = True
+    scrape_action, process_action, delete_markdown_files, delete_chunk_files, chunk_action = (flags["scrape_action"], flags["process_action"], flags["delete_markdown_files"], flags["delete_chunk_files"], flags["chunk_action"])
 
     file_service = FileService()
     markdown_service = MarkdownService()
