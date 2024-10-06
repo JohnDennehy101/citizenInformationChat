@@ -1,0 +1,29 @@
+###  Department of Enterprise, Trade and Employment
+
+Employment Permits Section
+
+Earlsfort Centre  
+Lower Hatch Street  
+Dublin 2  
+D02 PW01  
+Ireland
+
+**Opening Hours:** Helpline only: Monday to Friday 9:30am - 5pm
+
+**Tel:** +353 1 417 5333
+
+**Locall:** 0818 808 090
+
+**Fax:** +353 1 631 3268
+
+**Homepage:** [ https://enterprise.gov.ie/en/What-We-Do/Workplace-and-
+Skills/Employment-Permits/ ](https://enterprise.gov.ie/en/What-We-
+Do/Workplace-and-Skills/Employment-Permits/)
+
+**Contact Form:** [ https://enterprise.gov.ie/en/what-we-do/workplace-and-
+skills/employment-permits/employment-permit-status-form/
+](https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-
+permits/employment-permit-status-form/)
+
+**Email:** [ employmentpermits@enterprise.gov.ie
+](mailto:employmentpermits@enterprise.gov.ie)

@@ -1,5 +1,11 @@
 # webScraperCitizensInformation
 
+#### Getting started
+
+- `python3 -m venv . `
+- `source ./bin/activate`
+- `pip3 install -r ../requirements.txt`
+
 #### Running Tests
 
 ```
@@ -18,9 +24,21 @@ Sitemap is at https://www.citizensinformation.ie/sitemap.xml
 
 #### Commands
 
-##### Processing flag converts stored html files to markdow
+##### Processing flag converts stored html files to markdown
 
 `python3  main.py --process`
+
+##### Delete markdown files flag clears stored markdown files
+
+`python3  main.py --delete-markdown-files`
+
+##### Chunk flag creates chunks from markdown files and writes chunk files
+
+`python3  main.py --chunk`
+
+##### Delete chunk files flag clears stored chunked markdown files
+
+`python3  main.py --delete-chunk-files`
 
 #### Scrape flag checks existing html files, extracts links within and scrapes for those that are not present in the directory
 

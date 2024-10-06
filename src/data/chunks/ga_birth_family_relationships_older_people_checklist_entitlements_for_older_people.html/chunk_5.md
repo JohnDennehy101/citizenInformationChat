@@ -1,0 +1,6 @@
+####  Sláinte
+
+[ Míochaine ](../../health/entitlement_to_health_services/entitlement_to_public_health_services.ga.html) |  [ Cárta leighis ](../../health/entitlement_to_health_services/medical_card.ga.html) [ Cártaí Cuairte LG ](../../health/medical_cards_and_gp_visit_cards/gp_visit_cards.ga.html) [ Scéim Tinneas Fadtéarmach ](/health/health_related_benefits_and_entitlements/long_term_illness_scheme.ga.html) [ An Scéim Íoctha Drugaí ](/health/entitlement_to_health_services/drugs_payment_scheme.ga.html) [ Táillí ospidéil ](../../../health/hospital_services/hospital_charges.ga.html) [ An Scéim Tacaíochta do Thithe Altranais ](/health/health_services_for_older_people/nursing_homes_support_scheme_1.ga.html)  
+---|---  
+[ Cúram pobail ](../../health/health_services/care_in_your_community/community_care_services.ga.html) |  [ Cúntóirí baile ](/health/care_in_your_community/home_helps.ga.html) [ Altranas sláinte poiblí ](/health/care_in_your_community/public_health_nurses.ga.html) Seirbhís [ Cosliachta ](/health/care_in_your_community/chiropody_services.ga.html) , [ Cluas ](/health/dental_aural_and_optical_services/aural_services.ga.html) agus [ Fiacla ](/health/dental_aural_and_optical_services/dental_services.ga.html) [ An Scéim Tacaíochta Cúram Baile/Deontas Cúram Baile ](/health/health_services_for_older_people/home_care_packages_for_carers.ga.html)  
+  

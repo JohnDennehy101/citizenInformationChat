@@ -1,0 +1,1 @@
+##  Cineálacha íocaíochtaí cothabhála

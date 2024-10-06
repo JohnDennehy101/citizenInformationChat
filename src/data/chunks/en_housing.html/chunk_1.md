@@ -1,0 +1,16 @@
+**English** |  Gaeilge 
+
+**You are here:** [ Home ](/en/) > Housing
+
+#  Housing
+
+  * [ Renting a home ](/en/housing/renting-a-home/)
+  * [ Owning a home ](/en/housing/owning-a-home/)
+  * [ Housing taxes, charges and reliefs ](/en/housing/housing-taxes-charges-and-reliefs/)
+  * [ Local authority and social housing ](/en/housing/local-authority-and-social-housing/)
+  * [ Housing grants and schemes ](/en/housing/housing-grants-and-schemes/)
+  * [ Planning permission ](/en/housing/planning-permission/)
+  * [ Building or altering a home ](/en/housing/building-or-altering-a-home/)
+  * [ Losing your home and homelessness ](/en/housing/losing-your-home-and-homelessness/)
+  * [ Vacant homes ](/en/housing/vacant-homes/)
+  * [ Drinking water and water supply ](/en/housing/water-and-coasts/)

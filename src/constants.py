@@ -1,3 +1,4 @@
+CHUNK_DIRECTORY_PATH = "data/chunks"
 HTML_DIRECTORY_PATH = "data/html"
 MARKDOWN_DIRECTORY_PATH = "data/markdown"
 METADATA_DIRECTORY_PATH = "data/metadata"

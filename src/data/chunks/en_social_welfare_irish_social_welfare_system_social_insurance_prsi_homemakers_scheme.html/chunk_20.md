@@ -1,0 +1,35 @@
+###  Pension Caring Supports Section
+
+Department of Social Protection  
+McCarter’s Road,  
+Buncrana,  
+Co. Donegal,  
+F93 CH79
+
+**Tel:** (01) 471 5898 (or, if calling from outside Ireland, dial +353 1 471
+5898)
+
+**Locall:** 0818 690 690
+
+**Homepage:** [ https://www.gov.ie/en/publication/f64f2-long-term-carers-and-
+state-pension-contributory/ ](https://www.gov.ie/en/publication/f64f2-long-
+term-carers-and-state-pension-contributory/)
+
+**Email:** [ pensioncaringsupports@welfare.ie
+](mailto:pensioncaringsupports@welfare.ie)
+
+_**Page edited:** 16 July 2024 _
+
+[
+](https://facebook.com/sharer/sharer.php?u=https://www.citizensinformation.ie/en/social-
+welfare/irish-social-welfare-system/social-insurance-prsi/homemakers-
+scheme/?utm_source=sharebutton_facebook) [
+](https://twitter.com/intent/tweet/?text=Homemaker%27s%20Scheme&url=https://www.citizensinformation.ie/en/social-
+welfare/irish-social-welfare-system/social-insurance-prsi/homemakers-
+scheme/?utm_source=sharebutton_twitter) [
+](whatsapp://send?text=https://www.citizensinformation.ie/en/social-
+welfare/irish-social-welfare-system/social-insurance-prsi/homemakers-
+scheme/?utm_source=sharebutton_whatsapp) [
+](mailto:?subject=Homemaker%27s%20Scheme&body=https://www.citizensinformation.ie/en/social-
+welfare/irish-social-welfare-system/social-insurance-prsi/homemakers-
+scheme/?utm_source=sharebutton_email) [ ](javascript:void\(0\))
