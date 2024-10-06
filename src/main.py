@@ -167,8 +167,9 @@ def main():
         logging.info("*" * 5 + f"Beginning processing process" + "*" * 5 )
 
         for file_name in scraped_files:
+            markdown_file_name = file_name.replace(".html", ".md")
 
-            if not file_service.check_file_existence(MARKDOWN_DIRECTORY_PATH, file_name):
+            if not file_service.check_file_existence(MARKDOWN_DIRECTORY_PATH, markdown_file_name):
                 logging.info(f"Markdown file does not exist for {file_name}")
 
                 page_contents = file_service.read_from_file(HTML_DIRECTORY_PATH, file_name)
@@ -187,12 +188,12 @@ def main():
 
                 if markdown_response:
                     # Write to markdown file
-                    write_file_contents_successful = file_service.write_to_file(MARKDOWN_DIRECTORY_PATH, file_name, markdown_response)
+                    write_file_contents_successful = file_service.write_to_file(MARKDOWN_DIRECTORY_PATH, markdown_file_name, markdown_response)
 
                     if write_file_contents_successful:
-                        logger.info(f"Writing {file_name} markdown successful")
+                        logger.info(f"Writing {markdown_file_name} markdown successful")
                     else:
-                        logger.info(f"Writing {file_name} markdown was not successful")
+                        logger.info(f"Writing {markdown_file_name} markdown was not successful")
     
     if chunk_action:
         logging.info("*" * 5 + f"Beginning chunking process" + "*" * 5 )
