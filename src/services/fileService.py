@@ -25,6 +25,11 @@ class FileService:
             except Exception as e:
                 print('Failed to delete %s. Reason: %s' % (file_path, e))
     
+    # Method to read directory
+    def read_directory_contents(self, directory_path):
+        directory_files = [f for f in os.listdir(directory_path) if os.path.isfile(os.path.join(directory_path, f))]
+        return directory_files
+    
     # Method to read from file with provided file name
     def read_from_file(self, file_path, file_name):
         file_opened = False
