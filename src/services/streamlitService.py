@@ -3,6 +3,7 @@ import ollama
 import streamlit as st
 import numpy as np
 from streamlit_chat import message
+from ragas import evaluate, EvaluationDataset
 logger = logging.getLogger(__name__)
 
 class StreamlitService:
@@ -42,6 +43,32 @@ class StreamlitService:
         )
 
         return output
+    
+    def evaluate_response(self, query, response, relevant_texts):
+        retrieved_documents = [row[0] for row in relevant_texts]
+
+        response_text = response["message"]["content"] if isinstance(response, dict) else response
+
+        # Hardcoding for reference - query was "Rental tax credit"
+        # Will have to make this dynamic going forward for evaluation
+        ground_truth = "Rental tax credit is extended to parents of students renting a room or digs in 2024. The tax credit will also be available to claim for the 2022 and 2023 tax years."
+
+        ragas_input = [{
+            "query": query,
+            "ground_truth": ground_truth,
+            "answer": ground_truth,
+            "contexts": retrieved_documents,
+            "response": response_text,
+            "retrieved_contexts": retrieved_documents,
+            "reference": response_text,
+            "user_input": query
+        }]
+
+        evaluation_dataset = EvaluationDataset.from_list(ragas_input)
+
+        evaluation_results = evaluate(evaluation_dataset, raise_exceptions=True)
+
+        return evaluation_results
 
     def process_input(self):
         if st.session_state["user_input"] and len(st.session_state["user_input"].strip()) > 0:
@@ -49,6 +76,13 @@ class StreamlitService:
             with st.session_state["thinking_spinner"], st.spinner(f"Thinking"):
                 relevant_texts = self.fetch_relevant_texts(user_text)
                 agent_text = self.generate_response(user_text, relevant_texts)
+
+                # COMMENTING OUT FOR NOW - THIS WORKS BUT USAGE COSTS DUE TO RAGAS USING OPEN AI API
+                # Use in combination with manual evaluation metrics
+                #evaluation = self.evaluate_response(user_text, agent_text, relevant_texts)
+
+                #print(evaluation)
+
             st.session_state["messages"].append((user_text, True))
             st.session_state["messages"].append((agent_text['message']['content'], False))
     
