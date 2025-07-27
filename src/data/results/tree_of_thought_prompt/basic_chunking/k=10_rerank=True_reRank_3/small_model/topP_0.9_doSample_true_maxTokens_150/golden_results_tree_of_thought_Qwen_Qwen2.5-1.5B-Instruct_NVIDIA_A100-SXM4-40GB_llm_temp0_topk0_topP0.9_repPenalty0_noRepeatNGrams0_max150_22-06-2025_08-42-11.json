@@ -1,0 +1,715 @@
+{
+    "hyperparameters": {
+        "top_p": 0.9,
+        "do_sample": true,
+        "max_new_tokens": 150
+    },
+    "model": "Qwen/Qwen2.5-1.5B-Instruct",
+    "results": [
+        {
+            "ground_truth": "You are entitled to claim Irish citizenship if any one of the following applies: 1. You were born in Ireland or Northern Ireland before 1 January 2005 2. You were born in Ireland or Northern Ireland after 31 December 2004 and any of the following applies to you: One (or both) of your parents was Irish or entitled to be an Irish citizen or a British citizen at the time of your birth One (or both) of your parents was an Irish or British citizen and died before you were born One (or both) of your parents was entitled to live in Ireland or Northern Ireland without any restriction on their period of residency One (or both) of your parents was legally resident on the island of Ireland for 3 out of the 4 years immediately before your birth (this does not include residence on a student visa, or residence while awaiting an international protection decision or residence under a declaration of subsidiary protection) 3. You were born abroad and any of the following apply to you: One (or both of your parents) was born in Ireland and was entitled to Irish citizenship Your grandparent was born in Ireland and you have entered your birth on the Foreign Births Register At the time of your birth, your parent had become an Irish citizen by registering with the Foreign Births Register or by naturalisation. You must register your birth with the Foreign Births Register before obtaining Irish citizenship. 4. You were born in Ireland and are not entitled to be a citizen of any other country.",
+            "question": "Who is entitled to Irish citizenship?",
+            "raw_answer": "Reason step by step before answering the question.\n\nQuestion: Who is entitled to Irish citizenship?\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\n<thinking>\nThe eligibility for Irish citizenship can vary depending on several factors including age, residency, bloodline, and other conditions set out in the Constitution of Ireland. Let's consider how one might determine who is eligible:\n\nBranch 1: Eligibility based on Birthplace\n[Reflection] Examining whether someone born in Ireland has automatic citizenship seems straightforward but requires understanding the legal basis for such entitlements.\n[Step 1] Determine if the person was born in a place covered under Article 43 of the Constitution which states that \"Every child born in [Ireland] shall be regarded as an Irish citizen\".\n[Count] Remaining Steps: 9\n\nBranch 2: Citizenship through Naturalization\n[Reflection] Naturalization can grant citizenship",
+            "answer": "",
+            "timing_info": {
+                "generation_duration": 4.907790660858154,
+                "number_output_tokens": 463,
+                "time_per_output_token": 0.010599979829067288
+            },
+            "post_process_function": "def post_process_helpful_answer_prompt_chain_of_thought(answer):\n  start_matches = list(re.finditer(r\"<answer>\", answer, flags=re.IGNORECASE))\n\n  end_matches = list(re.finditer(r\"</answer>\", answer, flags=re.IGNORECASE))\n\n  if len(start_matches) < 2:\n    return \"\"\n  \n  start_index = start_matches[-1].end()\n  \n  if end_matches:\n    end_after_start = [m for m in end_matches if m.start() > start_index]\n\n    if end_after_start:\n      end_index = end_after_start[-1].start()\n    else:\n      end_index = len(answer)\n  else:\n    end_index = len(answer)\n    \n  return answer[start_index:end_index].strip()\n",
+            "total_run_time": 4.909877061843872,
+            "rouge1_score": 0.0,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0,
+            "bert_precision": -0.5474111437797546,
+            "bert_recall": -0.5473631024360657,
+            "bert_f1": -0.5436651110649109,
+            "zero_shot_label": "contradiction",
+            "zero_shot_probabilities": {
+                "contradiction": 0.8813881278038025,
+                "neutral": 0.11614972352981567,
+                "entailment": 0.002462228527292609
+            }
+        },
+        {
+            "ground_truth": "If you are coming to live in Ireland or returning here to live, you must satisfy the Health Service Executive (HSE) that you are ordinarily resident \u2013 that you have been living in Ireland for at least a year or you intend to live here for at least one year. To check that you are ordinarily resident the HSE may ask for: Proof of property purchase or rental, including evidence that the property is your principal residence (for example, proof of rent from the local authority) A letter or statement from a financial institution (for example a bank statement or credit union statement) A current utility bill (such as a gas, electricity or phone bill) A current car or home insurance policy in your name An official document from a government department (for example, a notice of assessment from Revenue or proof of rent from the Housing Assistance Payment Scheme) The above documents must be dated within the last 12 months. Any person, regardless of nationality, who is accepted by the HSE as being ordinarily resident in Ireland is entitled to either full eligibility (Category 1, medical card holders) or limited eligibility (Category 2) for health services.",
+            "question": "What is ordinary residence?",
+            "raw_answer": "Reason step by step before answering the question.\n\nQuestion: What is ordinary residence?\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\n<thinking>\nThe concept of \"ordinary residence\" can be quite complex and nuanced. Let's break it down into several key aspects:\n\n### Step 1: Definition of Ordinary Residence\n\nAn ordinary residence refers to a place where someone lives primarily for personal purposes, rather than for business, investment, or other professional reasons. It is a dwelling that serves as the primary home and workplace for the individual.\n\n### Branch 1: Legal Perspective\n\n**Step 2:** According to legal definitions, ordinary residence typically includes a person\u2019s principal place of abode. This can vary depending on local laws but generally involves a place where the owner spends most of their time living and working.\n\n**Step 3:** The term \u201cordinary\u201d suggests that while not necessarily",
+            "answer": "",
+            "timing_info": {
+                "generation_duration": 4.909301280975342,
+                "number_output_tokens": 461,
+                "time_per_output_token": 0.01064924355959944
+            },
+            "post_process_function": "def post_process_helpful_answer_prompt_chain_of_thought(answer):\n  start_matches = list(re.finditer(r\"<answer>\", answer, flags=re.IGNORECASE))\n\n  end_matches = list(re.finditer(r\"</answer>\", answer, flags=re.IGNORECASE))\n\n  if len(start_matches) < 2:\n    return \"\"\n  \n  start_index = start_matches[-1].end()\n  \n  if end_matches:\n    end_after_start = [m for m in end_matches if m.start() > start_index]\n\n    if end_after_start:\n      end_index = end_after_start[-1].start()\n    else:\n      end_index = len(answer)\n  else:\n    end_index = len(answer)\n    \n  return answer[start_index:end_index].strip()\n",
+            "total_run_time": 4.911479711532593,
+            "rouge1_score": 0.0,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0,
+            "bert_precision": -0.5474111437797546,
+            "bert_recall": -0.5473631024360657,
+            "bert_f1": -0.5436651110649109,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.02205072157084942,
+                "neutral": 0.971786618232727,
+                "entailment": 0.006162682548165321
+            }
+        },
+        {
+            "ground_truth": "Your employer must be able to justify that there is a genuine reason for making you redundant. A genuine redundancy is one where your employer has a real business reason to make you redundant. Reasons for redundancy include: Financial difficulties within the business: for example, your employer needs to cut costs and this means staff numbers must be reduced. Lack of work: for example, your employer no longer needs or has a reduced need for employees with your skills or new technology has made your job unnecessary. Reorganisation within the business: for example, your employer has decided to carry on the business with fewer or no staff or the job you do no longer exists. Business closure: the business is closing down or moving.",
+            "question": "What counts as genuine redundancy?",
+            "raw_answer": "Reason step by step before answering the question.\n\nQuestion: What counts as genuine redundancy?\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\n<thinking>\nRedundancy can be defined as when someone has been hired to do a job but no longer needs to be there because the person who was doing it is still employed elsewhere. This contrasts with overstaffing, where there are too many employees for the work they need to do.\n\nA few key points about determining genuine redundancy:\n\n1. **Job Relevance**: The primary criterion is whether the job being performed is actually relevant and necessary given the current organizational structure and responsibilities.\n\n2. **Employee Performance**: Employees should ideally perform their roles efficiently and effectively. Redundancy occurs only when performance is below acceptable levels despite efforts to improve.\n\n3. **Company Needs Analysis**: Organizations must consider their strategic goals, market demands, and financial capabilities to",
+            "answer": "",
+            "timing_info": {
+                "generation_duration": 4.957513809204102,
+                "number_output_tokens": 462,
+                "time_per_output_token": 0.010730549370571649
+            },
+            "post_process_function": "def post_process_helpful_answer_prompt_chain_of_thought(answer):\n  start_matches = list(re.finditer(r\"<answer>\", answer, flags=re.IGNORECASE))\n\n  end_matches = list(re.finditer(r\"</answer>\", answer, flags=re.IGNORECASE))\n\n  if len(start_matches) < 2:\n    return \"\"\n  \n  start_index = start_matches[-1].end()\n  \n  if end_matches:\n    end_after_start = [m for m in end_matches if m.start() > start_index]\n\n    if end_after_start:\n      end_index = end_after_start[-1].start()\n    else:\n      end_index = len(answer)\n  else:\n    end_index = len(answer)\n    \n  return answer[start_index:end_index].strip()\n",
+            "total_run_time": 4.959730625152588,
+            "rouge1_score": 0.0,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0,
+            "bert_precision": -0.5474111437797546,
+            "bert_recall": -0.5473631024360657,
+            "bert_f1": -0.5436651110649109,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.05839889869093895,
+                "neutral": 0.8561986684799194,
+                "entailment": 0.0854024887084961
+            }
+        },
+        {
+            "ground_truth": "A GP visit card is a card that gives you free visits to a participating family doctor (GP). If you are not eligible for a medical card, you may be eligible for a GP visit card. You can apply for a GP visit card online.",
+            "question": "What is a GP visit card?",
+            "raw_answer": "Reason step by step before answering the question.\n\nQuestion: What is a GP visit card?\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\n<thinking>\nA GP visit card can be defined as a physical document used during a general practitioner consultation where patients write their medical history, symptoms, and any other relevant information about their condition for the doctor to review. The format may vary depending on the country or region but typically includes sections like name, date of birth, address, contact details, and a space for notes or observations from both patient and doctor. This practice encourages better communication between the patient and healthcare provider and helps ensure accurate diagnosis and treatment plans. It's important to maintain confidentiality when using such cards to protect sensitive health information. In some countries, electronic versions might also be available via apps or online portals, offering convenience while still maintaining paperless records. </thinking>\n<br/>\n<thinking",
+            "answer": "",
+            "timing_info": {
+                "generation_duration": 4.942227602005005,
+                "number_output_tokens": 463,
+                "time_per_output_token": 0.010674357671717073
+            },
+            "post_process_function": "def post_process_helpful_answer_prompt_chain_of_thought(answer):\n  start_matches = list(re.finditer(r\"<answer>\", answer, flags=re.IGNORECASE))\n\n  end_matches = list(re.finditer(r\"</answer>\", answer, flags=re.IGNORECASE))\n\n  if len(start_matches) < 2:\n    return \"\"\n  \n  start_index = start_matches[-1].end()\n  \n  if end_matches:\n    end_after_start = [m for m in end_matches if m.start() > start_index]\n\n    if end_after_start:\n      end_index = end_after_start[-1].start()\n    else:\n      end_index = len(answer)\n  else:\n    end_index = len(answer)\n    \n  return answer[start_index:end_index].strip()\n",
+            "total_run_time": 4.944486141204834,
+            "rouge1_score": 0.0,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0,
+            "bert_precision": -0.5474111437797546,
+            "bert_recall": -0.5473631024360657,
+            "bert_f1": -0.5436651110649109,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.0006692847819067538,
+                "neutral": 0.9984747767448425,
+                "entailment": 0.0008559699053876102
+            }
+        },
+        {
+            "ground_truth": "You must be ordinarily resident in Ireland to apply for a GP visit card. This means that you are living in Ireland and intend to live here for at least one year. You will qualify for a GP visit card with no means test if you are: Aged under 8 (see GP visit cards for children) Aged over 70 Getting Carer\u2019s Benefit or Carer\u2019s Allowance, at full or half-rate If you are aged under 70, your income is assessed by the HSE to see whether you qualify for a GP visit card. See below for information about the HSE basic rates of income.",
+            "question": "Who can get a GP visit card?",
+            "raw_answer": "Reason step by step before answering the question.\n\nQuestion: Who can get a GP visit card?\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\n<thinking>\nTo determine who can get a GP visit card, let's consider several approaches:\n\nBranch 1: Age Limitation\n- All adults over 16 years old are eligible for general practice visits.\n- There may be exceptions, but these should be rare.\n- Reward Score: 0.9\n\nReflection: This seems straightforward enough, aligning well with common knowledge about eligibility criteria.\n\nBranch 2: Income Level\n- People earning below a certain income threshold might qualify due to government schemes.\n- However, this is less likely given the age criterion.\n- Reward Score: 0.7\n\nReflection: While plausible, it introduces complexity not directly related to age, so this branch needs refinement.\n\nBranch 3: Disability Status",
+            "answer": "",
+            "timing_info": {
+                "generation_duration": 4.930896282196045,
+                "number_output_tokens": 464,
+                "time_per_output_token": 0.01062693164266389
+            },
+            "post_process_function": "def post_process_helpful_answer_prompt_chain_of_thought(answer):\n  start_matches = list(re.finditer(r\"<answer>\", answer, flags=re.IGNORECASE))\n\n  end_matches = list(re.finditer(r\"</answer>\", answer, flags=re.IGNORECASE))\n\n  if len(start_matches) < 2:\n    return \"\"\n  \n  start_index = start_matches[-1].end()\n  \n  if end_matches:\n    end_after_start = [m for m in end_matches if m.start() > start_index]\n\n    if end_after_start:\n      end_index = end_after_start[-1].start()\n    else:\n      end_index = len(answer)\n  else:\n    end_index = len(answer)\n    \n  return answer[start_index:end_index].strip()\n",
+            "total_run_time": 4.933006525039673,
+            "rouge1_score": 0.0,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0,
+            "bert_precision": -0.5474111437797546,
+            "bert_recall": -0.5473631024360657,
+            "bert_f1": -0.5436651110649109,
+            "zero_shot_label": "contradiction",
+            "zero_shot_probabilities": {
+                "contradiction": 0.809645414352417,
+                "neutral": 0.17542505264282227,
+                "entailment": 0.014929578639566898
+            }
+        },
+        {
+            "ground_truth": "Online applications are completed in approximately 20 working days for first-time applicants. If you are applying by post, you should allow at least 8 weeks for your application to be processed (not including postage times). This period may be extended at certain times of the year due to increased application numbers. First-time postal applications from the UK take at least 8 weeks. You can check the Passport Service website for current processing times.",
+            "question": "How long will my passport application take?",
+            "raw_answer": "Reason step by step before answering the question.\n\nQuestion: How long will my passport application take?\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\n<thinking>\nTo determine how long your passport application will take, consider several factors including the urgency, the type of visa you need, and your current status with the issuing authority. Here are some potential approaches:\n\nBranch 1:\nThe length of time for your passport application can vary widely depending on many factors such as the urgency of the application, whether it involves a visa, and any previous applications. Generally, non-emergency passports typically take about six weeks from start to finish, but this timeframe might be shorter or longer based on these variables. It's also important to note that some countries allow expedited processing, which could reduce the time frame considerably.\n\nReflection: This approach seems reasonable given the variability in application times. However, we should verify the",
+            "answer": "",
+            "timing_info": {
+                "generation_duration": 4.964778184890747,
+                "number_output_tokens": 464,
+                "time_per_output_token": 0.010699952984678334
+            },
+            "post_process_function": "def post_process_helpful_answer_prompt_chain_of_thought(answer):\n  start_matches = list(re.finditer(r\"<answer>\", answer, flags=re.IGNORECASE))\n\n  end_matches = list(re.finditer(r\"</answer>\", answer, flags=re.IGNORECASE))\n\n  if len(start_matches) < 2:\n    return \"\"\n  \n  start_index = start_matches[-1].end()\n  \n  if end_matches:\n    end_after_start = [m for m in end_matches if m.start() > start_index]\n\n    if end_after_start:\n      end_index = end_after_start[-1].start()\n    else:\n      end_index = len(answer)\n  else:\n    end_index = len(answer)\n    \n  return answer[start_index:end_index].strip()\n",
+            "total_run_time": 4.966915607452393,
+            "rouge1_score": 0.0,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0,
+            "bert_precision": -0.5474111437797546,
+            "bert_recall": -0.5473631024360657,
+            "bert_f1": -0.5436651110649109,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.0011999759590253234,
+                "neutral": 0.9761082530021667,
+                "entailment": 0.022691726684570312
+            }
+        },
+        {
+            "ground_truth": "A Police Certificate is an official statement about you issued by An Garda S\u00edoch\u00e1na. It is used by people who have lived in Ireland and want to work or study abroad. It is required by some foreign authorities. A Police Certificate states your: Name Address Date of birth Criminal record in Ireland (this does not include adult cautions) A Police Certificate is normally valid for 1 year. You should also note that the Irish spent convictions legislation cannot be used to prevent disclosure when you are required to disclose information about your criminal convictions to another state.",
+            "question": "What is a Police Certificate?",
+            "raw_answer": "Reason step by step before answering the question.\n\nQuestion: What is a Police Certificate?\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\n<thinking>\nA Police Certificate can be understood from various perspectives, such as its purpose, requirements for issuance, types available, and how it might impact an individual\u2019s life. Let's break down these aspects:\n\n## Step 1: Purpose of a Police Certificate\n\nThe primary function of a police certificate is to serve as documentation of one's legal status before being granted certain privileges or access to specific areas. This could involve proof of age, identity verification, or even clearance for sensitive positions or activities.\n\n## Step 2: Requirements for Issuance\n\nTo obtain a police certificate, individuals typically need to meet specific criteria set by local authorities. These may include presenting identification documents, undergoing background checks, and possibly passing certain tests related to criminal history or",
+            "answer": "",
+            "timing_info": {
+                "generation_duration": 4.913031816482544,
+                "number_output_tokens": 462,
+                "time_per_output_token": 0.010634268001044467
+            },
+            "post_process_function": "def post_process_helpful_answer_prompt_chain_of_thought(answer):\n  start_matches = list(re.finditer(r\"<answer>\", answer, flags=re.IGNORECASE))\n\n  end_matches = list(re.finditer(r\"</answer>\", answer, flags=re.IGNORECASE))\n\n  if len(start_matches) < 2:\n    return \"\"\n  \n  start_index = start_matches[-1].end()\n  \n  if end_matches:\n    end_after_start = [m for m in end_matches if m.start() > start_index]\n\n    if end_after_start:\n      end_index = end_after_start[-1].start()\n    else:\n      end_index = len(answer)\n  else:\n    end_index = len(answer)\n    \n  return answer[start_index:end_index].strip()\n",
+            "total_run_time": 4.915209054946899,
+            "rouge1_score": 0.0,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0,
+            "bert_precision": -0.5474111437797546,
+            "bert_recall": -0.5473631024360657,
+            "bert_f1": -0.5436651110649109,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.0034675104543566704,
+                "neutral": 0.9953233599662781,
+                "entailment": 0.0012092168908566236
+            }
+        },
+        {
+            "ground_truth": "Each local authority maintains the Register of Electors for its area. To be included in the Register of Electors, you must: Be at least 18 years old Be ordinarily resident at an address in Ireland If you are homeless or have no address, you can still register to vote by stating that you have \u2018no fixed address.\u2019 Read more about being homeless and registering to vote. If you have more than one address, you should give the address where you want to be registered. You can only be registered at one address. You can register to vote: Online at checktheregister.ie By filling in an application form If you do not give a PPS number, you must get your form and ID witnessed at a local Garda station or your local authority.",
+            "question": "How to register to vote?",
+            "raw_answer": "Reason step by step before answering the question.\n\nQuestion: How to register to vote?\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\nTo begin exploring multiple approaches:\n\n<thinking>\nThe process of registering to vote can vary significantly depending on your location. In some places, it might be straightforward online while others require physical mail-in applications. I'll outline a general guide for online registration first, then consider other methods like mail-in applications.\n</thinking>\n\n<branch id=\"online\">\n  <step>Check your state\u2019s official website</step>\n  <step>Find voter registration instructions</step>\n  <step>Fill out the registration form electronically</step>\n  <step>Submit the completed form</step>\n  <reflection>Online registration often offers quick responses, but ensure you\u2019re using the correct link provided.</reflection>\n  <count>6</count>\n  <",
+            "answer": "",
+            "timing_info": {
+                "generation_duration": 4.9626007080078125,
+                "number_output_tokens": 462,
+                "time_per_output_token": 0.010741559974042884
+            },
+            "post_process_function": "def post_process_helpful_answer_prompt_chain_of_thought(answer):\n  start_matches = list(re.finditer(r\"<answer>\", answer, flags=re.IGNORECASE))\n\n  end_matches = list(re.finditer(r\"</answer>\", answer, flags=re.IGNORECASE))\n\n  if len(start_matches) < 2:\n    return \"\"\n  \n  start_index = start_matches[-1].end()\n  \n  if end_matches:\n    end_after_start = [m for m in end_matches if m.start() > start_index]\n\n    if end_after_start:\n      end_index = end_after_start[-1].start()\n    else:\n      end_index = len(answer)\n  else:\n    end_index = len(answer)\n    \n  return answer[start_index:end_index].strip()\n",
+            "total_run_time": 4.964752435684204,
+            "rouge1_score": 0.0,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0,
+            "bert_precision": -0.5474111437797546,
+            "bert_recall": -0.5473631024360657,
+            "bert_f1": -0.5436651110649109,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.0415475033223629,
+                "neutral": 0.9403097033500671,
+                "entailment": 0.018142789602279663
+            }
+        },
+        {
+            "ground_truth": "The Vacant Property Refurbishment Grant provides funding so you can refurbish vacant and derelict homes. It can also be used to renovate vacant and derelict properties that have not been used as residential properties before. However, this only applies if the non-residential properties were used for commercial or public use before and now have the correct planning permission. You can get the grant if you are refurbishing the vacant property so you can live there, or so you can rent the property out. You can get a grant of up to \u20ac50,000 to renovate a vacant property and up to \u20ac70,000, if the property is derelict. You can get more if you are living on an off-shore island. And, there is an additional grant for expert conservation advice if you are refurbishing a vacant traditional farmhouse. The Vacant Property Refurbishment Grant is funded by the Department of Housing, Local Government and Heritage through the Cro\u00ed C\u00f3naithe (Towns) Fund and you apply to your local authority. If you have questions about the grant or want to know if your property qualifies, you can: Read the FAQs about the grant Contact the Vacant Homes Officer in your local authority Contact the Housing Agency's Vacancy Helpline on vacancycampaign@housingagency.ie You can also find information on how to re-use old and vacant buildings in the Department of Housing, Local Government and Heritage\u2019s Bringing Back Homes (pdf) manual.",
+            "question": "What is the Vacant Property Refurbishment Grant?",
+            "raw_answer": "Reason step by step before answering the question.\n\nQuestion: What is the Vacant Property Refurbishment Grant?\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\nTo elaborate further, here are some potential approaches:\n\n**Branch 1:**\n- Define what \"vacant\" means in property law.\n- Explain who qualifies for the grant.\n- Describe the types of properties eligible for refurbishment.\n- Outline the eligibility criteria for funding.\n- Provide examples of past grants received.\n- Analyze how these funds were used to benefit the community.\n\n**Branch 2:**\n- Compare with other property-related government programs.\n- Discuss the economic benefits of revitalizing vacant properties.\n- Highlight success stories from similar initiatives.\n- Explore partnerships between local governments and private organizations.\n- Assess the environmental impact of such efforts.\n- Examine long-term sustainability strategies for improved housing availability.\n\n**Branch 3:**\n- Research historical",
+            "answer": "",
+            "timing_info": {
+                "generation_duration": 4.961674451828003,
+                "number_output_tokens": 467,
+                "time_per_output_token": 0.010624570560659536
+            },
+            "post_process_function": "def post_process_helpful_answer_prompt_chain_of_thought(answer):\n  start_matches = list(re.finditer(r\"<answer>\", answer, flags=re.IGNORECASE))\n\n  end_matches = list(re.finditer(r\"</answer>\", answer, flags=re.IGNORECASE))\n\n  if len(start_matches) < 2:\n    return \"\"\n  \n  start_index = start_matches[-1].end()\n  \n  if end_matches:\n    end_after_start = [m for m in end_matches if m.start() > start_index]\n\n    if end_after_start:\n      end_index = end_after_start[-1].start()\n    else:\n      end_index = len(answer)\n  else:\n    end_index = len(answer)\n    \n  return answer[start_index:end_index].strip()\n",
+            "total_run_time": 4.9638755321502686,
+            "rouge1_score": 0.0,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0,
+            "bert_precision": -0.5474111437797546,
+            "bert_recall": -0.5473631024360657,
+            "bert_f1": -0.5436651110649109,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.0006180747295729816,
+                "neutral": 0.9933484196662903,
+                "entailment": 0.0060333916917443275
+            }
+        },
+        {
+            "ground_truth": "Usually, employees can ask to take annual leave at specific times. Your employer can accept your request, or refuse your request. Your employer decides when annual leave may be taken, but this is subject to a number of conditions. Your employer must: Take into account your family responsibilities, as well as the available opportunities for rest and recreation. Discuss your annual leave with you (or your union) at least one month before you are to take the leave.",
+            "question": "Can my employer force me to take annual leave?",
+            "raw_answer": "Reason step by step before answering the question.\n\nQuestion: Can my employer force me to take annual leave?\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\n<thinking>\nTaking annual leave is a personal decision for employees and is generally not mandated by employers unless it aligns with specific company policies regarding work-life balance. However, some companies do require their employees to take time off annually due to mandatory benefits such as health insurance renewals. Employers can also enforce vacation schedules but typically respect individual preferences when possible. Employees should be aware of these options and consider them when planning their calendar.\n</thinking>\n\nBranch 1: Considering legal obligations under employment laws.\nBranch 2: Analyzing company policy and practices related to employee rights.\nBranch 3: Reflecting on industry standards and norms regarding paid time off.\nOverall comparison:\nThe most balanced path seems to involve considering both legal obligations and company policies, as",
+            "answer": "",
+            "timing_info": {
+                "generation_duration": 4.975028038024902,
+                "number_output_tokens": 466,
+                "time_per_output_token": 0.010676025832671463
+            },
+            "post_process_function": "def post_process_helpful_answer_prompt_chain_of_thought(answer):\n  start_matches = list(re.finditer(r\"<answer>\", answer, flags=re.IGNORECASE))\n\n  end_matches = list(re.finditer(r\"</answer>\", answer, flags=re.IGNORECASE))\n\n  if len(start_matches) < 2:\n    return \"\"\n  \n  start_index = start_matches[-1].end()\n  \n  if end_matches:\n    end_after_start = [m for m in end_matches if m.start() > start_index]\n\n    if end_after_start:\n      end_index = end_after_start[-1].start()\n    else:\n      end_index = len(answer)\n  else:\n    end_index = len(answer)\n    \n  return answer[start_index:end_index].strip()\n",
+            "total_run_time": 4.977196216583252,
+            "rouge1_score": 0.0,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0,
+            "bert_precision": -0.5474111437797546,
+            "bert_recall": -0.5473631024360657,
+            "bert_f1": -0.5436651110649109,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.0027104064356535673,
+                "neutral": 0.9939641356468201,
+                "entailment": 0.003325402271002531
+            }
+        },
+        {
+            "ground_truth": "If you are sick while you are on annual leave, you should get a medical certificate from your GP (doctor) as soon as possible to cover the days you were sick. Give the medical certificate to your employer as soon as you return to work. This way, the sick days will not count as annual leave, and you can take your annual leave at a later date. Your employer cannot make you to take annual leave for time you were on certified sick leave.",
+            "question": "What if I get sick while on annual leave?",
+            "raw_answer": "Reason step by step before answering the question.\n\nQuestion: What if I get sick while on annual leave?\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\nTo start your journey, consider the following initial <thinking>: To think systematically about getting sick during annual leave, let's break it down:\n\n<Thinking>\nBranch 1: Prioritize health first\n\nReflection 1: Ensuring my health comes first should be straightforward, but what else might impact my situation?\nBranch 2: Communicate my needs clearly\n\nReflection 2: It's important to inform supervisors and HR about my condition so they can support me properly.\nBranch 3: Stay organized for work continuity\n\nReflection 3: Keeping necessary documents like emails and projects up-to-date will help maintain workflow.\n</Thinking>\n\nEach branch represents potential approaches, allowing us to explore them thoroughly and make informed decisions. Now, let's continue exploring these",
+            "answer": "",
+            "timing_info": {
+                "generation_duration": 4.975557327270508,
+                "number_output_tokens": 466,
+                "time_per_output_token": 0.010677161646503236
+            },
+            "post_process_function": "def post_process_helpful_answer_prompt_chain_of_thought(answer):\n  start_matches = list(re.finditer(r\"<answer>\", answer, flags=re.IGNORECASE))\n\n  end_matches = list(re.finditer(r\"</answer>\", answer, flags=re.IGNORECASE))\n\n  if len(start_matches) < 2:\n    return \"\"\n  \n  start_index = start_matches[-1].end()\n  \n  if end_matches:\n    end_after_start = [m for m in end_matches if m.start() > start_index]\n\n    if end_after_start:\n      end_index = end_after_start[-1].start()\n    else:\n      end_index = len(answer)\n  else:\n    end_index = len(answer)\n    \n  return answer[start_index:end_index].strip()\n",
+            "total_run_time": 4.977747678756714,
+            "rouge1_score": 0.0,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0,
+            "bert_precision": -0.5474111437797546,
+            "bert_recall": -0.5473631024360657,
+            "bert_f1": -0.5436651110649109,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.02220841869711876,
+                "neutral": 0.8710933327674866,
+                "entailment": 0.106698177754879
+            }
+        },
+        {
+            "ground_truth": "Generally, your landlord can only end a tenancy after the first 6 months if: You do not comply with the obligations of the tenancy, for example, by not paying your rent on time The property is no longer suited to your needs, for example, if it is too small The landlord intends to sell the property within 9 months. However, this may not apply if the landlord plans to sell 10 or more dwellings in a development within a 6-month period \u2013 see \u2018Restriction on terminating when selling multiple properties\u2019 below The landlord needs the property for their own use or for an immediate family member (this only applies to private landlords) The landlord plans to change the use of the property (for example, convert it from residential use to office use) The landlord intends to refurbish the property substantially",
+            "question": "What is a valid reason for ending a tenancy after the first 6 months?",
+            "raw_answer": "Reason step by step before answering the question.\n\nQuestion: What is a valid reason for ending a tenancy after the first 6 months?\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\n<thinking>\nEnding a tenancy after the first six months can be justified for several reasons:\n\nBranch #1: Financial Reasons\n\nStep 1: Calculate Rent Due\n   - Determine how much rent has accumulated over the initial six-month period.\n   - This includes both regular monthly payments plus any late fees incurred during the lease term.\n\nStep 2: Assess Property Condition\n   - Evaluate whether the property has deteriorated due to neglect during the early stages.\n   - Include damage caused by tenants' activities or structural issues that may require repair.\n\nStep 3: Review Maintenance Costs\n   - Calculate ongoing maintenance expenses required to restore the property to its original condition.\n   - Factor in costs such as cleaning supplies, replacement items, and labor charges.\n\n",
+            "answer": "",
+            "timing_info": {
+                "generation_duration": 4.965135812759399,
+                "number_output_tokens": 473,
+                "time_per_output_token": 0.010497115883212262
+            },
+            "post_process_function": "def post_process_helpful_answer_prompt_chain_of_thought(answer):\n  start_matches = list(re.finditer(r\"<answer>\", answer, flags=re.IGNORECASE))\n\n  end_matches = list(re.finditer(r\"</answer>\", answer, flags=re.IGNORECASE))\n\n  if len(start_matches) < 2:\n    return \"\"\n  \n  start_index = start_matches[-1].end()\n  \n  if end_matches:\n    end_after_start = [m for m in end_matches if m.start() > start_index]\n\n    if end_after_start:\n      end_index = end_after_start[-1].start()\n    else:\n      end_index = len(answer)\n  else:\n    end_index = len(answer)\n    \n  return answer[start_index:end_index].strip()\n",
+            "total_run_time": 4.967376947402954,
+            "rouge1_score": 0.0,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0,
+            "bert_precision": -0.5474111437797546,
+            "bert_recall": -0.5473631024360657,
+            "bert_f1": -0.5436651110649109,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.0024909772910177708,
+                "neutral": 0.9953737854957581,
+                "entailment": 0.0021351980976760387
+            }
+        },
+        {
+            "ground_truth": "The seller must deliver your product to you either: Within 30 days of buying them (unless you agreed a different date) On the date you agreed with them If the seller does not deliver the product as agreed in the contract or within 30 days, you can request a new delivery date. You can insist that all items you bought in the one transaction are delivered at once. The seller cannot make you accept deliveries in instalments. You can end the contract if: The seller cannot or refuses to deliver within the new time frame you request A new delivery date is no longer suitable for you, for example, you needed the product for a specific date or event You must tell the business you are using your right to end your contract for non-delivery. The business must give you a refund within 14 days. The European Consumer Centre (ECC) Ireland has a letter template which may be helpful.",
+            "question": "What are your rights when an order is delayed or not delivered?",
+            "raw_answer": "Reason step by step before answering the question.\n\nQuestion: What are your rights when an order is delayed or not delivered?\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\n<thinking>\nWhen considering rights related to orders being delayed or not delivered, several key principles come into play. Let\u2019s break it down:\n\n### Step 1: Understand the Nature of Your Order\nThe first point of consideration is understanding what kind of order you\u2019re dealing with. Is it a delivery order, subscription renewal, payment confirmation, etc.? Different types may have different implications for delays or non-delivery.\n\n### Step 2: Review the Agreement Terms\nNext, review any agreements or contracts associated with the order. These documents should outline the terms under which goods or services were ordered, including timelines and consequences for delays or non-deliveries.\n\n### Step 3: Seek Documentation\nLook for documentation such as receipts, emails, or texts",
+            "answer": "",
+            "timing_info": {
+                "generation_duration": 4.940302848815918,
+                "number_output_tokens": 469,
+                "time_per_output_token": 0.010533694773594707
+            },
+            "post_process_function": "def post_process_helpful_answer_prompt_chain_of_thought(answer):\n  start_matches = list(re.finditer(r\"<answer>\", answer, flags=re.IGNORECASE))\n\n  end_matches = list(re.finditer(r\"</answer>\", answer, flags=re.IGNORECASE))\n\n  if len(start_matches) < 2:\n    return \"\"\n  \n  start_index = start_matches[-1].end()\n  \n  if end_matches:\n    end_after_start = [m for m in end_matches if m.start() > start_index]\n\n    if end_after_start:\n      end_index = end_after_start[-1].start()\n    else:\n      end_index = len(answer)\n  else:\n    end_index = len(answer)\n    \n  return answer[start_index:end_index].strip()\n",
+            "total_run_time": 4.942530155181885,
+            "rouge1_score": 0.0,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0,
+            "bert_precision": -0.5474111437797546,
+            "bert_recall": -0.5473631024360657,
+            "bert_f1": -0.5436651110649109,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.001481365761719644,
+                "neutral": 0.9957886338233948,
+                "entailment": 0.002730001462623477
+            }
+        },
+        {
+            "ground_truth": "To adopt a child, you must be at least 21 years of age and resident in Ireland. If you are adopting the child as a couple, and one of you is the child\u2019s mother or father or relative, only one of you must be at least 21. There is no upper age limit for adoptive parents. You can adopt if you are: A married couple living together A couple living together in a civil partnership A couple cohabiting together (living together and in a committed relationship) for at least 3 years The mother, father or relative of the child (relative meaning a grandparent, brother, sister, uncle or aunt of the child, and/or the spouse of any such person; the relationship to the child being traced through the mother or the father) If you are a sole applicant (applying for adoption on your own), and you do not fall into any of the categories listed above, you may only adopt if the Adoption Authority of Ireland is satisfied with the particular circumstances of the case.",
+            "question": "Who can adopt a child in Ireland?",
+            "raw_answer": "Reason step by step before answering the question.\n\nQuestion: Who can adopt a child in Ireland?\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\nThinking about the first step, we start considering who can legally adopt a child in Ireland:\n\nIn Ireland, adoption is primarily governed by the Adoption Act 2005. To be eligible for adoption, individuals must meet specific criteria set out by law. The primary conditions are outlined below:\n\nStep 1: Age Limit\nThe applicant must be at least 18 years old but may choose to adopt a child under the age of 16 if the child has special needs or other compelling reasons.\n\nStep 2: Legal Capacity\nApplicants must have full legal capacity, meaning they cannot be minors themselves.\n\nStep 3: Good Character and Conduct\nAdopters must possess good character and conduct, as well as evidence of their suitability to",
+            "answer": "",
+            "timing_info": {
+                "generation_duration": 4.9126715660095215,
+                "number_output_tokens": 464,
+                "time_per_output_token": 0.010587654237089485
+            },
+            "post_process_function": "def post_process_helpful_answer_prompt_chain_of_thought(answer):\n  start_matches = list(re.finditer(r\"<answer>\", answer, flags=re.IGNORECASE))\n\n  end_matches = list(re.finditer(r\"</answer>\", answer, flags=re.IGNORECASE))\n\n  if len(start_matches) < 2:\n    return \"\"\n  \n  start_index = start_matches[-1].end()\n  \n  if end_matches:\n    end_after_start = [m for m in end_matches if m.start() > start_index]\n\n    if end_after_start:\n      end_index = end_after_start[-1].start()\n    else:\n      end_index = len(answer)\n  else:\n    end_index = len(answer)\n    \n  return answer[start_index:end_index].strip()\n",
+            "total_run_time": 4.914783000946045,
+            "rouge1_score": 0.0,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0,
+            "bert_precision": -0.5474111437797546,
+            "bert_recall": -0.5473631024360657,
+            "bert_f1": -0.5436651110649109,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.38192716240882874,
+                "neutral": 0.5972087383270264,
+                "entailment": 0.02086402289569378
+            }
+        },
+        {
+            "ground_truth": "Penalty points are recorded on your driving licence when: You are convicted in court of a driving offence that attracts penalty points or You pay a fixed charge notice that was issued to you for an offence that also carries penalty points If you get 12 penalty points in any 3 year period, you are automatically disqualified from driving for 6 months. Learner permit drivers are disqualified if they have 7 penalty points. This lower threshold also applies for the first 2 years of a driver\u2019s first full driving licence. Penalty points are not added to your licence immediately. Fixed charge and penalty offences Fixed notice penalties are issued for driving offences that attract penalty points and/or just a fine. If you receive a fixed notice penalty, you will be issued a notice by the Department of Transport. If you pay the fixed charge fine within 56 days, you will get a further notice from the Department of Transport confirming that the penalty points will be added to your driving licence. The penalty points will be added to your licence 28 days after that. If you do not pay the fixed charge fine within 56 days, you will get a summons to appear in the District Court. If you are convicted of a driving offence in court, the court will notify the Department of Transport of the number of penalty points attached to that conviction. The Department of Transport will then issue a notification that these penalty points will be added to your driving licence 28 days after the notification date. You can get information on fixed charge notices and fines in our document on driving offences.",
+            "question": "How do penalty points work?",
+            "raw_answer": "Reason step by step before answering the question.\n\nQuestion: How do penalty points work?\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\nThinking about it...\n\nBranch 1:\n- Start by defining what penalty points are in the context of driving laws.\n- Explain how they relate to traffic offenses.\n- Describe how these points accumulate over time.\n- Discuss how accumulating points affects driver privileges such as insurance rates or license suspensions.\n- Summarize key aspects and give examples.\nReward Score: 0.6\n\nReflection: This branch covers the basics but could benefit from including specific instances like speeding fines being converted to points rather than just generalities.\nThinking about it...\n\nBranch 2:\n- Begin by stating what penalty points represent in driving laws.\n- Detail their role in enforcing traffic regulations.\n- Provide information on how violations result in point accumulation.\n- Offer insight into how these points",
+            "answer": "",
+            "timing_info": {
+                "generation_duration": 4.943767786026001,
+                "number_output_tokens": 462,
+                "time_per_output_token": 0.010700796073649353
+            },
+            "post_process_function": "def post_process_helpful_answer_prompt_chain_of_thought(answer):\n  start_matches = list(re.finditer(r\"<answer>\", answer, flags=re.IGNORECASE))\n\n  end_matches = list(re.finditer(r\"</answer>\", answer, flags=re.IGNORECASE))\n\n  if len(start_matches) < 2:\n    return \"\"\n  \n  start_index = start_matches[-1].end()\n  \n  if end_matches:\n    end_after_start = [m for m in end_matches if m.start() > start_index]\n\n    if end_after_start:\n      end_index = end_after_start[-1].start()\n    else:\n      end_index = len(answer)\n  else:\n    end_index = len(answer)\n    \n  return answer[start_index:end_index].strip()\n",
+            "total_run_time": 4.946012020111084,
+            "rouge1_score": 0.0,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0,
+            "bert_precision": -0.5474111437797546,
+            "bert_recall": -0.5473631024360657,
+            "bert_f1": -0.5436651110649109,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.0011785241076722741,
+                "neutral": 0.7915403842926025,
+                "entailment": 0.20728105306625366
+            }
+        },
+        {
+            "ground_truth": "To be eligible for a statutory redundancy payment, you must: Be over 16 Be in employment that is fully insurable under the Social Welfare Acts Have at least 2 years\u2019 continuous employment (104 weeks) with the same employer over the age of 16 Have been made redundant (dismissed from your job). You must have been dismissed from your job To show you were dismissed, your employment must have been terminated (with or without notice). There will also be a dismissal if you have ended your contract of employment because you were forced to leave your job because of your employer\u2019s conduct. This is known as constructive dismissal.",
+            "question": "Do I have a right to redundancy pay?",
+            "raw_answer": "Reason step by step before answering the question.\n\nQuestion: Do I have a right to redundancy pay?\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\nThinking\n\nTo determine whether one has a right to redundancy pay, we need to consider several factors:\n\n1. **Employment Agreement**: The first point is to examine any employment contract or agreement between the employee and employer. If there are specific provisions regarding severance packages, these would dictate what rights the employee may have under certain circumstances.\n   \n2. **Legal Obligation**: In most jurisdictions, employers must offer reasonable notice periods to employees when they decide to terminate their contracts. This can also imply additional compensation beyond standard severance payments.\n   \n3. **Industry Standards**: Certain industries, such as healthcare, finance, or law, often have higher standards for severance packages due to the nature of work and potential long-term implications of terminations.\n\n4",
+            "answer": "",
+            "timing_info": {
+                "generation_duration": 4.960434436798096,
+                "number_output_tokens": 465,
+                "time_per_output_token": 0.010667600939350744
+            },
+            "post_process_function": "def post_process_helpful_answer_prompt_chain_of_thought(answer):\n  start_matches = list(re.finditer(r\"<answer>\", answer, flags=re.IGNORECASE))\n\n  end_matches = list(re.finditer(r\"</answer>\", answer, flags=re.IGNORECASE))\n\n  if len(start_matches) < 2:\n    return \"\"\n  \n  start_index = start_matches[-1].end()\n  \n  if end_matches:\n    end_after_start = [m for m in end_matches if m.start() > start_index]\n\n    if end_after_start:\n      end_index = end_after_start[-1].start()\n    else:\n      end_index = len(answer)\n  else:\n    end_index = len(answer)\n    \n  return answer[start_index:end_index].strip()\n",
+            "total_run_time": 4.962632417678833,
+            "rouge1_score": 0.0,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0,
+            "bert_precision": -0.5474111437797546,
+            "bert_recall": -0.5473631024360657,
+            "bert_f1": -0.5436651110649109,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.008122413419187069,
+                "neutral": 0.9877338409423828,
+                "entailment": 0.004143746104091406
+            }
+        },
+        {
+            "ground_truth": "You must complete the application form and provide supporting documents. You can apply for most payments online. You can also get an application form from your local Intreo Centre or Social Welfare Branch Office or your local Citizens Information Centre. You can also get an application form on gov.ie. Your Intreo Centre, Social Welfare Branch Office or your local Citizens Information Centre can help you fill in your application form. Birth certs for social welfare You are no longer required to provide copies of birth certificates for social welfare purposes if you were born in Ireland and your birth is in the Register of Births. The Department of Social Protection can access this information directly. You can get more information about getting a Birth, Marriage or Death certificate.",
+            "question": "How to apply for social welfare?",
+            "raw_answer": "Reason step by step before answering the question.\n\nQuestion: How to apply for social welfare?\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\n<thinking>\nTo apply for social welfare, one should follow these steps:\n\n1. Determine eligibility criteria: Review your local government's social welfare guidelines. This will help identify which programs are available to you.\n2. Gather necessary documentation: Collect any required forms, ID, proof of income, employment history, etc., depending on the specific program.\n3. Choose the appropriate application form: Select the right type of application form from the government's website or local office. There may be options for online applications or paper-based submissions.\n4. Complete the application thoroughly: Ensure accuracy and completeness of information provided. Pay attention to formatting requirements, such as font size, spacing, and alignment.\n5. Submit the completed application: Send it through postal mail, email",
+            "answer": "",
+            "timing_info": {
+                "generation_duration": 5.052477598190308,
+                "number_output_tokens": 463,
+                "time_per_output_token": 0.01091247861380196
+            },
+            "post_process_function": "def post_process_helpful_answer_prompt_chain_of_thought(answer):\n  start_matches = list(re.finditer(r\"<answer>\", answer, flags=re.IGNORECASE))\n\n  end_matches = list(re.finditer(r\"</answer>\", answer, flags=re.IGNORECASE))\n\n  if len(start_matches) < 2:\n    return \"\"\n  \n  start_index = start_matches[-1].end()\n  \n  if end_matches:\n    end_after_start = [m for m in end_matches if m.start() > start_index]\n\n    if end_after_start:\n      end_index = end_after_start[-1].start()\n    else:\n      end_index = len(answer)\n  else:\n    end_index = len(answer)\n    \n  return answer[start_index:end_index].strip()\n",
+            "total_run_time": 5.054625988006592,
+            "rouge1_score": 0.0,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0,
+            "bert_precision": -0.5474111437797546,
+            "bert_recall": -0.5473631024360657,
+            "bert_f1": -0.5436651110649109,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.08081620186567307,
+                "neutral": 0.8706892132759094,
+                "entailment": 0.048494692891836166
+            }
+        },
+        {
+            "ground_truth": "You must make comments about planning applications in writing to the local authority where the application was made. You may be able to do this on your local authority's website. If possible, you should quote the planning application's reference number. You must also give your: Name Address Phone number Email address (if you have one)",
+            "question": "How can I comment on a planning application?",
+            "raw_answer": "Reason step by step before answering the question.\n\nQuestion: How can I comment on a planning application?\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\n<thinking>\nTo comment on a planning application, consider these key points:\n\n1. **Understand the Application**: Before commenting, ensure you understand what the application seeks. Look at the proposal, any diagrams or maps provided, and review relevant information about the development proposed.\n\n2. **Identify Your Stakeholder Roles**: Determine whether you are commenting on behalf of yourself, your organization, or another stakeholder. This will affect the tone and level of detail you choose to use when writing your comments.\n\n3. **Review Relevant Guidelines and Policies**: Check the local planning guidelines for specific requirements related to the type of development being proposed. These policies may require certain types of comments or responses from applicants.\n\n4. **Gather Supporting Information**: Compile any data",
+            "answer": "",
+            "timing_info": {
+                "generation_duration": 5.0219407081604,
+                "number_output_tokens": 465,
+                "time_per_output_token": 0.010799872490667528
+            },
+            "post_process_function": "def post_process_helpful_answer_prompt_chain_of_thought(answer):\n  start_matches = list(re.finditer(r\"<answer>\", answer, flags=re.IGNORECASE))\n\n  end_matches = list(re.finditer(r\"</answer>\", answer, flags=re.IGNORECASE))\n\n  if len(start_matches) < 2:\n    return \"\"\n  \n  start_index = start_matches[-1].end()\n  \n  if end_matches:\n    end_after_start = [m for m in end_matches if m.start() > start_index]\n\n    if end_after_start:\n      end_index = end_after_start[-1].start()\n    else:\n      end_index = len(answer)\n  else:\n    end_index = len(answer)\n    \n  return answer[start_index:end_index].strip()\n",
+            "total_run_time": 5.024121046066284,
+            "rouge1_score": 0.0,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0,
+            "bert_precision": -0.5474111437797546,
+            "bert_recall": -0.5473631024360657,
+            "bert_f1": -0.5436651110649109,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.0009358978131785989,
+                "neutral": 0.9984057545661926,
+                "entailment": 0.0006583836511708796
+            }
+        },
+        {
+            "ground_truth": "Citizens Information Services (CISs) provide face-to-face services to the public. Through trained staff and volunteers, CISs provide free, impartial and confidential information, advice and advocacy services to the public. Each Citizens Information Service covers a geographical area and delivers the service through a network of Citizen Information Centres (CICs). There are eight individual regional Citizens Information Services which are companies limited by guarantee and are registered charities. They cover the following areas: North Dublin, Dublin South, North Connacht and Ulster, North Leinster, North Munster, South Connacht, South Leinster and South Munster facilitating both rural and urban areas. CISs provide information on various topics, including; Employment rights Income support Social welfare Family matters Health services Housing Education Immigration",
+            "question": "What is the Citizens Information Service?",
+            "raw_answer": "Reason step by step before answering the question.\n\nQuestion: What is the Citizens Information Service?\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\nTo start, let's begin exploring various aspects of what the Citizens Information Service might entail:\n\n<thinking>\nIn considering the Citizens Information Service, we can think about its primary objectives, potential services provided, and who it serves. However, to be thorough, let's look at these from several angles and see where they lead us.\n\n1. **Objective**:\n    * The first step could involve understanding what \"Citizens Information\" typically means. Does it refer to general information available online or offline? Is there a specific service being offered?\n    \n2. **Services Provided**:\n    * Next, we should consider what kind of services are commonly associated with such a service. Are there websites offering legal advice, financial guidance, or other forms of assistance",
+            "answer": "",
+            "timing_info": {
+                "generation_duration": 5.0485756397247314,
+                "number_output_tokens": 463,
+                "time_per_output_token": 0.010904051057720802
+            },
+            "post_process_function": "def post_process_helpful_answer_prompt_chain_of_thought(answer):\n  start_matches = list(re.finditer(r\"<answer>\", answer, flags=re.IGNORECASE))\n\n  end_matches = list(re.finditer(r\"</answer>\", answer, flags=re.IGNORECASE))\n\n  if len(start_matches) < 2:\n    return \"\"\n  \n  start_index = start_matches[-1].end()\n  \n  if end_matches:\n    end_after_start = [m for m in end_matches if m.start() > start_index]\n\n    if end_after_start:\n      end_index = end_after_start[-1].start()\n    else:\n      end_index = len(answer)\n  else:\n    end_index = len(answer)\n    \n  return answer[start_index:end_index].strip()\n",
+            "total_run_time": 5.050748825073242,
+            "rouge1_score": 0.0,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0,
+            "bert_precision": -0.5474111437797546,
+            "bert_recall": -0.5473631024360657,
+            "bert_f1": -0.5436651110649109,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.0017969964537769556,
+                "neutral": 0.99089115858078,
+                "entailment": 0.0073118447326123714
+            }
+        },
+        {
+            "ground_truth": "People aged between 18 and 24 and: Had been out of work and getting a qualifying payment (see below) for at least 12 months or Faced a significant barrier to work (if unemployed for less than 12 months) What were the qualifying payments? You must have been getting one of the following payments for at least 12 months: Jobseeker's Benefit, Jobseeker's Allowance, Jobseeker's Transitional payment, One-Parent Family Payment, Disability Allowance, Blind Person\u2019s Pension, or Supplementary Welfare Allowance. Other schemes that counted towards the qualifying period The 12-month qualifying period could also have included time spent on schemes such as: SOLAS training apprenticeships, Youthreach, Back to Education Allowance, Fastrack to Information Technology and T\u00fas.",
+            "question": "Who was eligible for YESS (Youth Employment Support Scheme)?",
+            "raw_answer": "Reason step by step before answering the question.\n\nQuestion: Who was eligible for YESS (Youth Employment Support Scheme)?\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\n---\n\n<thinking>\nTo determine who was eligible for the Youths Employment Support Scheme (YESS), we need to consider eligibility criteria. Let\u2019s break it down:\n\nStep 1: Eligibility is typically determined based on age, employment history, education level, etc.\nStep 2: The scheme aims to support young people aged 16 to 30 looking for employment.\nStep 3: Individuals must be able to demonstrate some form of work experience or educational background relevant to their future career goals.\nStep 4: Specific details about the application process and eligibility requirements vary from year to year but generally follow these guidelines.\nStep 5: Eligibility checks often involve a combination of documentation such as proof of identity, education records, and sometimes",
+            "answer": "",
+            "timing_info": {
+                "generation_duration": 5.038054466247559,
+                "number_output_tokens": 469,
+                "time_per_output_token": 0.01074212039711633
+            },
+            "post_process_function": "def post_process_helpful_answer_prompt_chain_of_thought(answer):\n  start_matches = list(re.finditer(r\"<answer>\", answer, flags=re.IGNORECASE))\n\n  end_matches = list(re.finditer(r\"</answer>\", answer, flags=re.IGNORECASE))\n\n  if len(start_matches) < 2:\n    return \"\"\n  \n  start_index = start_matches[-1].end()\n  \n  if end_matches:\n    end_after_start = [m for m in end_matches if m.start() > start_index]\n\n    if end_after_start:\n      end_index = end_after_start[-1].start()\n    else:\n      end_index = len(answer)\n  else:\n    end_index = len(answer)\n    \n  return answer[start_index:end_index].strip()\n",
+            "total_run_time": 5.040210485458374,
+            "rouge1_score": 0.0,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0,
+            "bert_precision": -0.5474111437797546,
+            "bert_recall": -0.5473631024360657,
+            "bert_f1": -0.5436651110649109,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.0030667525716125965,
+                "neutral": 0.996021568775177,
+                "entailment": 0.000911591574549675
+            }
+        },
+        {
+            "ground_truth": "If you are a carer you may need to take breaks. Respite care is when you can take a break from caring, and the person you care for is looked after by someone else. It can be covered by family members or an organisation so you can take a short break, a holiday or a rest. Respite care can be for carers of older people or people with different disabilities. Respite care can cover different lengths of time such as: A very short time, for example for an evening Or a much longer arrangement, for example for a holiday Respite care schemes are sometimes called 'Breakaway' or 'Friendship' schemes.",
+            "question": "What is respite care?",
+            "raw_answer": "Reason step by step before answering the question.\n\nQuestion: What is respite care?\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\n<thinking>\nRespite care is a type of temporary care service designed for individuals who require assistance during times when their primary caregiver has other responsibilities such as work or childcare. This service typically provides relief from caregiving duties without displacing the ongoing needs of the person receiving care.\n\nTo understand respite care fully, let\u2019s consider several angles:\n\n### Branch ID: Definition Clarification\n\n**Step 1:** Respite care is defined as providing short-term support for caregivers so they can take time off to attend to personal matters or to engage in activities outside caregiving roles. \n\n**Step 2:** It differs from long-term care services which are intended to replace ongoing care rather than provide relief from it. Long-term care focuses on maintaining someone's health",
+            "answer": "",
+            "timing_info": {
+                "generation_duration": 4.939000606536865,
+                "number_output_tokens": 462,
+                "time_per_output_token": 0.010690477503326547
+            },
+            "post_process_function": "def post_process_helpful_answer_prompt_chain_of_thought(answer):\n  start_matches = list(re.finditer(r\"<answer>\", answer, flags=re.IGNORECASE))\n\n  end_matches = list(re.finditer(r\"</answer>\", answer, flags=re.IGNORECASE))\n\n  if len(start_matches) < 2:\n    return \"\"\n  \n  start_index = start_matches[-1].end()\n  \n  if end_matches:\n    end_after_start = [m for m in end_matches if m.start() > start_index]\n\n    if end_after_start:\n      end_index = end_after_start[-1].start()\n    else:\n      end_index = len(answer)\n  else:\n    end_index = len(answer)\n    \n  return answer[start_index:end_index].strip()\n",
+            "total_run_time": 4.941112518310547,
+            "rouge1_score": 0.0,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0,
+            "bert_precision": -0.5474111437797546,
+            "bert_recall": -0.5473631024360657,
+            "bert_f1": -0.5436651110649109,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.0009072473039850593,
+                "neutral": 0.9961840510368347,
+                "entailment": 0.002908686874434352
+            }
+        },
+        {
+            "ground_truth": "If you have a medical card, you can get certain health services free of charge. Usually, your dependent spouse or partner and your children can also get the same range of health services for free. Your medical card is issued by the Health Service Executive (HSE).",
+            "question": "What is a medical card?",
+            "raw_answer": "Reason step by step before answering the question.\n\nQuestion: What is a medical card?\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\nThinking <thinking>\nIn the context of healthcare systems, especially those prevalent in developed countries, what does a medical card typically represent? Branch ID: Medical Card Functionality\n\nThe primary function of a medical card, also known as a health insurance card or medicare card, is to facilitate access to healthcare services for its holders. This includes covering the cost of prescription medications, providing coverage for hospital stays, and possibly offering financial assistance for non-emergency surgeries or treatments. It serves as a form of identification and eligibility verification for various healthcare benefits offered by public or private insurers. The card often provides information about the insured individual\u2019s entitlements under their specific health plan, such as which doctors they are covered by, what kind of specialists they can see, and",
+            "answer": "",
+            "timing_info": {
+                "generation_duration": 4.959425449371338,
+                "number_output_tokens": 462,
+                "time_per_output_token": 0.01073468711985138
+            },
+            "post_process_function": "def post_process_helpful_answer_prompt_chain_of_thought(answer):\n  start_matches = list(re.finditer(r\"<answer>\", answer, flags=re.IGNORECASE))\n\n  end_matches = list(re.finditer(r\"</answer>\", answer, flags=re.IGNORECASE))\n\n  if len(start_matches) < 2:\n    return \"\"\n  \n  start_index = start_matches[-1].end()\n  \n  if end_matches:\n    end_after_start = [m for m in end_matches if m.start() > start_index]\n\n    if end_after_start:\n      end_index = end_after_start[-1].start()\n    else:\n      end_index = len(answer)\n  else:\n    end_index = len(answer)\n    \n  return answer[start_index:end_index].strip()\n",
+            "total_run_time": 4.961605072021484,
+            "rouge1_score": 0.0,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0,
+            "bert_precision": -0.5474111437797546,
+            "bert_recall": -0.5473631024360657,
+            "bert_f1": -0.5436651110649109,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.0006314720958471298,
+                "neutral": 0.9989035129547119,
+                "entailment": 0.00046500551979988813
+            }
+        },
+        {
+            "ground_truth": "Pre-nuptial agreements have no basis in law in Ireland. As a result, they are not strictly binding. This means that if you have a pre-nuptial agreement in place and you end up in court following the breakdown of your marriage, the judge is not bound by the terms of the pre-nuptial agreement. The only provision in Irish law is under sections 113 and 113A of the Succession Act 1965 (as amended) where a spouse or a civil partner can renounce his/her legal right share in a pre-nuptial agreement. Although they are not legally binding, there is nothing in Irish law which stops a couple planning to marry from having and signing a pre-nuptial agreement. Importantly, such agreements can serve as guides for the courts in judicial separation and divorce cases. If a pre-nuptial agreement makes \u2018proper provision\u2019 for each person it is more likely to be persuasive on the judge. Therefore, in situations where one party is likely to inherit a significant family farm or business, it will guide the judge in the divorce or judicial separation on what the parties\u2019 intentions were at the outset.",
+            "question": "What is the legal status of pre-nuptial agreements?",
+            "raw_answer": "Reason step by step before answering the question.\n\nQuestion: What is the legal status of pre-nuptial agreements?\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\n<thinking>\nThe legality of pre-nuptial agreements varies significantly between countries and jurisdictions. Some are widely recognized while others are not enforced at all. This makes it crucial for couples considering marriage to understand their local laws regarding these contracts. Let's consider several key factors that influence how such agreements are viewed and treated:\n\nBranch 1: Legal Recognition in the United States\n\nIn the United States, pre-nuptial agreements are generally considered valid under most state laws as long as they meet certain procedural requirements. They must be signed voluntarily, informed consent given, and entered into during a period when there is no coercion or undue influence from either party. However, they cannot override existing marital obligations or prevent divorce proceedings. The validity depends largely on local statutory law",
+            "answer": "",
+            "timing_info": {
+                "generation_duration": 4.9286558628082275,
+                "number_output_tokens": 468,
+                "time_per_output_token": 0.010531315946171427
+            },
+            "post_process_function": "def post_process_helpful_answer_prompt_chain_of_thought(answer):\n  start_matches = list(re.finditer(r\"<answer>\", answer, flags=re.IGNORECASE))\n\n  end_matches = list(re.finditer(r\"</answer>\", answer, flags=re.IGNORECASE))\n\n  if len(start_matches) < 2:\n    return \"\"\n  \n  start_index = start_matches[-1].end()\n  \n  if end_matches:\n    end_after_start = [m for m in end_matches if m.start() > start_index]\n\n    if end_after_start:\n      end_index = end_after_start[-1].start()\n    else:\n      end_index = len(answer)\n  else:\n    end_index = len(answer)\n    \n  return answer[start_index:end_index].strip()\n",
+            "total_run_time": 4.930807590484619,
+            "rouge1_score": 0.0,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0,
+            "bert_precision": -0.5474111437797546,
+            "bert_recall": -0.5473631024360657,
+            "bert_f1": -0.5436651110649109,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.005266224499791861,
+                "neutral": 0.984502375125885,
+                "entailment": 0.010231348685920238
+            }
+        },
+        {
+            "ground_truth": "The Department of Transport regulates air transport. This includes commercial and private services. EU airlines can fly freely within the EU/European Economic Area (EEA). They can do this without any restrictions on flight frequency or routes. Airlines from countries outside of the EU/EEA must request permission. They must do this each time they want to fly to, from, or over Ireland. The Department of Defence regulates military air transport in Ireland.",
+            "question": "Who regulates aviation in Ireland?",
+            "raw_answer": "Reason step by step before answering the question.\n\nQuestion: Who regulates aviation in Ireland?\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\n<thinking>\nTo determine who regulates aviation in Ireland, let's consider two primary methods for regulation:\n\n1. **National Government Agencies**: The Irish government has various departments responsible for transportation and air safety. For aviation, we need to look at whether these agencies are specifically tasked with regulating it or handle broader aspects like road transport.\n\n2. **European Union Regulations**: Aviation is heavily regulated under EU law due to its cross-border nature. We should investigate whether the EU directly regulates aviation in Ireland or delegates some responsibilities to local authorities.\n\nConsidering both approaches, it seems plausible that national government agencies would be primarily responsible for regulating aviation given their direct involvement in transport infrastructure and safety standards. However, we must also check if there's any delegation through EU directives.\n\nI",
+            "answer": "",
+            "timing_info": {
+                "generation_duration": 4.9412171840667725,
+                "number_output_tokens": 462,
+                "time_per_output_token": 0.010695275290187819
+            },
+            "post_process_function": "def post_process_helpful_answer_prompt_chain_of_thought(answer):\n  start_matches = list(re.finditer(r\"<answer>\", answer, flags=re.IGNORECASE))\n\n  end_matches = list(re.finditer(r\"</answer>\", answer, flags=re.IGNORECASE))\n\n  if len(start_matches) < 2:\n    return \"\"\n  \n  start_index = start_matches[-1].end()\n  \n  if end_matches:\n    end_after_start = [m for m in end_matches if m.start() > start_index]\n\n    if end_after_start:\n      end_index = end_after_start[-1].start()\n    else:\n      end_index = len(answer)\n  else:\n    end_index = len(answer)\n    \n  return answer[start_index:end_index].strip()\n",
+            "total_run_time": 4.943380117416382,
+            "rouge1_score": 0.0,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0,
+            "bert_precision": -0.5474111437797546,
+            "bert_recall": -0.5473631024360657,
+            "bert_f1": -0.5436651110649109,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.3394840657711029,
+                "neutral": 0.6568483710289001,
+                "entailment": 0.003667491255328059
+            }
+        },
+        {
+            "ground_truth": "Under the Cycle to Work Scheme (also known as the Bike to Work Scheme), you can get a new bike tax free through your work. Your employer pays for a new bike and then you repay the cost of regular instalments from your gross (overall) salary. You do not have to pay tax, PRSI or the Universal Social Charge on your repayments. Not every employer takes part in the scheme. However, if they do, they must offer it to all their employees. If you are self-employed, you cannot take part in the Cycle to Work Scheme unless you pay PRSI as an employee in addition to your self-employed work.",
+            "question": "What is the Cycle to Work Scheme?",
+            "raw_answer": "Reason step by step before answering the question.\n\nQuestion: What is the Cycle to Work Scheme?\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\n<thinking>\nThe Cycle to Work Scheme is a UK government scheme designed to encourage people to cycle for work instead of driving. It offers cash incentives to those who purchase bicycles or cycle-related equipment from participating retailers using their workplace travel expenses account.\n\nTo understand it better, let's break it down:\n\n1. **Purpose**: Encourage cycling for work purposes\n\n2. **Incentives**:\n    - Cash rewards are given directly to employees' workplace expense accounts\n    - Employees can then use these funds towards buying a bicycle or related equipment\n\n3. **Participation**: Requires employers to offer the scheme\n\n4. **Retailers Involved**: Participating retailers often receive discounts for selling to the scheme\n\n5. **Implementation**: Initially introduced in",
+            "answer": "",
+            "timing_info": {
+                "generation_duration": 4.916668653488159,
+                "number_output_tokens": 464,
+                "time_per_output_token": 0.010596268649758964
+            },
+            "post_process_function": "def post_process_helpful_answer_prompt_chain_of_thought(answer):\n  start_matches = list(re.finditer(r\"<answer>\", answer, flags=re.IGNORECASE))\n\n  end_matches = list(re.finditer(r\"</answer>\", answer, flags=re.IGNORECASE))\n\n  if len(start_matches) < 2:\n    return \"\"\n  \n  start_index = start_matches[-1].end()\n  \n  if end_matches:\n    end_after_start = [m for m in end_matches if m.start() > start_index]\n\n    if end_after_start:\n      end_index = end_after_start[-1].start()\n    else:\n      end_index = len(answer)\n  else:\n    end_index = len(answer)\n    \n  return answer[start_index:end_index].strip()\n",
+            "total_run_time": 4.91887903213501,
+            "rouge1_score": 0.0,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0,
+            "bert_precision": -0.5474111437797546,
+            "bert_recall": -0.5473631024360657,
+            "bert_f1": -0.5436651110649109,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.0756591334939003,
+                "neutral": 0.9193404912948608,
+                "entailment": 0.005000310018658638
+            }
+        },
+        {
+            "ground_truth": "Operating hours vary by stop and direction of service. You can view Luas operating hours and Luas frequency on luas.ie. There are electronic displays telling you the time of the next tram at every Luas stop. In addition, there are electronic displays and announcements informing passengers of the next stop on board every tram. Special services operate during Christmas, New Year and on other occasions.",
+            "question": "What are the operating hours and frequency of the Luas?",
+            "raw_answer": "Reason step by step before answering the question.\n\nQuestion: What are the operating hours and frequency of the Luas?\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\n<thinking>\nThe Luas, Dublin\u2019s bus rapid transit system, operates seven days a week from 6 AM until midnight for its main services. However, some routes may vary their schedules slightly depending on time of day or season. Frequency can be affected by factors like weather conditions and staffing levels. For precise details, it's advisable to check the official Luas website or contact customer service directly. </thinking>\nBranch 1: Official Website\nReflection: The official Luas website provides detailed information about operational times and frequencies which is reliable and up-to-date.\nReward: 0.9\n\nBranch 2: Customer Service Direct Line\nReflection: Calling the Luas customer service line allows direct access to real-time updates but might involve a wait",
+            "answer": "",
+            "timing_info": {
+                "generation_duration": 4.928742170333862,
+                "number_output_tokens": 468,
+                "time_per_output_token": 0.010531500363961244
+            },
+            "post_process_function": "def post_process_helpful_answer_prompt_chain_of_thought(answer):\n  start_matches = list(re.finditer(r\"<answer>\", answer, flags=re.IGNORECASE))\n\n  end_matches = list(re.finditer(r\"</answer>\", answer, flags=re.IGNORECASE))\n\n  if len(start_matches) < 2:\n    return \"\"\n  \n  start_index = start_matches[-1].end()\n  \n  if end_matches:\n    end_after_start = [m for m in end_matches if m.start() > start_index]\n\n    if end_after_start:\n      end_index = end_after_start[-1].start()\n    else:\n      end_index = len(answer)\n  else:\n    end_index = len(answer)\n    \n  return answer[start_index:end_index].strip()\n",
+            "total_run_time": 4.93093466758728,
+            "rouge1_score": 0.0,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0,
+            "bert_precision": -0.5474111437797546,
+            "bert_recall": -0.5473631024360657,
+            "bert_f1": -0.5436651110649109,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.0034478390589356422,
+                "neutral": 0.9950940608978271,
+                "entailment": 0.0014581737341359258
+            }
+        }
+    ],
+    "colab_instance": "NVIDIA A100-SXM4-40GB",
+    "prompt_template": "Reason step by step before answering the question.\n\nQuestion: {question}\n\nBegin by enclosing all thoughts within <thinking> tags. Instead of a single linear chain, explicitly generate and explore multiple branches of reasoning as separate <branch id=\"X\"> elements, each representing a distinct approach or angle.\n\nWithin each <branch>:\n - Break down the reasoning into clear <step> tags.\n - After each step, include a <count> tag showing the remaining step budget (start with 10 steps per branch; request more if needed).\n - Use <reflection> tags periodically within branches to critically evaluate progress.\n - Assign a <reward> score (0.0 to 1.0) after reflections to assess quality of that branch's approach:\n   - 0.8+ Continue this branch\n   - 0.5-0.7 Consider minor adjustments\n   - Below 0.5 Backtrack or abandon this branch\n - If reward is low or you're unsure, backtrack and try a different <branch>, explaining the reasoning inside new <thinking> tags.\n - Use thoughts as a scratchpad: show calculations, considerations, pros/cons explicitly.\n\nOnce multiple branches have been explored and evaluated, compare and synthesize insights in a <comparison> tag, weighing strengths and weaknesses.\nFinally, provide a consolidated final answer inside <answer> tags - a clear, consise summary based on the best branch or synthesis.\nConclude with an overall <reflection> and a final <reward> score reflecting the whole process's effectiveness.\n",
+    "prompt_type": "tree of thought",
+    "zero_shot": {
+        "model": "facebook/bart-large-mnli"
+    },
+    "metrics": {
+        "bert_f1": {
+            "mean": -0.5436651110649109,
+            "max": -0.5436651110649109,
+            "min": -0.5436651110649109
+        },
+        "total_run_time": {
+            "mean": 4.95977063362415,
+            "min": 4.909877061843872,
+            "max": 5.054625988006592
+        },
+        "rouge1_score": {
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        "rouge2_score": {
+            "mean": 0.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        "rougeL_score": {
+            "mean": 0,
+            "min": 0,
+            "max": 0
+        },
+        "bert_precision": {
+            "mean": -0.5474111437797546,
+            "min": -0.5474111437797546,
+            "max": -0.5474111437797546
+        },
+        "bert_recall": {
+            "mean": -0.5473631024360657,
+            "min": -0.5473631024360657,
+            "max": -0.5473631024360657
+        },
+        "zero_shot_label": {
+            "label_counts": {
+                "contradiction": 2,
+                "neutral": 24
+            }
+        },
+        "zero_shot_probabilities": {
+            "avg_entailment_prob": 0.02254520014573175,
+            "avg_contradiction_prob": 0.10581217733516286,
+            "avg_neutral_prob": 0.8716426147864416
+        }
+    },
+    "type": "llm"
+}

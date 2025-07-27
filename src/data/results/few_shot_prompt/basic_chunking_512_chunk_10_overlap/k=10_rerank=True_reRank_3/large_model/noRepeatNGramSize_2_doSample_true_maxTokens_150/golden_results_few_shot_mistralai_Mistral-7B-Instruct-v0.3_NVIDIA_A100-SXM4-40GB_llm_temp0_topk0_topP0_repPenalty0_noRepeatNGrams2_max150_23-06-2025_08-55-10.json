@@ -1,0 +1,716 @@
+{
+    "hyperparameters": {
+        "no_repeat_ngram_size": 2,
+        "do_sample": true,
+        "max_new_tokens": 150
+    },
+    "model": "mistralai/Mistral-7B-Instruct-v0.3",
+    "results": [
+        {
+            "ground_truth": "You are entitled to claim Irish citizenship if any one of the following applies: 1. You were born in Ireland or Northern Ireland before 1 January 2005 2. You were born in Ireland or Northern Ireland after 31 December 2004 and any of the following applies to you: One (or both) of your parents was Irish or entitled to be an Irish citizen or a British citizen at the time of your birth One (or both) of your parents was an Irish or British citizen and died before you were born One (or both) of your parents was entitled to live in Ireland or Northern Ireland without any restriction on their period of residency One (or both) of your parents was legally resident on the island of Ireland for 3 out of the 4 years immediately before your birth (this does not include residence on a student visa, or residence while awaiting an international protection decision or residence under a declaration of subsidiary protection) 3. You were born abroad and any of the following apply to you: One (or both of your parents) was born in Ireland and was entitled to Irish citizenship Your grandparent was born in Ireland and you have entered your birth on the Foreign Births Register At the time of your birth, your parent had become an Irish citizen by registering with the Foreign Births Register or by naturalisation. You must register your birth with the Foreign Births Register before obtaining Irish citizenship. 4. You were born in Ireland and are not entitled to be a citizen of any other country.",
+            "question": "Who is entitled to Irish citizenship?",
+            "raw_answer": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: Who is entitled to Irish citizenship?\nA:\n- a person born in or outside Ireland who was born to at leat one parent who is or was an Irish citizen;\n  - a child adopted by or placed for adoption with an adoptive parents who are Irish; or\n    - A person who naturalised as an adult or acquired at birth citizens of an E.U member state or countries such as Norway, Iceland or Liechtenstein; and also has resided in, has had substantial connections with, the state for five years before submitting the application;",
+            "answer": "- a person born in or outside Ireland who was born to at leat one parent who is or was an Irish citizen;\n  - a child adopted by or placed for adoption with an adoptive parents who are Irish; or\n    - A person who naturalised as an adult or acquired at birth citizens of an E.",
+            "timing_info": {
+                "generation_duration": 4.307591915130615,
+                "number_output_tokens": 457,
+                "time_per_output_token": 0.009425802877747518
+            },
+            "post_process_function": "def post_process_few_shot(answer):\n  marker = \"A:\"\n\n  if marker not in answer:\n    return \"\"\n  \n  return answer.split(marker)[-1].strip()\n",
+            "total_run_time": 4.3092732429504395,
+            "rouge1_score": 0.22012578616352202,
+            "rouge2_score": 0.05063291139240506,
+            "rougeL_score": 0.1509433962264151,
+            "bert_precision": 0.3306603729724884,
+            "bert_recall": 0.1982632875442505,
+            "bert_f1": 0.2608432471752167,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.3001633286476135,
+                "neutral": 0.5021569728851318,
+                "entailment": 0.19767968356609344
+            }
+        },
+        {
+            "ground_truth": "If you are coming to live in Ireland or returning here to live, you must satisfy the Health Service Executive (HSE) that you are ordinarily resident \u2013 that you have been living in Ireland for at least a year or you intend to live here for at least one year. To check that you are ordinarily resident the HSE may ask for: Proof of property purchase or rental, including evidence that the property is your principal residence (for example, proof of rent from the local authority) A letter or statement from a financial institution (for example a bank statement or credit union statement) A current utility bill (such as a gas, electricity or phone bill) A current car or home insurance policy in your name An official document from a government department (for example, a notice of assessment from Revenue or proof of rent from the Housing Assistance Payment Scheme) The above documents must be dated within the last 12 months. Any person, regardless of nationality, who is accepted by the HSE as being ordinarily resident in Ireland is entitled to either full eligibility (Category 1, medical card holders) or limited eligibility (Category 2) for health services.",
+            "question": "What is ordinary residence?",
+            "raw_answer": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: What is ordinary residence?\nA:\nOrdinary residence is a legal concept used in immigration and social welfare law. It refers to a person'sgenerally settled and regular residence in a particular place, which is their principal (habitual) place of residence. This is the place where they normally live and where their family, employment, social, cultural and other interests and relationships are located. Ordinary residency is not the result of a temporary or transient intention to stay in one place. For social assistance purposes, it is crucial to determine ordinary residences in order to establish eligibility for benefits.",
+            "answer": "Ordinary residence is a legal concept used in immigration and social welfare law. It refers to a person'sgenerally settled and regular residence in a particular place, which is their principal (habitual) place of residence. This is the place where they normally live and where their family, employment, social, cultural and other interests and relationships are located. Ordinary residency is not the result of a temporary or transient intention to stay in one place. For social assistance purposes, it is crucial to determine ordinary residences in order to establish eligibility for benefits.",
+            "timing_info": {
+                "generation_duration": 4.589569330215454,
+                "number_output_tokens": 463,
+                "time_per_output_token": 0.00991267673912625
+            },
+            "post_process_function": "def post_process_few_shot(answer):\n  marker = \"A:\"\n\n  if marker not in answer:\n    return \"\"\n  \n  return answer.split(marker)[-1].strip()\n",
+            "total_run_time": 4.591272830963135,
+            "rouge1_score": 0.22916666666666666,
+            "rouge2_score": 0.006993006993006992,
+            "rougeL_score": 0.14583333333333334,
+            "bert_precision": 0.2565000355243683,
+            "bert_recall": 0.16975614428520203,
+            "bert_f1": 0.21255116164684296,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.0049547660164535046,
+                "neutral": 0.9022344946861267,
+                "entailment": 0.09281081706285477
+            }
+        },
+        {
+            "ground_truth": "Your employer must be able to justify that there is a genuine reason for making you redundant. A genuine redundancy is one where your employer has a real business reason to make you redundant. Reasons for redundancy include: Financial difficulties within the business: for example, your employer needs to cut costs and this means staff numbers must be reduced. Lack of work: for example, your employer no longer needs or has a reduced need for employees with your skills or new technology has made your job unnecessary. Reorganisation within the business: for example, your employer has decided to carry on the business with fewer or no staff or the job you do no longer exists. Business closure: the business is closing down or moving.",
+            "question": "What counts as genuine redundancy?",
+            "raw_answer": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: What counts as genuine redundancy?\nA:\n* Your employer, for economic, technological, reorganisational, operational or similar reasons, no longer needs you to do the work you have been doing,\nand\n * Your reduundancy is not due to your own misconduct.",
+            "answer": "* Your employer, for economic, technological, reorganisational, operational or similar reasons, no longer needs you to do the work you have been doing,\nand\n * Your reduundancy is not due to your own misconduct.",
+            "timing_info": {
+                "generation_duration": 2.139302968978882,
+                "number_output_tokens": 399,
+                "time_per_output_token": 0.005361661576388175
+            },
+            "post_process_function": "def post_process_few_shot(answer):\n  marker = \"A:\"\n\n  if marker not in answer:\n    return \"\"\n  \n  return answer.split(marker)[-1].strip()\n",
+            "total_run_time": 2.1407687664031982,
+            "rouge1_score": 0.2692307692307692,
+            "rouge2_score": 0.03896103896103897,
+            "rougeL_score": 0.15384615384615383,
+            "bert_precision": 0.28233492374420166,
+            "bert_recall": 0.20195281505584717,
+            "bert_f1": 0.24192394316196442,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.04842282086610794,
+                "neutral": 0.9225818514823914,
+                "entailment": 0.028995323926210403
+            }
+        },
+        {
+            "ground_truth": "A GP visit card is a card that gives you free visits to a participating family doctor (GP). If you are not eligible for a medical card, you may be eligible for a GP visit card. You can apply for a GP visit card online.",
+            "question": "What is a GP visit card?",
+            "raw_answer": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: What is a GP visit card?\nA:\nThe GP Visit Card provides eligible patients with cover for certain medical services provided by GPs and certain consultant-led outpatient services in public hospitals. It is available to people who cannot avail of medical cards and who are under the age of six, aged  over  seven and under seventeen, in receipt of a qualifying social welfare payment, those who meet the income threshold, people aged over seventydue to long-term illness, children with a diagnosis of autism spectrum disorder, certain groups of people with disabilities, patients diagnosed with cystic fibrosis and patients undergoing hemodialysis. The GP must confirm the patient'slong- term illness to receive the card.",
+            "answer": "The GP Visit Card provides eligible patients with cover for certain medical services provided by GPs and certain consultant-led outpatient services in public hospitals. It is available to people who cannot avail of medical cards and who are under the age of six, aged  over  seven and under seventeen, in receipt of a qualifying social welfare payment, those who meet the income threshold, people aged over seventydue to long-term illness, children with a diagnosis of autism spectrum disorder, certain groups of people with disabilities, patients diagnosed with cystic fibrosis and patients undergoing hemodialysis. The GP must confirm the patient'slong- term illness to receive the card.",
+            "timing_info": {
+                "generation_duration": 5.601607084274292,
+                "number_output_tokens": 492,
+                "time_per_output_token": 0.011385380252590024
+            },
+            "post_process_function": "def post_process_few_shot(answer):\n  marker = \"A:\"\n\n  if marker not in answer:\n    return \"\"\n  \n  return answer.split(marker)[-1].strip()\n",
+            "total_run_time": 5.603353977203369,
+            "rouge1_score": 0.1830065359477124,
+            "rouge2_score": 0.03973509933774834,
+            "rougeL_score": 0.1437908496732026,
+            "bert_precision": 0.1648530662059784,
+            "bert_recall": 0.4460367262363434,
+            "bert_f1": 0.284000039100647,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.0005742497160099447,
+                "neutral": 0.9972391128540039,
+                "entailment": 0.002186727710068226
+            }
+        },
+        {
+            "ground_truth": "You must be ordinarily resident in Ireland to apply for a GP visit card. This means that you are living in Ireland and intend to live here for at least one year. You will qualify for a GP visit card with no means test if you are: Aged under 8 (see GP visit cards for children) Aged over 70 Getting Carer\u2019s Benefit or Carer\u2019s Allowance, at full or half-rate If you are aged under 70, your income is assessed by the HSE to see whether you qualify for a GP visit card. See below for information about the HSE basic rates of income.",
+            "question": "Who can get a GP visit card?",
+            "raw_answer": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: Who can get a GP visit card?\nA:\n- You are aged \u22657 years\nAND\n(a) you or your partner have a Medical Card\nOR\nb)you have been legally residing in a European Economic Area (EEA) country or Switzerland for the past 52 weeks, if unable to get medical treatment from a public GP under the terms of the European Health Insurance Card (EHIC)\n&\nc) your income does NOT exceed the required income threshold. This income limit applies to all sources of income except Disability Allowance, Carer'ss Allowee, Half-rate Carers Allowiance, Widow'rs Allowince, Invalidity Pensions.",
+            "answer": "- You are aged \u22657 years\nAND\n(a) you or your partner have a Medical Card\nOR\nb)you have been legally residing in a European Economic Area (EEA) country or Switzerland for the past 52 weeks, if unable to get medical treatment from a public GP under the terms of the European Health Insurance Card (EHIC)\n&\nc) your income does NOT exceed the required income threshold. This income limit applies to all sources of income except Disability Allowance, Carer'ss Allowee, Half-rate Carers Allowiance, Widow'rs Allowince, Invalidity Pensions.",
+            "timing_info": {
+                "generation_duration": 5.26842999458313,
+                "number_output_tokens": 485,
+                "time_per_output_token": 0.010862742256872433
+            },
+            "post_process_function": "def post_process_few_shot(answer):\n  marker = \"A:\"\n\n  if marker not in answer:\n    return \"\"\n  \n  return answer.split(marker)[-1].strip()\n",
+            "total_run_time": 5.2701334953308105,
+            "rouge1_score": 0.36734693877551017,
+            "rouge2_score": 0.061855670103092786,
+            "rougeL_score": 0.16326530612244897,
+            "bert_precision": 0.3034898340702057,
+            "bert_recall": 0.3591521680355072,
+            "bert_f1": 0.33205103874206543,
+            "zero_shot_label": "contradiction",
+            "zero_shot_probabilities": {
+                "contradiction": 0.5063644051551819,
+                "neutral": 0.4880443513393402,
+                "entailment": 0.005591243505477905
+            }
+        },
+        {
+            "ground_truth": "Online applications are completed in approximately 20 working days for first-time applicants. If you are applying by post, you should allow at least 8 weeks for your application to be processed (not including postage times). This period may be extended at certain times of the year due to increased application numbers. First-time postal applications from the UK take at least 8 weeks. You can check the Passport Service website for current processing times.",
+            "question": "How long will my passport application take?",
+            "raw_answer": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: How long will my passport application take?\nA:\nThe processing time for passports can vary but it typically takes 8 weeks for an Adult Passport and 5 weeks when applying for your child' passenger(s) pass(port) as part of a parent(\u2018s)/guardian('a) application. The time may be shorter for applications with Irish citizenship documents already processed and where biometrics have already been provided.",
+            "answer": "The processing time for passports can vary but it typically takes 8 weeks for an Adult Passport and 5 weeks when applying for your child' passenger(s) pass(port) as part of a parent(\u2018s)/guardian('a) application. The time may be shorter for applications with Irish citizenship documents already processed and where biometrics have already been provided.",
+            "timing_info": {
+                "generation_duration": 3.2811529636383057,
+                "number_output_tokens": 429,
+                "time_per_output_token": 0.007648375206616097
+            },
+            "post_process_function": "def post_process_few_shot(answer):\n  marker = \"A:\"\n\n  if marker not in answer:\n    return \"\"\n  \n  return answer.split(marker)[-1].strip()\n",
+            "total_run_time": 3.282768487930298,
+            "rouge1_score": 0.3308270676691729,
+            "rouge2_score": 0.07633587786259542,
+            "rougeL_score": 0.16541353383458646,
+            "bert_precision": 0.3351996839046478,
+            "bert_recall": 0.33541998267173767,
+            "bert_f1": 0.3369086980819702,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.001130271004512906,
+                "neutral": 0.9984357953071594,
+                "entailment": 0.0004338996659498662
+            }
+        },
+        {
+            "ground_truth": "A Police Certificate is an official statement about you issued by An Garda S\u00edoch\u00e1na. It is used by people who have lived in Ireland and want to work or study abroad. It is required by some foreign authorities. A Police Certificate states your: Name Address Date of birth Criminal record in Ireland (this does not include adult cautions) A Police Certificate is normally valid for 1 year. You should also note that the Irish spent convictions legislation cannot be used to prevent disclosure when you are required to disclose information about your criminal convictions to another state.",
+            "question": "What is a Police Certificate?",
+            "raw_answer": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: What is a Police Certificate?\nA:\nThe Police certificate also known as Judicial Record Extract or Police Clearance Certicate is an official document issued by the Police authorities of a country. It is to confirm that an applicant has no criminal record and has not been charged for any criminal offence involving the applicants fingerprints on record. However, each country has its own definition of criminal records, the information provided on these documents may vary across countries.",
+            "answer": "The Police certificate also known as Judicial Record Extract or Police Clearance Certicate is an official document issued by the Police authorities of a country. It is to confirm that an applicant has no criminal record and has not been charged for any criminal offence involving the applicants fingerprints on record. However, each country has its own definition of criminal records, the information provided on these documents may vary across countries.",
+            "timing_info": {
+                "generation_duration": 3.376955986022949,
+                "number_output_tokens": 433,
+                "time_per_output_token": 0.007798974563563393
+            },
+            "post_process_function": "def post_process_few_shot(answer):\n  marker = \"A:\"\n\n  if marker not in answer:\n    return \"\"\n  \n  return answer.split(marker)[-1].strip()\n",
+            "total_run_time": 3.378605842590332,
+            "rouge1_score": 0.31764705882352945,
+            "rouge2_score": 0.07142857142857144,
+            "rougeL_score": 0.18823529411764708,
+            "bert_precision": 0.3329412043094635,
+            "bert_recall": 0.27698424458503723,
+            "bert_f1": 0.3057171404361725,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.016284409910440445,
+                "neutral": 0.9776206612586975,
+                "entailment": 0.0060948836617171764
+            }
+        },
+        {
+            "ground_truth": "Each local authority maintains the Register of Electors for its area. To be included in the Register of Electors, you must: Be at least 18 years old Be ordinarily resident at an address in Ireland If you are homeless or have no address, you can still register to vote by stating that you have \u2018no fixed address.\u2019 Read more about being homeless and registering to vote. If you have more than one address, you should give the address where you want to be registered. You can only be registered at one address. You can register to vote: Online at checktheregister.ie By filling in an application form If you do not give a PPS number, you must get your form and ID witnessed at a local Garda station or your local authority.",
+            "question": "How to register to vote?",
+            "raw_answer": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: How to register to vote?\nA:\n - fill out the online registration form on [www.checktheregister.ie](http://www checkthere register ie/)\n    or download a copy to print and post\n   - provide your name and address\n  - include your public services card or driving licence number\n     - sign the form\n      - attach proof(s) of identity if necessary\n       - return the completed form to your local county or city council.",
+            "answer": "- fill out the online registration form on [www.checktheregister.ie](http://www checkthere register ie/)\n    or download a copy to print and post\n   - provide your name and address\n  - include your public services card or driving licence number\n     - sign the form\n      - attach proof(s) of identity if necessary\n       - return the completed form to your local county or city council.",
+            "timing_info": {
+                "generation_duration": 3.6167690753936768,
+                "number_output_tokens": 438,
+                "time_per_output_token": 0.008257463642451317
+            },
+            "post_process_function": "def post_process_few_shot(answer):\n  marker = \"A:\"\n\n  if marker not in answer:\n    return \"\"\n  \n  return answer.split(marker)[-1].strip()\n",
+            "total_run_time": 3.6183841228485107,
+            "rouge1_score": 0.2631578947368421,
+            "rouge2_score": 0.02127659574468085,
+            "rougeL_score": 0.12631578947368421,
+            "bert_precision": 0.34639501571655273,
+            "bert_recall": 0.24109403789043427,
+            "bert_f1": 0.2921534776687622,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.013754704967141151,
+                "neutral": 0.8976985812187195,
+                "entailment": 0.08854666352272034
+            }
+        },
+        {
+            "ground_truth": "The Vacant Property Refurbishment Grant provides funding so you can refurbish vacant and derelict homes. It can also be used to renovate vacant and derelict properties that have not been used as residential properties before. However, this only applies if the non-residential properties were used for commercial or public use before and now have the correct planning permission. You can get the grant if you are refurbishing the vacant property so you can live there, or so you can rent the property out. You can get a grant of up to \u20ac50,000 to renovate a vacant property and up to \u20ac70,000, if the property is derelict. You can get more if you are living on an off-shore island. And, there is an additional grant for expert conservation advice if you are refurbishing a vacant traditional farmhouse. The Vacant Property Refurbishment Grant is funded by the Department of Housing, Local Government and Heritage through the Cro\u00ed C\u00f3naithe (Towns) Fund and you apply to your local authority. If you have questions about the grant or want to know if your property qualifies, you can: Read the FAQs about the grant Contact the Vacant Homes Officer in your local authority Contact the Housing Agency's Vacancy Helpline on vacancycampaign@housingagency.ie You can also find information on how to re-use old and vacant buildings in the Department of Housing, Local Government and Heritage\u2019s Bringing Back Homes (pdf) manual.",
+            "question": "What is the Vacant Property Refurbishment Grant?",
+            "raw_answer": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: What is the Vacant Property Refurbishment Grant?\nA:\nVacancy Property Tax (VPT) is a tax incurred on the owners of vacant, residential properties in a number of local authorities in Northern Ireland. The VPT aims at reducing the number vacancies to help reduce economic deprivation. To address the cost the tax has on property owners, the government introduced the vacancy property refurbishement grant that offers funds for property improvements to encourage vacated properties to be brought back into use as habitable properties.",
+            "answer": "Vacancy Property Tax (VPT) is a tax incurred on the owners of vacant, residential properties in a number of local authorities in Northern Ireland. The VPT aims at reducing the number vacancies to help reduce economic deprivation. To address the cost the tax has on property owners, the government introduced the vacancy property refurbishement grant that offers funds for property improvements to encourage vacated properties to be brought back into use as habitable properties.",
+            "timing_info": {
+                "generation_duration": 3.9338319301605225,
+                "number_output_tokens": 452,
+                "time_per_output_token": 0.008703167987080802
+            },
+            "post_process_function": "def post_process_few_shot(answer):\n  marker = \"A:\"\n\n  if marker not in answer:\n    return \"\"\n  \n  return answer.split(marker)[-1].strip()\n",
+            "total_run_time": 3.935495615005493,
+            "rouge1_score": 0.2658227848101266,
+            "rouge2_score": 0.03184713375796178,
+            "rougeL_score": 0.12025316455696201,
+            "bert_precision": 0.32269200682640076,
+            "bert_recall": 0.19183185696601868,
+            "bert_f1": 0.2537378966808319,
+            "zero_shot_label": "contradiction",
+            "zero_shot_probabilities": {
+                "contradiction": 0.8939324021339417,
+                "neutral": 0.0939023420214653,
+                "entailment": 0.012165283784270287
+            }
+        },
+        {
+            "ground_truth": "Usually, employees can ask to take annual leave at specific times. Your employer can accept your request, or refuse your request. Your employer decides when annual leave may be taken, but this is subject to a number of conditions. Your employer must: Take into account your family responsibilities, as well as the available opportunities for rest and recreation. Discuss your annual leave with you (or your union) at least one month before you are to take the leave.",
+            "question": "Can my employer force me to take annual leave?",
+            "raw_answer": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: Can my employer force me to take annual leave?\nA:\nNo, unless your employer has given you at the least twice as much notice as the length of the leave you will be required to go on. This means if they want you to be on annual for one week, they must give you two weeks' notice. Exceptions include force majeure and seasonal work. Additionally, if an employee is on stress or illness leave, the employer may require them to return to work (after giving the required notice) or take leave.",
+            "answer": "No, unless your employer has given you at the least twice as much notice as the length of the leave you will be required to go on. This means if they want you to be on annual for one week, they must give you two weeks' notice. Exceptions include force majeure and seasonal work. Additionally, if an employee is on stress or illness leave, the employer may require them to return to work (after giving the required notice) or take leave.",
+            "timing_info": {
+                "generation_duration": 3.8518130779266357,
+                "number_output_tokens": 448,
+                "time_per_output_token": 0.008597797048943383
+            },
+            "post_process_function": "def post_process_few_shot(answer):\n  marker = \"A:\"\n\n  if marker not in answer:\n    return \"\"\n  \n  return answer.split(marker)[-1].strip()\n",
+            "total_run_time": 3.853425979614258,
+            "rouge1_score": 0.38993710691823896,
+            "rouge2_score": 0.03821656050955414,
+            "rougeL_score": 0.1509433962264151,
+            "bert_precision": 0.3256880044937134,
+            "bert_recall": 0.34982457756996155,
+            "bert_f1": 0.3391854763031006,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.005474379286170006,
+                "neutral": 0.9904754757881165,
+                "entailment": 0.004050175193697214
+            }
+        },
+        {
+            "ground_truth": "If you are sick while you are on annual leave, you should get a medical certificate from your GP (doctor) as soon as possible to cover the days you were sick. Give the medical certificate to your employer as soon as you return to work. This way, the sick days will not count as annual leave, and you can take your annual leave at a later date. Your employer cannot make you to take annual leave for time you were on certified sick leave.",
+            "question": "What if I get sick while on annual leave?",
+            "raw_answer": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: What if I get sick while on annual leave?\nA:\nEmployers can ask employees to provide medical evidence of incapacity, but cannot force an employee to see a specific doctor. Employees are entitled to annual sick leave if they are too ill to work. Statutory sick pay applies for employees earning under a certain rate. Check with your employer for their sickness leave policy and any company sick payment scheme. Your employment rights remain protected.",
+            "answer": "Employers can ask employees to provide medical evidence of incapacity, but cannot force an employee to see a specific doctor. Employees are entitled to annual sick leave if they are too ill to work. Statutory sick pay applies for employees earning under a certain rate. Check with your employer for their sickness leave policy and any company sick payment scheme. Your employment rights remain protected.",
+            "timing_info": {
+                "generation_duration": 3.208513021469116,
+                "number_output_tokens": 431,
+                "time_per_output_token": 0.007444345757468947
+            },
+            "post_process_function": "def post_process_few_shot(answer):\n  marker = \"A:\"\n\n  if marker not in answer:\n    return \"\"\n  \n  return answer.split(marker)[-1].strip()\n",
+            "total_run_time": 3.2101633548736572,
+            "rouge1_score": 0.36241610738255037,
+            "rouge2_score": 0.054421768707483,
+            "rougeL_score": 0.174496644295302,
+            "bert_precision": 0.3561875820159912,
+            "bert_recall": 0.3642299771308899,
+            "bert_f1": 0.3617301285266876,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.08043214678764343,
+                "neutral": 0.8163371682167053,
+                "entailment": 0.10323069244623184
+            }
+        },
+        {
+            "ground_truth": "Generally, your landlord can only end a tenancy after the first 6 months if: You do not comply with the obligations of the tenancy, for example, by not paying your rent on time The property is no longer suited to your needs, for example, if it is too small The landlord intends to sell the property within 9 months. However, this may not apply if the landlord plans to sell 10 or more dwellings in a development within a 6-month period \u2013 see \u2018Restriction on terminating when selling multiple properties\u2019 below The landlord needs the property for their own use or for an immediate family member (this only applies to private landlords) The landlord plans to change the use of the property (for example, convert it from residential use to office use) The landlord intends to refurbish the property substantially",
+            "question": "What is a valid reason for ending a tenancy after the first 6 months?",
+            "raw_answer": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: What is a valid reason for ending a tenancy after the first 6 months?\nA:\nThere are several valid reasons for terminating a lease early: non-payment of rent, breach of any of the lease terms (such as excessive noise or unauthorized subletting), the tenant causing damage to property, the property being sold or the landlord moving in, use of drugs or other illegal activities on the premises, abandoned property by the Tenant, change of tenure or use to an owner-occupied dwelling, where the dweller is no longer eligible for social housing, uninhabitable property due to disrepair or lack of essential services. However, it' not possible to terminate a fixed term lease before its end date unless the reason is included in your lease agreement or as stated in local laws",
+            "answer": "There are several valid reasons for terminating a lease early: non-payment of rent, breach of any of the lease terms (such as excessive noise or unauthorized subletting), the tenant causing damage to property, the property being sold or the landlord moving in, use of drugs or other illegal activities on the premises, abandoned property by the Tenant, change of tenure or use to an owner-occupied dwelling, where the dweller is no longer eligible for social housing, uninhabitable property due to disrepair or lack of essential services.",
+            "timing_info": {
+                "generation_duration": 5.75850510597229,
+                "number_output_tokens": 509,
+                "time_per_output_token": 0.011313369559866974
+            },
+            "post_process_function": "def post_process_few_shot(answer):\n  marker = \"A:\"\n\n  if marker not in answer:\n    return \"\"\n  \n  return answer.split(marker)[-1].strip()\n",
+            "total_run_time": 5.760329008102417,
+            "rouge1_score": 0.30701754385964913,
+            "rouge2_score": 0.061946902654867256,
+            "rougeL_score": 0.18421052631578946,
+            "bert_precision": 0.30831897258758545,
+            "bert_recall": 0.28015005588531494,
+            "bert_f1": 0.2956963777542114,
+            "zero_shot_label": "entailment",
+            "zero_shot_probabilities": {
+                "contradiction": 0.27426907420158386,
+                "neutral": 0.22202825546264648,
+                "entailment": 0.5037026405334473
+            }
+        },
+        {
+            "ground_truth": "The seller must deliver your product to you either: Within 30 days of buying them (unless you agreed a different date) On the date you agreed with them If the seller does not deliver the product as agreed in the contract or within 30 days, you can request a new delivery date. You can insist that all items you bought in the one transaction are delivered at once. The seller cannot make you accept deliveries in instalments. You can end the contract if: The seller cannot or refuses to deliver within the new time frame you request A new delivery date is no longer suitable for you, for example, you needed the product for a specific date or event You must tell the business you are using your right to end your contract for non-delivery. The business must give you a refund within 14 days. The European Consumer Centre (ECC) Ireland has a letter template which may be helpful.",
+            "question": "What are your rights when an order is delayed or not delivered?",
+            "raw_answer": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: What are your rights when an order is delayed or not delivered?\nA:\n* Contact the retailer: contact them as soon as possible and check their return and refund policy. If it is unclear, seek the advice of a consumer advice organization. Some retailers may have policies in place for delayed deliveries, such as offering a refund or extended delivery time. Even if the delivery is eventually received, you still have a right to a fair and timely resolution. Retailers do not necessarily provide a legal right for compensation for the inconvenience, although some may choose to do so. Be aware that if a package is lost entirely rather than delayed, the options for resolution may be different. Check the terms and conditions to see the specific process for returns, refunds, cancellations and disputes. In certain",
+            "answer": "* Contact the retailer: contact them as soon as possible and check their return and refund policy. If it is unclear, seek the advice of a consumer advice organization. Some retailers may have policies in place for delayed deliveries, such as offering a refund or extended delivery time. Even if the delivery is eventually received, you still have a right to a fair and timely resolution. Retailers do not necessarily provide a legal right for compensation for the inconvenience, although some may choose to do so. Be aware that if a package is lost entirely rather than delayed, the options for resolution may be different. Check the terms and conditions to see the specific process for returns, refunds, cancellations and disputes.",
+            "timing_info": {
+                "generation_duration": 5.751199722290039,
+                "number_output_tokens": 505,
+                "time_per_output_token": 0.011388514301564434
+            },
+            "post_process_function": "def post_process_few_shot(answer):\n  marker = \"A:\"\n\n  if marker not in answer:\n    return \"\"\n  \n  return answer.split(marker)[-1].strip()\n",
+            "total_run_time": 5.7530434131622314,
+            "rouge1_score": 0.3,
+            "rouge2_score": 0.02877697841726619,
+            "rougeL_score": 0.15,
+            "bert_precision": 0.2777232825756073,
+            "bert_recall": 0.270160049200058,
+            "bert_f1": 0.27567058801651,
+            "zero_shot_label": "entailment",
+            "zero_shot_probabilities": {
+                "contradiction": 0.0012655109167099,
+                "neutral": 0.2991284132003784,
+                "entailment": 0.6996061205863953
+            }
+        },
+        {
+            "ground_truth": "To adopt a child, you must be at least 21 years of age and resident in Ireland. If you are adopting the child as a couple, and one of you is the child\u2019s mother or father or relative, only one of you must be at least 21. There is no upper age limit for adoptive parents. You can adopt if you are: A married couple living together A couple living together in a civil partnership A couple cohabiting together (living together and in a committed relationship) for at least 3 years The mother, father or relative of the child (relative meaning a grandparent, brother, sister, uncle or aunt of the child, and/or the spouse of any such person; the relationship to the child being traced through the mother or the father) If you are a sole applicant (applying for adoption on your own), and you do not fall into any of the categories listed above, you may only adopt if the Adoption Authority of Ireland is satisfied with the particular circumstances of the case.",
+            "question": "Who can adopt a child in Ireland?",
+            "raw_answer": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: Who can adopt a child in Ireland?\nA:\n- Married couples\n - Civil partners\n  - Unmarried or single individuals (over 5 years in a stable relationship, with no history of domestic violence)\n   - Same-sex couples (both male or both female).",
+            "answer": "- Married couples\n - Civil partners\n  - Unmarried or single individuals (over 5 years in a stable relationship, with no history of domestic violence)\n   - Same-sex couples (both male or both female).",
+            "timing_info": {
+                "generation_duration": 2.0844600200653076,
+                "number_output_tokens": 398,
+                "time_per_output_token": 0.005237336733832431
+            },
+            "post_process_function": "def post_process_few_shot(answer):\n  marker = \"A:\"\n\n  if marker not in answer:\n    return \"\"\n  \n  return answer.split(marker)[-1].strip()\n",
+            "total_run_time": 2.0859081745147705,
+            "rouge1_score": 0.12682926829268293,
+            "rouge2_score": 0.019704433497536946,
+            "rougeL_score": 0.07804878048780488,
+            "bert_precision": 0.3256096839904785,
+            "bert_recall": 0.13166412711143494,
+            "bert_f1": 0.2183990627527237,
+            "zero_shot_label": "contradiction",
+            "zero_shot_probabilities": {
+                "contradiction": 0.8904674649238586,
+                "neutral": 0.07956764847040176,
+                "entailment": 0.02996494248509407
+            }
+        },
+        {
+            "ground_truth": "Penalty points are recorded on your driving licence when: You are convicted in court of a driving offence that attracts penalty points or You pay a fixed charge notice that was issued to you for an offence that also carries penalty points If you get 12 penalty points in any 3 year period, you are automatically disqualified from driving for 6 months. Learner permit drivers are disqualified if they have 7 penalty points. This lower threshold also applies for the first 2 years of a driver\u2019s first full driving licence. Penalty points are not added to your licence immediately. Fixed charge and penalty offences Fixed notice penalties are issued for driving offences that attract penalty points and/or just a fine. If you receive a fixed notice penalty, you will be issued a notice by the Department of Transport. If you pay the fixed charge fine within 56 days, you will get a further notice from the Department of Transport confirming that the penalty points will be added to your driving licence. The penalty points will be added to your licence 28 days after that. If you do not pay the fixed charge fine within 56 days, you will get a summons to appear in the District Court. If you are convicted of a driving offence in court, the court will notify the Department of Transport of the number of penalty points attached to that conviction. The Department of Transport will then issue a notification that these penalty points will be added to your driving licence 28 days after the notification date. You can get information on fixed charge notices and fines in our document on driving offences.",
+            "question": "How do penalty points work?",
+            "raw_answer": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: How do penalty points work?\nA:\n- Drivers receive penalty point notices for road traffic offences. The points stay on your driving record for 5 years. Each notice details the number of points awarded and the driving offence. If you have 9 or more penalty poins in a  three year period, you will face a driving ban.  If fewer than 8 points are earned during a three-year period but you receive a court conviction for certain prescribed offenses, which are serious offender-related offense, the penalty is a six-month ban and an initial disqualification of six months with an accompanying period of three years good behavior.",
+            "answer": "- Drivers receive penalty point notices for road traffic offences. The points stay on your driving record for 5 years. Each notice details the number of points awarded and the driving offence. If you have 9 or more penalty poins in a  three year period, you will face a driving ban.  If fewer than 8 points are earned during a three-year period but you receive a court conviction for certain prescribed offenses, which are serious offender-related offense, the penalty is a six-month ban and an initial disqualification of six months with an accompanying period of three years good behavior.",
+            "timing_info": {
+                "generation_duration": 5.09308123588562,
+                "number_output_tokens": 477,
+                "time_per_output_token": 0.010677319152800043
+            },
+            "post_process_function": "def post_process_few_shot(answer):\n  marker = \"A:\"\n\n  if marker not in answer:\n    return \"\"\n  \n  return answer.split(marker)[-1].strip()\n",
+            "total_run_time": 5.094832420349121,
+            "rouge1_score": 0.2894736842105263,
+            "rouge2_score": 0.07936507936507937,
+            "rougeL_score": 0.1631578947368421,
+            "bert_precision": 0.4515797197818756,
+            "bert_recall": 0.3661426305770874,
+            "bert_f1": 0.4083777964115143,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.21524910628795624,
+                "neutral": 0.49763989448547363,
+                "entailment": 0.2871110737323761
+            }
+        },
+        {
+            "ground_truth": "To be eligible for a statutory redundancy payment, you must: Be over 16 Be in employment that is fully insurable under the Social Welfare Acts Have at least 2 years\u2019 continuous employment (104 weeks) with the same employer over the age of 16 Have been made redundant (dismissed from your job). You must have been dismissed from your job To show you were dismissed, your employment must have been terminated (with or without notice). There will also be a dismissal if you have ended your contract of employment because you were forced to leave your job because of your employer\u2019s conduct. This is known as constructive dismissal.",
+            "question": "Do I have a right to redundancy pay?",
+            "raw_answer": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: Do I have a right to redundancy pay?\nA:\nYou are only entitled to statutory reduNDancy payment if: you were employed under a contract, the contract was for continuing employment, you had at  least  2 years' employment with your employer,  the employer is no longer able to maintain that employment due to reasons related to a genuine reduNdNCy of people, your employment ceased due directly to this reduNdNCY situation and you belong to one of the categories of employees listed in Schedule 5 of The Redundancy Payments Act  [1967].",
+            "answer": "You are only entitled to statutory reduNDancy payment if: you were employed under a contract, the contract was for continuing employment, you had at  least  2 years' employment with your employer,  the employer is no longer able to maintain that employment due to reasons related to a genuine reduNdNCy of people, your employment ceased due directly to this reduNdNCY situation and you belong to one of the categories of employees listed in Schedule 5 of The Redundancy Payments Act  [1967].",
+            "timing_info": {
+                "generation_duration": 4.380965709686279,
+                "number_output_tokens": 463,
+                "time_per_output_token": 0.009462128962605355
+            },
+            "post_process_function": "def post_process_few_shot(answer):\n  marker = \"A:\"\n\n  if marker not in answer:\n    return \"\"\n  \n  return answer.split(marker)[-1].strip()\n",
+            "total_run_time": 4.382576942443848,
+            "rouge1_score": 0.4574468085106383,
+            "rouge2_score": 0.10752688172043011,
+            "rougeL_score": 0.25531914893617025,
+            "bert_precision": 0.43550029397010803,
+            "bert_recall": 0.35333871841430664,
+            "bert_f1": 0.3940870463848114,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.016756201162934303,
+                "neutral": 0.9206612706184387,
+                "entailment": 0.0625825747847557
+            }
+        },
+        {
+            "ground_truth": "You must complete the application form and provide supporting documents. You can apply for most payments online. You can also get an application form from your local Intreo Centre or Social Welfare Branch Office or your local Citizens Information Centre. You can also get an application form on gov.ie. Your Intreo Centre, Social Welfare Branch Office or your local Citizens Information Centre can help you fill in your application form. Birth certs for social welfare You are no longer required to provide copies of birth certificates for social welfare purposes if you were born in Ireland and your birth is in the Register of Births. The Department of Social Protection can access this information directly. You can get more information about getting a Birth, Marriage or Death certificate.",
+            "question": "How to apply for social welfare?",
+            "raw_answer": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: How to apply for social welfare?\nA:\n1. Go to [citizensinformation.ie](http://citizeninformation-ie).\n2. Select \"Get help with money and taxes\" and then \"Benefits\".\n3a. If you already have a MyWelfare account, log in and apply through there. Otherwise, create a new account. Then apply. (Note: you can verify your identity online to avoid having to go to your local Intreo Centre.)\n4. You may need additional information and documents to support your application. Instructions will be given during the application process.",
+            "answer": "- Go to [citizensinformation.ie](http://citizeninformation-ie).\n- Select \"Get help with money and taxes\" and then \"Benefits\".\n3a. If you already have a MyWelfare account, log in and apply through there. Otherwise, create a new account. Then apply. (Note: you can verify your identity online to avoid having to go to your local Intreo Centre.)\n- You may need additional information and documents to support your application. Instructions will be given during the application process.",
+            "timing_info": {
+                "generation_duration": 4.5919976234436035,
+                "number_output_tokens": 466,
+                "time_per_output_token": 0.009854072153312453
+            },
+            "post_process_function": "def post_process_few_shot(answer):\n  marker = \"A:\"\n\n  if marker not in answer:\n    return \"\"\n  \n  return answer.split(marker)[-1].strip()\n",
+            "total_run_time": 4.59366512298584,
+            "rouge1_score": 0.2660098522167488,
+            "rouge2_score": 0.07960199004975124,
+            "rougeL_score": 0.1379310344827586,
+            "bert_precision": 0.31569704413414,
+            "bert_recall": 0.33759182691574097,
+            "bert_f1": 0.3281276524066925,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.0003400007844902575,
+                "neutral": 0.9844186305999756,
+                "entailment": 0.015241368673741817
+            }
+        },
+        {
+            "ground_truth": "You must make comments about planning applications in writing to the local authority where the application was made. You may be able to do this on your local authority's website. If possible, you should quote the planning application's reference number. You must also give your: Name Address Phone number Email address (if you have one)",
+            "question": "How can I comment on a planning application?",
+            "raw_answer": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: How can I comment on a planning application?\nA:\nYou can comment online through the local authority' s planning website for the area in which the application was made. Alternatively, you can make a submission in writing to Planning Department, County Council Offices, stating the planning reference number in your correspondence. Submissions should be made within the specified public consultation period, usually 5 or 8 weeks.",
+            "answer": "You can comment online through the local authority' s planning website for the area in which the application was made. Alternatively, you can make a submission in writing to Planning Department, County Council Offices, stating the planning reference number in your correspondence. Submissions should be made within the specified public consultation period, usually 5 or 8 weeks.",
+            "timing_info": {
+                "generation_duration": 2.9227423667907715,
+                "number_output_tokens": 422,
+                "time_per_output_token": 0.006925929779125051
+            },
+            "post_process_function": "def post_process_few_shot(answer):\n  marker = \"A:\"\n\n  if marker not in answer:\n    return \"\"\n  \n  return answer.split(marker)[-1].strip()\n",
+            "total_run_time": 2.92437744140625,
+            "rouge1_score": 0.42105263157894735,
+            "rouge2_score": 0.17857142857142858,
+            "rougeL_score": 0.2807017543859649,
+            "bert_precision": 0.4802382290363312,
+            "bert_recall": 0.5364815592765808,
+            "bert_f1": 0.508795976638794,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.00024279892386402935,
+                "neutral": 0.9994503855705261,
+                "entailment": 0.00030681127100251615
+            }
+        },
+        {
+            "ground_truth": "Citizens Information Services (CISs) provide face-to-face services to the public. Through trained staff and volunteers, CISs provide free, impartial and confidential information, advice and advocacy services to the public. Each Citizens Information Service covers a geographical area and delivers the service through a network of Citizen Information Centres (CICs). There are eight individual regional Citizens Information Services which are companies limited by guarantee and are registered charities. They cover the following areas: North Dublin, Dublin South, North Connacht and Ulster, North Leinster, North Munster, South Connacht, South Leinster and South Munster facilitating both rural and urban areas. CISs provide information on various topics, including; Employment rights Income support Social welfare Family matters Health services Housing Education Immigration",
+            "question": "What is the Citizens Information Service?",
+            "raw_answer": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: What is the Citizens Information Service?\nA:\nThe Citizen Information service is a free, independent, confidential service providing information on public services in a variety of ways, including online, phone, email, live chat, community-based Information Clinics, outreach, publications, call-back and by social media.",
+            "answer": "The Citizen Information service is a free, independent, confidential service providing information on public services in a variety of ways, including online, phone, email, live chat, community-based Information Clinics, outreach, publications, call-back and by social media.",
+            "timing_info": {
+                "generation_duration": 2.2873451709747314,
+                "number_output_tokens": 405,
+                "time_per_output_token": 0.005647765854258596
+            },
+            "post_process_function": "def post_process_few_shot(answer):\n  marker = \"A:\"\n\n  if marker not in answer:\n    return \"\"\n  \n  return answer.split(marker)[-1].strip()\n",
+            "total_run_time": 2.2888307571411133,
+            "rouge1_score": 0.267515923566879,
+            "rouge2_score": 0.05161290322580645,
+            "rougeL_score": 0.16560509554140126,
+            "bert_precision": 0.36914175748825073,
+            "bert_recall": 0.18836529552936554,
+            "bert_f1": 0.27061888575553894,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.022508783265948296,
+                "neutral": 0.5497567057609558,
+                "entailment": 0.42773446440696716
+            }
+        },
+        {
+            "ground_truth": "People aged between 18 and 24 and: Had been out of work and getting a qualifying payment (see below) for at least 12 months or Faced a significant barrier to work (if unemployed for less than 12 months) What were the qualifying payments? You must have been getting one of the following payments for at least 12 months: Jobseeker's Benefit, Jobseeker's Allowance, Jobseeker's Transitional payment, One-Parent Family Payment, Disability Allowance, Blind Person\u2019s Pension, or Supplementary Welfare Allowance. Other schemes that counted towards the qualifying period The 12-month qualifying period could also have included time spent on schemes such as: SOLAS training apprenticeships, Youthreach, Back to Education Allowance, Fastrack to Information Technology and T\u00fas.",
+            "question": "Who was eligible for YESS (Youth Employment Support Scheme)?",
+            "raw_answer": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: Who was eligible for YESS (Youth Employment Support Scheme)?\nA:\n1. Applicants must have been  between  the ages of  18 and \u2075\u2080,\n2. Unemployed or currently in receipt of certain social welfare payment or the Rural Social Schemes or a Family Income Supplement, Jobseeker'\u200bs Transitional SchemE or Farm Assist, Employer\u200b\u2019s Incentive Traineeship, CE Sche\u200bme, T\u00daS or Back to Education Allowance for  at  least  3  months immediately before the date of application, must also be willing to engage in training throughout their participation in YES.",
+            "answer": "- Applicants must have been  between  the ages of  18 and \u2075\u2080,\n- Unemployed or currently in receipt of certain social welfare payment or the Rural Social Schemes or a Family Income Supplement, Jobseeker'\u200bs Transitional SchemE or Farm Assist, Employer\u200b\u2019s Incentive Traineeship, CE Sche\u200bme, T\u00daS or Back to Education Allowance for  at  least  3  months immediately before the date of application, must also be willing to engage in training throughout their participation in YES.",
+            "timing_info": {
+                "generation_duration": 5.145226955413818,
+                "number_output_tokens": 490,
+                "time_per_output_token": 0.010500463174313916
+            },
+            "post_process_function": "def post_process_few_shot(answer):\n  marker = \"A:\"\n\n  if marker not in answer:\n    return \"\"\n  \n  return answer.split(marker)[-1].strip()\n",
+            "total_run_time": 5.146944046020508,
+            "rouge1_score": 0.38974358974358975,
+            "rouge2_score": 0.11398963730569948,
+            "rougeL_score": 0.17435897435897438,
+            "bert_precision": 0.4383465051651001,
+            "bert_recall": 0.4052109122276306,
+            "bert_f1": 0.4228864312171936,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.025802994146943092,
+                "neutral": 0.8511574864387512,
+                "entailment": 0.12303952872753143
+            }
+        },
+        {
+            "ground_truth": "If you are a carer you may need to take breaks. Respite care is when you can take a break from caring, and the person you care for is looked after by someone else. It can be covered by family members or an organisation so you can take a short break, a holiday or a rest. Respite care can be for carers of older people or people with different disabilities. Respite care can cover different lengths of time such as: A very short time, for example for an evening Or a much longer arrangement, for example for a holiday Respite care schemes are sometimes called 'Breakaway' or 'Friendship' schemes.",
+            "question": "What is respite care?",
+            "raw_answer": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: What is respite care?\nA:\nRespite Care is a type of short-term care provided to help family caregivers get temporary relief from their duties and responsibilities to care for their loved ones. This care is usually provided in various settings like in-home care, adult day care centers, assisted living facilities, nursing homes, hospitals and hospice. The purpose of res repite care are to promote the well-being of both the care recipient and the family members or care providers.",
+            "answer": "Respite Care is a type of short-term care provided to help family caregivers get temporary relief from their duties and responsibilities to care for their loved ones. This care is usually provided in various settings like in-home care, adult day care centers, assisted living facilities, nursing homes, hospitals and hospice. The purpose of res repite care are to promote the well-being of both the care recipient and the family members or care providers.",
+            "timing_info": {
+                "generation_duration": 3.7361435890197754,
+                "number_output_tokens": 441,
+                "time_per_output_token": 0.008471980927482484
+            },
+            "post_process_function": "def post_process_few_shot(answer):\n  marker = \"A:\"\n\n  if marker not in answer:\n    return \"\"\n  \n  return answer.split(marker)[-1].strip()\n",
+            "total_run_time": 3.737828016281128,
+            "rouge1_score": 0.24864864864864863,
+            "rouge2_score": 0.06557377049180328,
+            "rougeL_score": 0.16216216216216217,
+            "bert_precision": 0.31337425112724304,
+            "bert_recall": 0.29037317633628845,
+            "bert_f1": 0.3033972382545471,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.0013956456677988172,
+                "neutral": 0.9897341728210449,
+                "entailment": 0.008870143443346024
+            }
+        },
+        {
+            "ground_truth": "If you have a medical card, you can get certain health services free of charge. Usually, your dependent spouse or partner and your children can also get the same range of health services for free. Your medical card is issued by the Health Service Executive (HSE).",
+            "question": "What is a medical card?",
+            "raw_answer": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: What is a medical card?\nA:\n\u200bA Medical Card is an identification card in Republic of Ireland, provided by the Irish health service, that serves as proof entitlement for free or reduced-charge public health services. Eligibility for the card is based on financial hardship and/or specific medical conditions, such as long-term illnesses or disabilities.",
+            "answer": "\u200bA Medical Card is an identification card in Republic of Ireland, provided by the Irish health service, that serves as proof entitlement for free or reduced-charge public health services. Eligibility for the card is based on financial hardship and/or specific medical conditions, such as long-term illnesses or disabilities.",
+            "timing_info": {
+                "generation_duration": 2.7846341133117676,
+                "number_output_tokens": 415,
+                "time_per_output_token": 0.006709961718823537
+            },
+            "post_process_function": "def post_process_few_shot(answer):\n  marker = \"A:\"\n\n  if marker not in answer:\n    return \"\"\n  \n  return answer.split(marker)[-1].strip()\n",
+            "total_run_time": 2.7861673831939697,
+            "rouge1_score": 0.39175257731958757,
+            "rouge2_score": 0.1473684210526316,
+            "rougeL_score": 0.24742268041237112,
+            "bert_precision": 0.2738790214061737,
+            "bert_recall": 0.3420504927635193,
+            "bert_f1": 0.30827566981315613,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.007950825616717339,
+                "neutral": 0.9862798452377319,
+                "entailment": 0.0057692863047122955
+            }
+        },
+        {
+            "ground_truth": "Pre-nuptial agreements have no basis in law in Ireland. As a result, they are not strictly binding. This means that if you have a pre-nuptial agreement in place and you end up in court following the breakdown of your marriage, the judge is not bound by the terms of the pre-nuptial agreement. The only provision in Irish law is under sections 113 and 113A of the Succession Act 1965 (as amended) where a spouse or a civil partner can renounce his/her legal right share in a pre-nuptial agreement. Although they are not legally binding, there is nothing in Irish law which stops a couple planning to marry from having and signing a pre-nuptial agreement. Importantly, such agreements can serve as guides for the courts in judicial separation and divorce cases. If a pre-nuptial agreement makes \u2018proper provision\u2019 for each person it is more likely to be persuasive on the judge. Therefore, in situations where one party is likely to inherit a significant family farm or business, it will guide the judge in the divorce or judicial separation on what the parties\u2019 intentions were at the outset.",
+            "question": "What is the legal status of pre-nuptial agreements?",
+            "raw_answer": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: What is the legal status of pre-nuptial agreements?\nA:\nPre-marital agreements, also known as prenuuptial or \"prenupt\" agreements are legally binding in Republic of Ireland. In August 9,  in  the case of H v H [2019] IESC 54, the Irish Supreme Court issued the final determination that prenups in this country will be legally enforceable, with some exceptions such as inadequate financial disclosure, duress, coercion, misrepresentation or undue influence.",
+            "answer": "Pre-marital agreements, also known as prenuuptial or \"prenupt\" agreements are legally binding in Republic of Ireland. In August 9,  in  the case of H v H [2019] IESC 54, the Irish Supreme Court issued the final determination that prenups in this country will be legally enforceable, with some exceptions such as inadequate financial disclosure, duress, coercion, misrepresentation or undue influence.",
+            "timing_info": {
+                "generation_duration": 4.117231369018555,
+                "number_output_tokens": 458,
+                "time_per_output_token": 0.008989588141961909
+            },
+            "post_process_function": "def post_process_few_shot(answer):\n  marker = \"A:\"\n\n  if marker not in answer:\n    return \"\"\n  \n  return answer.split(marker)[-1].strip()\n",
+            "total_run_time": 4.11890435218811,
+            "rouge1_score": 0.22834645669291342,
+            "rouge2_score": 0.015873015873015872,
+            "rougeL_score": 0.13385826771653545,
+            "bert_precision": 0.275204598903656,
+            "bert_recall": 0.22061039507389069,
+            "bert_f1": 0.24878068268299103,
+            "zero_shot_label": "contradiction",
+            "zero_shot_probabilities": {
+                "contradiction": 0.9742861986160278,
+                "neutral": 0.025486987084150314,
+                "entailment": 0.0002268458774778992
+            }
+        },
+        {
+            "ground_truth": "The Department of Transport regulates air transport. This includes commercial and private services. EU airlines can fly freely within the EU/European Economic Area (EEA). They can do this without any restrictions on flight frequency or routes. Airlines from countries outside of the EU/EEA must request permission. They must do this each time they want to fly to, from, or over Ireland. The Department of Defence regulates military air transport in Ireland.",
+            "question": "Who regulates aviation in Ireland?",
+            "raw_answer": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: Who regulates aviation in Ireland?\nA:\nThe Irish Aviation Authority (IAA), which is a statutory body, regulators avitation in irland. It provides air traffic services in Irish controlled airspace, is part of EUROCONTROL, the European Organisation for the Safety of Air Navigation, performs inspections and certifies airport and aerodrome operation, provides licensing for pilots, aircraft maintenance engineers, flight instructors and communications licences.",
+            "answer": "The Irish Aviation Authority (IAA), which is a statutory body, regulators avitation in irland. It provides air traffic services in Irish controlled airspace, is part of EUROCONTROL, the European Organisation for the Safety of Air Navigation, performs inspections and certifies airport and aerodrome operation, provides licensing for pilots, aircraft maintenance engineers, flight instructors and communications licences.",
+            "timing_info": {
+                "generation_duration": 3.5886783599853516,
+                "number_output_tokens": 438,
+                "time_per_output_token": 0.008193329589007653
+            },
+            "post_process_function": "def post_process_few_shot(answer):\n  marker = \"A:\"\n\n  if marker not in answer:\n    return \"\"\n  \n  return answer.split(marker)[-1].strip()\n",
+            "total_run_time": 3.590333938598633,
+            "rouge1_score": 0.20155038759689922,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0.1395348837209302,
+            "bert_precision": 0.2522571384906769,
+            "bert_recall": 0.2593587338924408,
+            "bert_f1": 0.25758251547813416,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.30489158630371094,
+                "neutral": 0.6875813007354736,
+                "entailment": 0.0075271460227668285
+            }
+        },
+        {
+            "ground_truth": "Under the Cycle to Work Scheme (also known as the Bike to Work Scheme), you can get a new bike tax free through your work. Your employer pays for a new bike and then you repay the cost of regular instalments from your gross (overall) salary. You do not have to pay tax, PRSI or the Universal Social Charge on your repayments. Not every employer takes part in the scheme. However, if they do, they must offer it to all their employees. If you are self-employed, you cannot take part in the Cycle to Work Scheme unless you pay PRSI as an employee in addition to your self-employed work.",
+            "question": "What is the Cycle to Work Scheme?",
+            "raw_answer": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: What is the Cycle to Work Scheme?\nA:\nThe Cycles to work scheme is a Government initiative that allows employees to purchase a bike and related equipment as part of their salary package, benefiting both the employee and the employer. The employee obtains the chosen bike from a participating retailer, who then submits a claim to Revenue for the tax-free benefits. This provides employees with a cost-effective and environmentally-friendly means of transportation.",
+            "answer": "The Cycles to work scheme is a Government initiative that allows employees to purchase a bike and related equipment as part of their salary package, benefiting both the employee and the employer. The employee obtains the chosen bike from a participating retailer, who then submits a claim to Revenue for the tax-free benefits. This provides employees with a cost-effective and environmentally-friendly means of transportation.",
+            "timing_info": {
+                "generation_duration": 3.350945472717285,
+                "number_output_tokens": 434,
+                "time_per_output_token": 0.007721072517781763
+            },
+            "post_process_function": "def post_process_few_shot(answer):\n  marker = \"A:\"\n\n  if marker not in answer:\n    return \"\"\n  \n  return answer.split(marker)[-1].strip()\n",
+            "total_run_time": 3.352579116821289,
+            "rouge1_score": 0.348314606741573,
+            "rouge2_score": 0.06818181818181819,
+            "rougeL_score": 0.20224719101123595,
+            "bert_precision": 0.3396589756011963,
+            "bert_recall": 0.301055908203125,
+            "bert_f1": 0.32156315445899963,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.0008961749845184386,
+                "neutral": 0.9961010217666626,
+                "entailment": 0.0030027979519218206
+            }
+        },
+        {
+            "ground_truth": "Operating hours vary by stop and direction of service. You can view Luas operating hours and Luas frequency on luas.ie. There are electronic displays telling you the time of the next tram at every Luas stop. In addition, there are electronic displays and announcements informing passengers of the next stop on board every tram. Special services operate during Christmas, New Year and on other occasions.",
+            "question": "What are the operating hours and frequency of the Luas?",
+            "raw_answer": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: What are the operating hours and frequency of the Luas?\nA:\n* The Luasm Red Line operates from The Point (Sandyford) to Tallaght, Monday to Sunday, from 05:30 to  midnight. Trams run approximately every 8-10 minutes during peak hours, every fifteen minutes in off-peak hours. The Red line operates every ten minutes on Saturdays, Sundays and public holidays. (Note: Service may be adjusted during significant events and holidays.)\n\t* Red Lua Line Stations: The Circle, Dundrum, Nutgrove, Kingswood, Templeogue, Greenhills, Harold'S Cross, St. Stephen' Green, Dawson St., Westmoreland, Abbey St (tbd), O'",
+            "answer": "* The Luasm Red Line operates from The Point (Sandyford) to Tallaght, Monday to Sunday, from 05:30 to  midnight. Trams run approximately every 8-10 minutes during peak hours, every fifteen minutes in off-peak hours. The Red line operates every ten minutes on Saturdays, Sundays and public holidays. (Note: Service may be adjusted during significant events and holidays.)\n\t* Red Lua Line Stations: The Circle, Dundrum, Nutgrove, Kingswood, Templeogue, Greenhills, Harold'S Cross, St. Stephen' Green, Dawson St.",
+            "timing_info": {
+                "generation_duration": 5.793910026550293,
+                "number_output_tokens": 504,
+                "time_per_output_token": 0.011495853227282327
+            },
+            "post_process_function": "def post_process_few_shot(answer):\n  marker = \"A:\"\n\n  if marker not in answer:\n    return \"\"\n  \n  return answer.split(marker)[-1].strip()\n",
+            "total_run_time": 5.795616865158081,
+            "rouge1_score": 0.2361111111111111,
+            "rouge2_score": 0.0,
+            "rougeL_score": 0.1388888888888889,
+            "bert_precision": 0.15308132767677307,
+            "bert_recall": 0.2529776990413666,
+            "bert_f1": 0.2016323357820511,
+            "zero_shot_label": "neutral",
+            "zero_shot_probabilities": {
+                "contradiction": 0.028044361621141434,
+                "neutral": 0.9664098024368286,
+                "entailment": 0.0055458941496908665
+            }
+        }
+    ],
+    "colab_instance": "NVIDIA A100-SXM4-40GB",
+    "prompt_template": "Answer the question carefully, using the examples below to guide the style, structure and level of detail expected in the answer. ONLY provide the answer to Example 3. Follow the same structure and level of detail as Example 1 and Example 2 - short, factual, and readable. Do not list more than necessary. Stop after answering Example 3.\n\nExample 1:\n\nQ: What documents do I need to apply online for a driver's license in Ireland?\nA: You need a Public Services Card and verified MyGovID, proof of your address if your address is different to the one you provided when you got your Public Services Card, proof that you are normally resident in Ireland if you are not an EU or EEA citizen, a medical report form, dated within one month if required, and a Certificate of Professional Competence (CPC) for professional drivers.\n\nExample 2:\n\nQ: What criteria do I need to meet to qualify for unemployment benefits in Ireland?\nA: You must be under 66 years of age, or under 70 years and\u202fdeferring your State Pension (Contributory), be unemployed (you must be unemployed for at least 4 days out of 7), have had a substantial loss of employment and as a result be unemployed for at least 4 days out of 7 (this does not apply to casual workers and part-time fire fighters), be capable of work, be available for and genuinely seeking work, and have enough social insurance (PRSI) contributions.\n\nExample 3:\nQ: {question}\nA:\n",
+    "prompt_type": "few shot",
+    "zero_shot": {
+        "model": "facebook/bart-large-mnli"
+    },
+    "metrics": {
+        "bert_f1": {
+            "mean": 0.3071036023589281,
+            "max": 0.508795976638794,
+            "min": 0.2016323357820511
+        },
+        "total_run_time": {
+            "mean": 4.023291642849262,
+            "min": 2.0859081745147705,
+            "max": 5.795616865158081
+        },
+        "rouge1_score": {
+            "mean": 0.2953268387390398,
+            "min": 0.12682926829268293,
+            "max": 0.4574468085106383
+        },
+        "rouge2_score": {
+            "mean": 0.05806913443097205,
+            "min": 0.0,
+            "max": 0.17857142857142858
+        },
+        "rougeL_score": {
+            "mean": 0.16526092864861464,
+            "min": 0.07804878048780488,
+            "max": 0.2807017543859649
+        },
+        "bert_precision": {
+            "mean": 0.3217904819892003,
+            "min": 0.15308132767677307,
+            "max": 0.4802382290363312
+        },
+        "bert_recall": {
+            "mean": 0.29500297686228383,
+            "min": 0.13166412711143494,
+            "max": 0.5364815592765808
+        },
+        "zero_shot_label": {
+            "label_counts": {
+                "neutral": 20,
+                "contradiction": 4,
+                "entailment": 2
+            }
+        },
+        "zero_shot_probabilities": {
+            "avg_entailment_prob": 0.10469296280755841,
+            "avg_contradiction_prob": 0.17830210045828537,
+            "avg_neutral_prob": 0.7170049472210499
+        }
+    },
+    "type": "llm"
+}
