@@ -1,4 +1,5 @@
 from constants import HTML_DIRECTORY_PATH, MARKDOWN_DIRECTORY_PATH
+from services.htmlParser import HTMLParser
 
 def convertHtmlToMarkdown(scraped_files, file_service, markdown_service, logger):
     for file_name in scraped_files:

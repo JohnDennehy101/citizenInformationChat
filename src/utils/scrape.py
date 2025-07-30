@@ -1,9 +1,12 @@
 import re
+import os
+import json
 
 from constants import HTML_DIRECTORY_PATH, METADATA_DIRECTORY_PATH
 from services.htmlParser import HTMLParser
 from numpy import random
 from time import sleep
+from datetime import datetime
 
 def scrape_files(scraped_files, file_service, requests_service, metadata_service, logger):
     for file_name in scraped_files:
