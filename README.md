@@ -74,7 +74,31 @@ All scripts were run on my local machine (Macbook Pro M2 Max) for ease of develo
 - [evaluationGraphs.py](https://github.com/JohnDennehy101/citizenInformationChat/blob/main/src/scripts/evaluationGraphs.py): Script to generate graphs from evaluation metrics
 - [mergeJsonFiles.py](https://github.com/JohnDennehy101/citizenInformationChat/blob/main/src/scripts/mergeJsonFiles.py): Script used to merge fine-tuning dataset sources into one file before fine-tuning could begin
 
+#### DeepEval
+
+This was ran locally with Ollama as mentioned above. Ollama needs to be installed on the machine
+
+Once installed, model needs to be downloaded and run locally
+
+```
+ollama run hf.co/QuantFactory/Phi-3-mini-128k-instruct-GGUF:Q4_K_M
+```
+
+```
+deepeval set-ollama hf.co/QuantFactory/Phi-3-mini-128k-instruct-GGUF:Q4_K_M
+```
+
 ## Development
+
+### Dependency management
+
+[PipReqs](https://github.com/bndr/pipreqs) used for managing dependencies across scripts
+
+With
+
+```
+pipreqs ./src --force --savepath requirements.txt --ignore src/bin,src/lib
+```
 
 ### Getting started
 

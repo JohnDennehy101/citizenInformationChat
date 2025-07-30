@@ -1449,7 +1449,7 @@ def _format_document_info(has_reranking: bool, num_retrieved: int, num_final: in
         if num_final is not None:
             reduction = num_retrieved - num_final
             reduction_percent = (reduction / num_retrieved) * 100 if num_retrieved > 0 else 0
-            return "{} → {} docs ({}% reduction)".format(num_retrieved, num_final, reduction_percent:.1f)
+            return "{} → {} docs ({}% reduction)".format(num_retrieved, num_final, f"{reduction_percent:.1f}")
         else:
             return "{} docs (reranked, final count unknown)".format(num_retrieved)
     # If not, just return number of retrieved docs and indicate that no re-ranking took place
