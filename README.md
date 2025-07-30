@@ -1,4 +1,4 @@
-# Citizen Information Chat - Thesis for MSc in Artifical Intelligence @ University of Limerick
+# Citizen Information Chat - Thesis for MSc in Artificial Intelligence @ University of Limerick
 
 ## Overview
 
@@ -45,34 +45,34 @@ Key directories shown below
 
 ### Data
 
-- chunks: Scraped Citizen Information documents in chunks in markdown format
-- deepEval: Raw JSON files that contain DeepEval experiment results
-- fine_tune_dataset: merged_final_qa_dataset.json contains full dataset used for fine-tuning Mistral 7B Instruct Model
-- golden_dataset: The 'golden' QA dataset that I manually curated from the Citizen Information site. All experiments ran against these questions
-- graphs: Graph png files that were generated to support key points in thesis
-- html: Raw HTML files that were scraped from Citizen Information site
-- markdown: Markdown files which contain sanitised information from HTML files
-- metadata: JSON file that is linked to web-scraping run (contains page that link was found within, timestamp of scrape etc.)
-- results: Full results from all experiments stored in JSON files.
-- vector_stores: The files that FAISS generated for embedding stores for RAG (note different chunk size used for each)
+- [chunks](https://github.com/JohnDennehy101/citizenInformationChat/tree/main/src/data/chunks): Scraped Citizen Information documents in chunks in markdown format
+- [deepEval](https://github.com/JohnDennehy101/citizenInformationChat/tree/main/src/data/deepEval): Raw JSON files that contain DeepEval experiment results
+- [fine_tune_dataset](https://github.com/JohnDennehy101/citizenInformationChat/tree/main/src/data/fine_tune_dataset): merged_final_qa_dataset.json contains full dataset used for fine-tuning Mistral 7B Instruct Model
+- [golden_dataset](https://github.com/JohnDennehy101/citizenInformationChat/tree/main/src/data/golden_dataset): The 'golden' QA dataset that I manually curated from the Citizen Information site. All experiments ran against these questions
+- [graphs](https://github.com/JohnDennehy101/citizenInformationChat/tree/main/src/data/graphs): Graph png files that were generated to support key points in thesis
+- [html](https://github.com/JohnDennehy101/citizenInformationChat/tree/main/src/data/html): Raw HTML files that were scraped from Citizen Information site
+- [markdown](https://github.com/JohnDennehy101/citizenInformationChat/tree/main/src/data/markdown): Markdown files which contain sanitised information from HTML files
+- [metadata](https://github.com/JohnDennehy101/citizenInformationChat/tree/main/src/data/metadata): JSON file that is linked to web-scraping run (contains page that link was found within, timestamp of scrape etc.)
+- [results](https://github.com/JohnDennehy101/citizenInformationChat/tree/main/src/data/results): Full results from all experiments stored in JSON files.
+- [vector_stores](https://github.com/JohnDennehy101/citizenInformationChat/tree/main/src/data/vector_stores): The files that FAISS generated for embedding stores for RAG (note different chunk size used for each)
 
 ### Notebooks
 
 All notebooks were run on Google Colaboratory A100 instances (due to GPU compute requirements)
 
-- Fine-tune Mistral notebook: Notebook that implemented a bare-bones fine-tune of Mistral 7B instruct, published to Hugging Face
-- Generate part of Synthetic Dataset for fine-tuning notebook by using document chunks as context: DeepSeek 14B Distilled model used to generate QA pairs from random Citizen Information document chunks
-- Generate part of Synthetic Dataset for fine-tuning notebook by using Oireachtas API data as context: Dáil Éireann leader questions used as context for DeepSeek 14B Distilled to summarise and extract clear QA pair from statement
-- RAG vs LLM: Notebook which was used to run all experiments comparing RAG vs LLM, prompt types etc.
+- [Fine-tune Mistral notebook](https://github.com/JohnDennehy101/citizenInformationChat/blob/main/src/notebooks/Fine_tune_Mistral.ipynb): Notebook that implemented a bare-bones fine-tune of Mistral 7B instruct, published to Hugging Face
+- [Generate part of Synthetic Dataset for fine-tuning notebook by using document chunks as context](https://github.com/JohnDennehy101/citizenInformationChat/blob/main/src/notebooks/Generate_Synthetic_Dataset.ipynb): DeepSeek 14B Distilled model used to generate QA pairs from random Citizen Information document chunks
+- [Generate part of Synthetic Dataset for fine-tuning notebook by using Oireachtas API data as context](https://github.com/JohnDennehy101/citizenInformationChat/blob/main/src/notebooks/Oireachtas_API_synthetic_dataset.ipynb): Dáil Éireann leader questions used as context for DeepSeek 14B Distilled to summarise and extract clear QA pair from statement
+- [RAG vs LLM](https://github.com/JohnDennehy101/citizenInformationChat/blob/main/src/notebooks/RAG_vs_LLM.ipynb): Notebook which was used to run all experiments comparing RAG vs LLM, prompt types etc.
 
 ### Scripts
 
 All scripts were run on my local machine (Macbook Pro M2 Max) for ease of development (and no requirement for GPU)
 
-- deepEval/deepEval.py: Ran DeepEval locally on top-performing RAG configurations (LLM as a judge)
-- deepEval/visualisations.py: Script to generate visualisations of deepEval results
-- evaluationGraphs.py: Script to generate graphs from evaluation metrics
-- mergeJsonFiles.py: Script used to merge fine-tuning dataset sources into one file before fine-tuning could begin
+- [deepEval/deepEval.py](https://github.com/JohnDennehy101/citizenInformationChat/blob/main/src/scripts/deepEval/deepEval.py): Ran DeepEval locally on top-performing RAG configurations (LLM as a judge)
+- [deepEval/visualisations.py](https://github.com/JohnDennehy101/citizenInformationChat/blob/main/src/scripts/deepEval/visualisations.py): Script to generate visualisations of deepEval results
+- [evaluationGraphs.py](https://github.com/JohnDennehy101/citizenInformationChat/blob/main/src/scripts/evaluationGraphs.py): Script to generate graphs from evaluation metrics
+- [mergeJsonFiles.py](https://github.com/JohnDennehy101/citizenInformationChat/blob/main/src/scripts/mergeJsonFiles.py): Script used to merge fine-tuning dataset sources into one file before fine-tuning could begin
 
 ## Development
 
