@@ -15,6 +15,8 @@ Actual results of these can be found within data/graphs directory
 ### Re-usable variables
 GREEN_DARK = "#198576"
 GREEN_LIGHT = "#abd6d0"
+DATA_FILE_PATH = "../data/results"
+GRAPH_OUTPUT_DIRECTORY_PATH = "../data/graphs"
 
 ###### START OF UTILITY FUNCTIONS
 
@@ -692,7 +694,7 @@ def plot_model_comparison_by_type(all_results: List[Dict[str, Any]],
         rag_models_short = [model.split("/")[-1] if "/" in model else model for model in rag_models]
         
         bars1 = ax1.bar(rag_models_short, rag_means, color=GREEN_DARK, alpha=0.8)
-        ax1.set_title(f"RAG Models - {metric_name.upper()} ({operation.upper()})")
+        ax1.set_title("RAG Models - {} ({})".format(metric_name.upper(), operation.upper()))
         ax1.set_ylabel("Score")
         ax1.tick_params(axis="x", rotation=45)
         ax1.grid(axis="y", alpha=0.3)
@@ -717,7 +719,7 @@ def plot_model_comparison_by_type(all_results: List[Dict[str, Any]],
         llm_models_short = [model.split("/")[-1] if "/" in model else model for model in llm_models]
         
         bars2 = ax2.bar(llm_models_short, llm_means, color=GREEN_LIGHT, alpha=0.8)
-        ax2.set_title(f"LLM Models - {metric_name.upper()} ({operation.upper()})")
+        ax2.set_title("LLM Models - {} ({})".format(metric_name.upper(), operation.upper()))
         ax2.set_ylabel("Score")
         ax2.tick_params(axis="x", rotation=45)
         ax2.grid(axis="y", alpha=0.3)
@@ -768,12 +770,12 @@ def plot_file_distribution_pie(all_results: List[Dict[str, Any]],
     
     # Add total count as text
     total_files = rag_count + llm_count
-    ax.text(0, -1.2, f"Total Files: {total_files}", ha="center", va="center", 
+    ax.text(0, -1.2, "Total Files: {}".format(total_files), ha="center", va="center", 
             fontsize=12, fontweight="bold")
     
     # Add individual counts
-    ax.text(-0.8, 0.5, f"RAG: {rag_count}", ha="center", va="center", fontsize=10)
-    ax.text(0.8, 0.5, f"LLM: {llm_count}", ha="center", va="center", fontsize=10)
+    ax.text(-0.8, 0.5, "RAG: {}".format(rag_count), ha="center", va="center", fontsize=10)
+    ax.text(0.8, 0.5, "LLM: {}".format(llm_count), ha="center", va="center", fontsize=10)
     
     plt.tight_layout()
     plt.savefig(save_path, dpi=300, bbox_inches="tight")
@@ -854,7 +856,7 @@ def plot_top_configs_with_hyperparams(all_results: List[Dict[str, Any]],
     top_configs = get_top_performing_configs(all_results, metric_name, operation, top_n, filter_type)
     
     if not top_configs:
-        print(f"No configurations found for {metric_name}")
+        print("No configurations found for {}".format(metric_name))
         return
     
     # Initialise empty lists
@@ -875,16 +877,16 @@ def plot_top_configs_with_hyperparams(all_results: List[Dict[str, Any]],
             for key, value in hyperparams.items():
                 # Set key value which will be easy to identify on graph
                 if isinstance(value, (int, float)):
-                    hp_parts.append(f"{key}={value}")
+                    hp_parts.append("{}={}".format(key, value))
                 # Truncate long strings to avoid overflowing graph
                 else:
-                    hp_parts.append(f"{key}={str(value)[:10]}...")
+                    hp_parts.append("{key}={}...".format(key, f"{str(value)[:10]}"))
             
             # Set to string type
             hp_str = ", ".join(hp_parts)
-            label = f"{i+1}. {config_type} - {model}\n   {hp_str}"
+            label = "{}. {} - {}\n   {}".format(i+1, config_type, model, hp_str)
         else:
-            label = f"{i+1}. {config_type} - {model}\n   (no hyperparameters)"
+            label = "{}. {} - {}\n   (no hyperparameters)".format(i+i, config_type, model)
         
         config_labels.append(label)
         metric_values.append(config["metric_value"])
@@ -897,8 +899,8 @@ def plot_top_configs_with_hyperparams(all_results: List[Dict[str, Any]],
     
     bars = ax.barh(config_labels, metric_values, color=colours, alpha=0.8)
     
-    ax.set_xlabel(f"{metric_name.upper()} Score")
-    ax.set_title(f"Top {top_n} Configurations - {metric_name.upper()} ({operation.upper()})")
+    ax.set_xlabel("{} Score".format(metric_name.upper()))
+    ax.set_title("Top {} Configurations - {} ({})".format(top_n, metric_name.upper(), operation.upper()))
     ax.grid(axis="x", alpha=0.3)
     
     # Add value labels on bars
@@ -990,7 +992,7 @@ def plot_top_entailment_configs(all_results: List[Dict[str, Any]],
     top_configs = get_top_entailment_configs(all_results, top_n, filter_type)
     
     if not top_configs:
-        print(f"No entailment data found")
+        print("No entailment data found")
         return
     
     # Prepare data for plotting
@@ -1009,14 +1011,14 @@ def plot_top_entailment_configs(all_results: List[Dict[str, Any]],
             hp_parts = []
             for key, value in hyperparams.items():
                 if isinstance(value, (int, float)):
-                    hp_parts.append(f"{key}={value}")
+                    hp_parts.append("{}={}".format(key, value))
                 else:
-                    hp_parts.append(f"{key}={str(value)[:10]}...")
+                    hp_parts.append("{}={}...".format(key, f"{str(value)[:10]}"))
             
             hp_str = ", ".join(hp_parts)
-            label = f"{i+1}. {config_type} - {model}\n   {hp_str}"
+            label = "{}. {} - {}\n   {}".format(i+i, config_type, model, hp_str)
         else:
-            label = f"{i+1}. {config_type} - {model}\n   (no hyperparameters)"
+            label = "{}. {} - {}\n   (no hyperparameters)".format(i+i, config_type, model)
         
         config_labels.append(label)
         entailment_counts.append(config["entailment_count"])
@@ -1030,14 +1032,14 @@ def plot_top_entailment_configs(all_results: List[Dict[str, Any]],
     bars = ax.barh(config_labels, entailment_counts, color=colours, alpha=0.8)
     
     ax.set_xlabel("Entailment Count")
-    ax.set_title(f"Top {top_n} Configurations by Entailment Count")
+    ax.set_title("Top {} Configurations by Entailment Count".format(top_n))
     ax.grid(axis="x", alpha=0.3)
     
     # Add value labels on bars
     for bar, count in zip(bars, entailment_counts):
         width = bar.get_width()
         ax.text(width + 0.5, bar.get_y() + bar.get_height()/2,
-               f"{count}", ha="left", va="center", fontweight="bold")
+               "{}".format(count), ha="left", va="center", fontweight="bold")
     
     plt.tight_layout()
     plt.savefig(save_path, dpi=300, bbox_inches="tight")
@@ -1086,7 +1088,7 @@ def plot_prompt_distribution_pie(all_results: List[Dict[str, Any]],
     
     # Add total count as text
     total_files = sum(sizes)
-    ax.text(0, -1.3, f"Total Files: {total_files}", ha="center", va="center", 
+    ax.text(0, -1.3, "Total Files: {}".format(total_files), ha="center", va="center", 
             fontsize=12, fontweight="bold")
     
     # Add percentage and count labels manually
@@ -1106,7 +1108,7 @@ def plot_prompt_distribution_pie(all_results: List[Dict[str, Any]],
         # Add count at outer radius
         x_outer = 0.8 * np.cos(np.radians(center_angle))
         y_outer = 0.8 * np.sin(np.radians(center_angle))
-        ax.text(x_outer, y_outer, f"{size}", ha="center", va="center", 
+        ax.text(x_outer, y_outer, "{}".format(size), ha="center", va="center", 
                 fontsize=10, fontweight="bold")
     
     plt.tight_layout()
@@ -1193,7 +1195,7 @@ def plot_prompt_comparison_simple(all_results: List[Dict[str, Any]],
     prompt_stats = comparison["prompt_performance"]
     
     if not prompt_stats:
-        print(f"No data found for {metric_name}")
+        print("No data found for {}".format(metric_name))
         return
     
     # Prepare data for plotting
@@ -1213,9 +1215,9 @@ def plot_prompt_comparison_simple(all_results: List[Dict[str, Any]],
     bars = ax.bar(prompt_types, means, color=colours, alpha=0.8)
     
     # Create title with filter info
-    title = f"{metric_name.upper()} Comparison Across Prompt Types ({operation.upper()})"
+    title = "{} Comparison Across Prompt Types ({})".format(metric_name.upper(), operation.upper())
     if filter_type:
-        title += f" - {filter_type.upper()} Only"
+        title += " - {} Only".format(filter_type.upper())
     ax.set_title(title)
     
     ax.set_xlabel("Prompt Types")
@@ -1319,7 +1321,7 @@ def plot_reranking_comparison(all_results: List[Dict[str, Any]],
     no_rerank_stats = comparison["no_rerank_stats"]
     
     if not rerank_stats and not no_rerank_stats:
-        print(f"No re-ranking data found for {metric_name}")
+        print("No re-ranking data found for {}".format(metric_name))
         return
     
     # Prepare data for plotting
@@ -1345,7 +1347,7 @@ def plot_reranking_comparison(all_results: List[Dict[str, Any]],
     
     bars = ax.bar(labels, values, color=colours, alpha=0.8)
     
-    ax.set_title(f"RAG Performance: {metric_name.upper()} ({operation.upper()})")
+    ax.set_title("RAG Performance: {} ({})".format(metric_name.upper(), operation.upper()))
     ax.set_ylabel("Score")
     ax.grid(axis="y", alpha=0.3)
     
@@ -1357,7 +1359,7 @@ def plot_reranking_comparison(all_results: List[Dict[str, Any]],
     
     for bar, count in zip(bars, counts):
         ax.text(bar.get_x() + bar.get_width()/2., -0.02,
-               f"n={count}", ha="center", va="top", fontweight="bold", fontsize=10,
+               "n={}".format(count), ha="center", va="top", fontweight="bold", fontsize=10,
                color="darkblue")
     
     plt.tight_layout()
@@ -1451,10 +1453,10 @@ def _format_document_info(has_reranking: bool, num_retrieved: int, num_final: in
             reduction_percent = (reduction / num_retrieved) * 100 if num_retrieved > 0 else 0
             return "{} → {} docs ({}% reduction)".format(num_retrieved, num_final, f"{reduction_percent:.1f}")
         else:
-            return "{} docs (reranked, final count unknown)".format(num_retrieved)
+            return "{} docs (re-ranked, final count unknown)".format(num_retrieved)
     # If not, just return number of retrieved docs and indicate that no re-ranking took place
     else:
-        return "{} docs (no reranking)".format(num_retrieved)
+        return "{} docs (no re-ranking)".format(num_retrieved)
 
 def plot_top_rag_configs_with_reranking(all_results: List[Dict[str, Any]], 
                                        metric_name: str,
@@ -1475,7 +1477,7 @@ def plot_top_rag_configs_with_reranking(all_results: List[Dict[str, Any]],
     top_configs = get_top_rag_configs_with_reranking(all_results, metric_name, operation, top_n)
     
     if not top_configs:
-        print(f"No RAG configurations found for {metric_name}")
+        print("No RAG configurations found for {}".format(metric_name))
         return
     
     # Prepare data for plotting
@@ -1495,14 +1497,15 @@ def plot_top_rag_configs_with_reranking(all_results: List[Dict[str, Any]],
         hp_str = ""
         if hyperparams:
             hp_parts = []
-            for key, value in list(hyperparams.items())[:3]:  # Limit to first 3 hyperparams
+            # Limit to first 3 hyperparameters
+            for key, value in list(hyperparams.items())[:3]:  
                 if isinstance(value, (int, float)):
-                    hp_parts.append(f"{key}={value}")
+                    hp_parts.append("{}={}".format(key, value))
                 else:
-                    hp_parts.append(f"{key}={str(value)[:8]}...")
-            hp_str = f" | {", ".join(hp_parts)}"
+                    hp_parts.append("{}={}...".format(key, f"{str(value)[:8]}"))
+            hp_str = f" | {', '.join(hp_parts)}"
         
-        label = f"{i+1}. {model} ({prompt_type}){hp_str}\n   {document_info}"
+        label = "{}. {} ({}){}\n   {}".format(i+i, model, prompt_type, hp_str, document_info)
         
         config_labels.append(label)
         metric_values.append(config["metric_value"])
@@ -1511,15 +1514,15 @@ def plot_top_rag_configs_with_reranking(all_results: List[Dict[str, Any]],
         colours.append(GREEN_DARK if config["has_reranking"] else GREEN_LIGHT)
         
         # Reranking status for legend
-        reranking_info.append("With Reranking" if config["has_reranking"] else "No Reranking")
+        reranking_info.append("With Re-ranking" if config["has_reranking"] else "No Re-ranking")
     
     # Create the plot
     fig, ax = plt.subplots(figsize=(14, max(8, top_n * 0.7)))
     
     bars = ax.barh(config_labels, metric_values, color=colours, alpha=0.8)
     
-    ax.set_xlabel(f"{metric_name.upper()} Score")
-    ax.set_title(f"Top {top_n} RAG Configurations - {metric_name.upper()} ({operation.upper()})")
+    ax.set_xlabel("{} Score".format(metric_name.upper()))
+    ax.set_title("Top {} RAG Configurations - {} ({})".format(top_n, metric_name.upper(), operation.upper()))
     ax.grid(axis="x", alpha=0.3)
     
     # Add value labels on bars
@@ -1531,8 +1534,8 @@ def plot_top_rag_configs_with_reranking(all_results: List[Dict[str, Any]],
     # Create custom legend
     from matplotlib.patches import Patch
     legend_elements = [
-        Patch(facecolor=GREEN_DARK, alpha=0.8, label="With Reranking"),
-        Patch(facecolor=GREEN_LIGHT, alpha=0.8, label="No Reranking")
+        Patch(facecolor=GREEN_DARK, alpha=0.8, label="With Re-ranking"),
+        Patch(facecolor=GREEN_LIGHT, alpha=0.8, label="No Re-ranking")
     ]
     ax.legend(handles=legend_elements, loc="lower right")
     
@@ -1541,19 +1544,19 @@ def plot_top_rag_configs_with_reranking(all_results: List[Dict[str, Any]],
     plt.close()
     
     # Print detailed summary
-    print(f"\nTop {top_n} RAG Configurations for {metric_name} ({operation}):")
+    print("\nTop {} RAG Configurations for {} ({}):".format(top_n, metric_name, operation))
     print("=" * 80)
     
     reranking_count = sum(1 for config in top_configs if config["has_reranking"])
     no_reranking_count = len(top_configs) - reranking_count
     
-    print(f"Summary: {reranking_count} with reranking, {no_reranking_count} without reranking")
+    print("Summary: {} with re-ranking, {} without re-ranking".format(reranking_count, no_reranking_count))
     print("-" * 80)
     
     for i, config in enumerate(top_configs):
         model = config["model"].split("/")[-1] if "/" in config["model"] else config["model"]
-        rerank_status = "✓ Reranked" if config["has_reranking"] else "✗ No Rerank"
-        print(f"{i+1:2d}. {model:30s} | {config["metric_value"]:.4f} | {rerank_status:12s} | {config["document_info"]}")
+        rerank_status = "✓ Re-ranked" if config["has_reranking"] else "✗ No Rerank"
+        print(f"{i+1:2d}. {model:30s} | {config['metric_value']:.4f} | {rerank_status:12s} | {config['document_info']}")
 
 def plot_reranking_comparison_summary(all_results: List[Dict[str, Any]], 
                                     metric_name: str,
@@ -1580,7 +1583,7 @@ def plot_reranking_comparison_summary(all_results: List[Dict[str, Any]],
     top_without_reranking = without_reranking[:top_n]
     
     if not top_with_reranking and not top_without_reranking:
-        print(f"No RAG configurations found for {metric_name}")
+        print("No RAG configurations found for {}".format(metric_name))
         return
     
     # Create figure with proper subplot layout - use 2 rows, 1 column for text boxes
@@ -1603,7 +1606,7 @@ def plot_reranking_comparison_summary(all_results: List[Dict[str, Any]],
     max_configs = max(len(top_with_reranking), len(top_without_reranking))
     
     for i in range(max_configs):
-        labels.append(f"Rank {i+1}")
+        labels.append("Rank {}".format(i+1))
         
         if i < len(top_with_reranking):
             with_rerank_values.append(top_with_reranking[i]["metric_value"])
@@ -1618,14 +1621,14 @@ def plot_reranking_comparison_summary(all_results: List[Dict[str, Any]],
     x = np.arange(len(labels))
     width = 0.35
     
-    bars1 = ax.bar(x - width/2, with_rerank_values, width, label="With Reranking", 
+    bars1 = ax.bar(x - width/2, with_rerank_values, width, label="With Re-ranking", 
                    color=green_dark, alpha=0.8)
-    bars2 = ax.bar(x + width/2, without_rerank_values, width, label="Without Reranking", 
+    bars2 = ax.bar(x + width/2, without_rerank_values, width, label="Without Re-ranking", 
                    color=green_light, alpha=0.8)
     
     ax.set_xlabel("Ranking Position")
-    ax.set_ylabel(f"{metric_name.upper()} Score")
-    ax.set_title(f"Top {top_n} Configurations: Reranking vs No Reranking\n{metric_name.upper()} ({operation.upper()})", 
+    ax.set_ylabel("{} Score".format(metric_name.upper()))
+    ax.set_title("Top {} Configurations: Re-ranking vs No Re-ranking\n{} ({})".format(top_n, metric_name.upper(), operation.upper()), 
                 fontweight="bold", fontsize=14)
     ax.set_xticks(x)
     ax.set_xticklabels(labels)
@@ -1641,46 +1644,46 @@ def plot_reranking_comparison_summary(all_results: List[Dict[str, Any]],
                        f"{value:.4f}", ha="center", va="bottom", fontweight="bold", fontsize=10)
     
     # Create configuration details for WITH reranking (left text box)
-    with_rerank_text = "CONFIGURATIONS WITH RERANKING:\n"
+    with_rerank_text = "CONFIGURATIONS WITH RE-RANKING:\n"
     with_rerank_text += "=" * 40 + "\n\n"
     
     if top_with_reranking:
         for i, config in enumerate(top_with_reranking, 1):
             model = config["model"].split("/")[-1] if "/" in config["model"] else config["model"]
             prompt_type = config["prompt_type"]
-            with_rerank_text += f"{i}. {model}\n"
-            with_rerank_text += f"   Type: {prompt_type}\n"
-            with_rerank_text += f"   Score: {config["metric_value"]:.4f}\n"
-            with_rerank_text += f"   Docs: {config["document_info"]}\n\n"
+            with_rerank_text += "{}. {}\n".format(i, model)
+            with_rerank_text += "   Type: {}\n".format(prompt_type)
+            with_rerank_text += "   Score: {}\n".format(f"{config['metric_value']:.4f}")
+            with_rerank_text += "   Docs: {}\n\n".format(config["document_info"])
     else:
         with_rerank_text += "No configurations found\n"
     
     # Add performance summary for with reranking
     if top_with_reranking:
         avg_with_rerank = np.mean([c["metric_value"] for c in top_with_reranking])
-        with_rerank_text += f"Average Score: {avg_with_rerank:.4f}\n"
-        with_rerank_text += f"Best Score: {top_with_reranking[0]["metric_value"]:.4f}\n"
+        with_rerank_text += "Average Score: {}\n".format(f"{avg_with_rerank:.4f}")
+        with_rerank_text += "Best Score: {}\n".format(f"{top_with_reranking[0]['metric_value']:.4f}")
     
     # Create configuration details for WITHOUT reranking (right text box)
-    without_rerank_text = "CONFIGURATIONS WITHOUT RERANKING:\n"
+    without_rerank_text = "CONFIGURATIONS WITHOUT RE-RANKING:\n"
     without_rerank_text += "=" * 40 + "\n\n"
     
     if top_without_reranking:
         for i, config in enumerate(top_without_reranking, 1):
             model = config["model"].split("/")[-1] if "/" in config["model"] else config["model"]
             prompt_type = config["prompt_type"]
-            without_rerank_text += f"{i}. {model}\n"
-            without_rerank_text += f"   Type: {prompt_type}\n"
-            without_rerank_text += f"   Score: {config["metric_value"]:.4f}\n"
-            without_rerank_text += f"   Docs: {config["document_info"]}\n\n"
+            without_rerank_text += "{}. {}\n".format(i, model)
+            without_rerank_text += "   Type: {}\n".format(prompt_type)
+            without_rerank_text += "   Score: {}\n".format(f"{config['metric_value']:.4f}")
+            without_rerank_text += "   Docs: {}\n\n".format(config["document_info"])
     else:
         without_rerank_text += "No configurations found\n"
     
     # Add performance summary for without reranking
     if top_without_reranking:
         avg_without_rerank = np.mean([c["metric_value"] for c in top_without_reranking])
-        without_rerank_text += f"Average Score: {avg_without_rerank:.4f}\n"
-        without_rerank_text += f"Best Score: {top_without_reranking[0]["metric_value"]:.4f}\n"
+        without_rerank_text += "Average Score: {}\n".format(f"{avg_without_rerank:.4f}")
+        without_rerank_text += "Best Score: {}\n".format(f"{top_without_reranking[0]['metric_value']:.4f}")
     
     # Add text boxes positioned manually in the bottom area
     # Left text box (with reranking)
@@ -1700,13 +1703,13 @@ def plot_reranking_comparison_summary(all_results: List[Dict[str, Any]],
         avg_with_rerank = np.mean([c["metric_value"] for c in top_with_reranking])
         avg_without_rerank = np.mean([c["metric_value"] for c in top_without_reranking])
         
-        comparison_text = f"OVERALL COMPARISON:\n"
-        comparison_text += f"Best with reranking:    {best_with_rerank:.4f}\n"
-        comparison_text += f"Best without reranking: {best_without_rerank:.4f}\n"
-        comparison_text += f"Difference:             {best_with_rerank - best_without_rerank:+.4f}\n"
-        comparison_text += f"Average with reranking:    {avg_with_rerank:.4f}\n"
-        comparison_text += f"Average without reranking: {avg_without_rerank:.4f}\n"
-        comparison_text += f"Average difference:        {avg_with_rerank - avg_without_rerank:+.4f}\n"
+        comparison_text = "OVERALL COMPARISON:\n"
+        comparison_text += "Best with re-ranking:    {}\n".format(f"{best_with_rerank:.4f}")
+        comparison_text += "Best without re-ranking: {}\n".format(f"{best_without_rerank:.4f}")
+        comparison_text += "Difference:             {}\n".format(f"{best_with_rerank - best_without_rerank:+.4f}")
+        comparison_text += "Average with re-ranking:    {}\n".format(f"{avg_with_rerank:.4f}")
+        comparison_text += "Average without re-ranking: {}\n".format(f"{avg_without_rerank:.4f}")
+        comparison_text += "Average difference:        {}\n".format(f"{avg_with_rerank - avg_without_rerank:+.4f}")
         
         # Add comparison text to the graph area
         ax.text(0.02, 0.3, comparison_text, transform=ax.transAxes, fontsize=10,
@@ -1717,24 +1720,24 @@ def plot_reranking_comparison_summary(all_results: List[Dict[str, Any]],
     plt.savefig(save_path, dpi=300, bbox_inches="tight")
     plt.close()
     
-    print(f"Reranking comparison summary saved to {save_path}")
+    print("Re-ranking comparison summary saved to {}".format(save_path))
 
 ###### END OF UTILITY FUNCTIONS
 
 
 # First, need to ensure that all json files have flat structure to enable easy plotting
-fix_nested_json_evaluation_files("./results")
-
-# Also, need to make sure that "rag" or "llm" type is added to files (it is stored in file name, just easier to access in json)
-add_type_property_to_result_files(all_results)
+fix_nested_json_evaluation_files(DATA_FILE_PATH)
 
 ##### START OF PLOT FUNCTION CALLs
 
 # Now, get sanitised results files for plotting
-all_results = read_all_json_files_as_list("./results")
+all_results = read_all_json_files_as_list(DATA_FILE_PATH)
+
+# Also, need to make sure that "rag" or "llm" type is added to files (it is stored in file name, just easier to access in json)
+add_type_property_to_result_files(all_results)
 
 # Plot that shows distribution of experiments for "rag" and "llm"
-plot_file_distribution_pie(all_results, "graphs/llm_vs_rag_distribution_pie.png")
+plot_file_distribution_pie(all_results, "{}/llm_vs_rag_distribution_pie.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 
 # F1 plots for all results (both "rag" and "llm" experiments) - max, mean, min
 f1_max_results = compare_performance_by_type(all_results, "bert_f1", "max")
@@ -1750,7 +1753,7 @@ simple_comparison_plot(
     "LLM", 
     "Rag vs LLM - F1 (Best Result)", 
     "Value",
-    "./graphs/llm_vs_rag_f1_max.png"
+    "{}/llm_vs_rag_f1_max.png".format(GRAPH_OUTPUT_DIRECTORY_PATH)
 )
 
 # Show worst result for F1 for RAG vs LLM (side by side)
@@ -1761,7 +1764,7 @@ simple_comparison_plot(
     "LLM", 
     "Rag vs LLM - F1 (Worst Result)", 
     "Value",
-    "./graphs/llm_vs_rag_f1_min.png"
+    "{}/llm_vs_rag_f1_min.png".format(GRAPH_OUTPUT_DIRECTORY_PATH)
 )
 
 # Show average results for F1 for RAG vs LLM (side by side)
@@ -1772,7 +1775,7 @@ simple_comparison_plot(
     "LLM", 
     "Rag vs LLM - F1 (Mean Result)", 
     "Mean Value",
-    "./graphs/llm_vs_rag_f1_mean.png"
+    "{}/llm_vs_rag_f1_mean.png".format(GRAPH_OUTPUT_DIRECTORY_PATH)
 )
 
 
@@ -1789,7 +1792,7 @@ simple_comparison_plot(
     "LLM", 
     "Rag vs LLM - Rouge 1 (Best Result)", 
     "Value",
-    "./graphs/llm_vs_rag_rouge1_max.png"
+    "{}/llm_vs_rag_rouge1_max.png".format(GRAPH_OUTPUT_DIRECTORY_PATH)
 )
 
 # Show worst result for Rouge 1 for RAG vs LLM (side by side)
@@ -1800,7 +1803,7 @@ simple_comparison_plot(
     "LLM", 
     "Rag vs LLM - Rouge 1 (Worst Result)", 
     "Value",
-    "./graphs/llm_vs_rag_rouge1_min.png"
+    "{}/llm_vs_rag_rouge1_min.png".format(GRAPH_OUTPUT_DIRECTORY_PATH)
 )
 
 # Show mean result for Rouge 1 for RAG vs LLM (side by side)
@@ -1811,7 +1814,7 @@ simple_comparison_plot(
     "LLM", 
     "Rag vs LLM - Rouge 1 (Mean Result)", 
     "Mean Value",
-    "./graphs/llm_vs_rag_rouge1_mean.png"
+    "{}/llm_vs_rag_rouge1_mean.png".format(GRAPH_OUTPUT_DIRECTORY_PATH)
 )
 
 # Rouge 2 plots (including both LLM & RAG experiments)
@@ -1827,7 +1830,7 @@ simple_comparison_plot(
     "LLM", 
     "Rag vs LLM - Rouge 2 (Best Result)", 
     "Value",
-    "./graphs/llm_vs_rag_rouge2_max.png"
+    "{}/llm_vs_rag_rouge2_max.png".format(GRAPH_OUTPUT_DIRECTORY_PATH)
 )
 
 # Show worst result for Rouge 2 for RAG vs LLM (side by side)
@@ -1838,7 +1841,7 @@ simple_comparison_plot(
     "LLM", 
     "Rag vs LLM - Rouge 2 (Worst Result)", 
     "Value",
-    "./graphs/llm_vs_rag_rouge2_min.png"
+    "{}/llm_vs_rag_rouge2_min.png".format(GRAPH_OUTPUT_DIRECTORY_PATH)
 )
 
 # Show mean result for Rouge 2 for RAG vs LLM (side by side)
@@ -1849,7 +1852,7 @@ simple_comparison_plot(
     "LLM", 
     "Rag vs LLM - Rouge 2 (Mean Result)", 
     "Mean Value",
-    "./graphs/llm_vs_rag_rouge2_mean.png"
+    "{}/llm_vs_rag_rouge2_mean.png".format(GRAPH_OUTPUT_DIRECTORY_PATH)
 )
 
 # Rouge L plots (include RAG & LLM experiments)
@@ -1865,7 +1868,7 @@ simple_comparison_plot(
     "LLM", 
     "Rag vs LLM - Rouge L (Best Result)", 
     "Value",
-    "./graphs/llm_vs_rag_rougeL_max.png"
+    "{}/llm_vs_rag_rougeL_max.png".format(GRAPH_OUTPUT_DIRECTORY_PATH)
 )
 
 # Show worst result for Rouge L for RAG vs LLM (side by side)
@@ -1876,7 +1879,7 @@ simple_comparison_plot(
     "LLM", 
     "Rag vs LLM - Rouge L (Worst Result)", 
     "Value",
-    "./graphs/llm_vs_rag_rougeL_min.png"
+    "{}/llm_vs_rag_rougeL_min.png".format(GRAPH_OUTPUT_DIRECTORY_PATH)
 )
 
 # Show average result for Rouge L for RAG vs LLM (side by side)
@@ -1887,107 +1890,107 @@ simple_comparison_plot(
     "LLM", 
     "Rag vs LLM - Rouge L (Mean Result)", 
     "Mean Value",
-    "./graphs/llm_vs_rag_rougeL_mean.png"
+    "{}/llm_vs_rag_rougeL_mean.png".format(GRAPH_OUTPUT_DIRECTORY_PATH)
 )
 
 # Zero shot LLM as a judge plots (including all experiment results)
-plot_label_comparison(all_results, "graphs/label_comparison.png")
-plot_label_pie_charts(all_results, "graphs/label_pie_charts.png")
-plot_probability_comparison(all_results, "graphs/probability_comparison.png")
+plot_label_comparison(all_results, "{}/label_comparison.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
+plot_label_pie_charts(all_results, "{}/label_pie_charts.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
+plot_probability_comparison(all_results, "{}/probability_comparison.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 
 # Plot F1 scores by model and by experiment type (individual graphs for mean scores as well as max scores for each model)
-plot_model_comparison_by_type(all_results, "bert_f1", "mean", "graphs/model_comparison_by_f1_mean.png")
-plot_model_comparison_by_type(all_results, "bert_f1", "max", "graphs/model_comparison_by_f1_max.png")
+plot_model_comparison_by_type(all_results, "bert_f1", "mean", "{}/model_comparison_by_f1_mean.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
+plot_model_comparison_by_type(all_results, "bert_f1", "max", "{}/model_comparison_by_f1_max.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 
 # Plot Rouge 1 scores by model and by experiment type (individual graphs for mean scores as well as max scores for each model)
-plot_model_comparison_by_type(all_results, "rouge1_score", "max", "graphs/model_comparison_by_rouge1_max.png")
-plot_model_comparison_by_type(all_results, "rouge1_score", "mean", "graphs/model_comparison_by_rouge1_mean.png")
+plot_model_comparison_by_type(all_results, "rouge1_score", "max", "{}/model_comparison_by_rouge1_max.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
+plot_model_comparison_by_type(all_results, "rouge1_score", "mean", "{}/model_comparison_by_rouge1_mean.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 
 # Plot Rouge 2 scores by model and by experiment type (individual graphs for mean scores as well as max scores for each model)
-plot_model_comparison_by_type(all_results, "rouge2_score", "max", "graphs/model_comparison_by_rouge2_max.png")
-plot_model_comparison_by_type(all_results, "rouge2_score", "mean", "graphs/model_comparison_by_rouge2_mean.png")
+plot_model_comparison_by_type(all_results, "rouge2_score", "max", "{}/model_comparison_by_rouge2_max.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
+plot_model_comparison_by_type(all_results, "rouge2_score", "mean", "{}/model_comparison_by_rouge2_mean.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 
 # Plot Rouge L scores by model and by experiment type (individual graphs for mean scores as well as max scores for each model)
-plot_model_comparison_by_type(all_results, "rougeL_score", "max", "graphs/model_comparison_by_rougeL_max.png")
-plot_model_comparison_by_type(all_results, "rougeL_score", "mean", "graphs/model_comparison_by_rougeL_mean.png")
+plot_model_comparison_by_type(all_results, "rougeL_score", "max", "{}/model_comparison_by_rougeL_max.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
+plot_model_comparison_by_type(all_results, "rougeL_score", "mean", "{}/model_comparison_by_rougeL_mean.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 
 # Hyperparameter graphs - extract top 10 performing scores on average for each method (rag & llm) for each metric
 # F1
-plot_top_configs_with_hyperparams(all_results, "bert_f1", "mean", 10, save_path="graphs/top_configs_f1_with_hyperparams.png")
+plot_top_configs_with_hyperparams(all_results, "bert_f1", "mean", 10, save_path="{}/top_configs_f1_with_hyperparams.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 # Rouge 1
-plot_top_configs_with_hyperparams(all_results, "rouge1_score", "mean", 10, save_path="graphs/top_configs_rouge1_with_hyperparams.png")
+plot_top_configs_with_hyperparams(all_results, "rouge1_score", "mean", 10, save_path="{}/top_configs_rouge1_with_hyperparams.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 # Rouge 2
-plot_top_configs_with_hyperparams(all_results, "rouge2_score", "mean", 10, save_path="graphs/top_configs_rouge2_with_hyperparams.png")
+plot_top_configs_with_hyperparams(all_results, "rouge2_score", "mean", 10, save_path="{}/top_configs_rouge2_with_hyperparams.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 # Rouge L
-plot_top_configs_with_hyperparams(all_results, "rougeL_score", "mean", 10, save_path="graphs/top_configs_rougeL_with_hyperparams.png")
+plot_top_configs_with_hyperparams(all_results, "rougeL_score", "mean", 10, save_path="{}/top_configs_rougeL_with_hyperparams.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 
 # LLM as a judge - extract top 10 performing hyperparameter configurations (ones that had highest number of answers labelled as entailing the ground truth)
-plot_top_entailment_configs(all_results, 10, save_path="graphs/top_entailment_configs.png")
+plot_top_entailment_configs(all_results, 10, save_path="{}/top_entailment_configs.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 
 # Prompt Engineering - Plot distribution of prompts used across experiments
-plot_prompt_distribution_pie(all_results, "graphs/prompt_distribution_pie.png")
+plot_prompt_distribution_pie(all_results, "{}/prompt_distribution_pie.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 
 # Plot top 10 hyperparameter configurations by LLM as a judge task (to enable comparison between top for RAG and top for LLM)
-plot_top_entailment_configs(all_results, 10, "rag", "graphs/top_rag_entailment_configs.png")
-plot_top_entailment_configs(all_results, 10, "llm", "graphs/top_llm_entailment_configs.png")
+plot_top_entailment_configs(all_results, 10, "rag", "{}/top_rag_entailment_configs.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
+plot_top_entailment_configs(all_results, 10, "llm", "{}/top_llm_entailment_configs.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 
 # Prompt Engineering - Performance of each prompt
 # F1 - first one shows F1 average score across all experiments
-plot_prompt_comparison_simple(all_results, "bert_f1", "mean", save_path="graphs/prompt_comparison_all_f1.png")
+plot_prompt_comparison_simple(all_results, "bert_f1", "mean", save_path="{}/prompt_comparison_all_f1.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 # Second one shows F1 average score across all RAG experiments
-plot_prompt_comparison_simple(all_results, "bert_f1", "mean", "rag", save_path="graphs/prompt_comparison_rag_f1.png")
+plot_prompt_comparison_simple(all_results, "bert_f1", "mean", "rag", save_path="{}/prompt_comparison_rag_f1.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 # Third one shows F1 average score across all LLM experiments
-plot_prompt_comparison_simple(all_results, "bert_f1", "mean", "llm", save_path="graphs/prompt_comparison_llm_f1.png")
+plot_prompt_comparison_simple(all_results, "bert_f1", "mean", "llm", save_path="{}/prompt_comparison_llm_f1.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 
 # Rouge 1 - first one shows Rouge 1 average score across all experiments
-plot_prompt_comparison_simple(all_results, "rouge1_score", "mean", save_path="graphs/prompt_comparison_all_rouge1.png")
+plot_prompt_comparison_simple(all_results, "rouge1_score", "mean", save_path="{}/prompt_comparison_all_rouge1.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 # Second one shows Rouge 1 average score across all RAG experiments
-plot_prompt_comparison_simple(all_results, "rouge1_score", "mean", "rag", save_path="graphs/prompt_comparison_rag_rouge1.png")
+plot_prompt_comparison_simple(all_results, "rouge1_score", "mean", "rag", save_path="{}/prompt_comparison_rag_rouge1.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 # Third one shows Rouge 1 average score across all LLM experiments
-plot_prompt_comparison_simple(all_results, "rouge1_score", "mean", "llm", save_path="graphs/prompt_comparison_llm_rouge1.png")
+plot_prompt_comparison_simple(all_results, "rouge1_score", "mean", "llm", save_path="{}/prompt_comparison_llm_rouge1.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 
 # Rouge 2 - first one shows Rouge 1 average score across all experiments
-plot_prompt_comparison_simple(all_results, "rouge2_score", "mean", save_path="graphs/prompt_comparison_all_rouge2.png")
+plot_prompt_comparison_simple(all_results, "rouge2_score", "mean", save_path="{}/prompt_comparison_all_rouge2.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 # Second one shows Rouge 2 average score across all RAG experiments
-plot_prompt_comparison_simple(all_results, "rouge2_score", "mean", "rag", save_path="graphs/prompt_comparison_rag_rouge2.png")
+plot_prompt_comparison_simple(all_results, "rouge2_score", "mean", "rag", save_path="{}/prompt_comparison_rag_rouge2.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 # Third one shows Rouge 2 average score across all LLM experiments
-plot_prompt_comparison_simple(all_results, "rouge2_score", "mean", "llm", save_path="graphs/prompt_comparison_llm_rouge2.png")
+plot_prompt_comparison_simple(all_results, "rouge2_score", "mean", "llm", save_path="{}/prompt_comparison_llm_rouge2.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 
 # Rouge L - first one shows Rouge L average score across all experiments
-plot_prompt_comparison_simple(all_results, "rougeL_score", "mean", save_path="graphs/prompt_comparison_all_rougeL.png")
+plot_prompt_comparison_simple(all_results, "rougeL_score", "mean", save_path="{}/prompt_comparison_all_rougeL.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 # Second one shows Rouge L average score across all RAG experiments
-plot_prompt_comparison_simple(all_results, "rougeL_score", "mean", "rag", save_path="graphs/prompt_comparison_rag_rougeL.png")
+plot_prompt_comparison_simple(all_results, "rougeL_score", "mean", "rag", save_path="{}/prompt_comparison_rag_rougeL.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 # Third one shows Rouge L average score across all LLM experiments
-plot_prompt_comparison_simple(all_results, "rougeL_score", "mean", "llm", save_path="graphs/prompt_comparison_llm_rougeL.png")
+plot_prompt_comparison_simple(all_results, "rougeL_score", "mean", "llm", save_path="{}/prompt_comparison_llm_rougeL.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 
 # These graphs focus on re-ranking for RAG experiments (impact of with & without)
 
 # Plot top 10 hyperparameter configurations for F1 average scores for RAG experiments (also show re-ranking stats)
-plot_top_rag_configs_with_reranking(all_results, "bert_f1", "mean", 10, "graphs/top_rag_f1_re_rank_impact.png")
+plot_top_rag_configs_with_reranking(all_results, "bert_f1", "mean", 10, "{}/top_rag_f1_re_rank_impact.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 
 # Plot top 5 scores for RAG experiments for F1 with re-ranking enabled vs those without the technique
 # To enable easy visualisation of impact
-plot_reranking_comparison_summary(all_results, "bert_f1", "mean", 5, "graphs/reranking_comparison_summary_f1_mean.png")
+plot_reranking_comparison_summary(all_results, "bert_f1", "mean", 5, "{}/reranking_comparison_summary_f1_mean.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 
 # Plot top 10 hyperparameter configurations for Rouge 1 average scores for RAG experiments (also show re-ranking stats)
-plot_top_rag_configs_with_reranking(all_results, "rouge1_score", "mean", 10, "graphs/top_rag_rouge1_re_rank_impact.png")
+plot_top_rag_configs_with_reranking(all_results, "rouge1_score", "mean", 10, "{}/top_rag_rouge1_re_rank_impact.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 
 # Plot top 5 scores for RAG experiments for Rouge 1 with re-ranking enabled vs those without the technique
 # To enable easy visualisation of impact
-plot_reranking_comparison_summary(all_results, "rouge1_score", "mean", 5, "graphs/reranking_comparison_summary_rouge1_mean.png")
+plot_reranking_comparison_summary(all_results, "rouge1_score", "mean", 5, "{}/reranking_comparison_summary_rouge1_mean.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 
 # Plot top 10 hyperparameter configurations for Rouge 2 average scores for RAG experiments (also show re-ranking stats)
-plot_top_rag_configs_with_reranking(all_results, "rouge2_score", "mean", 10, "graphs/top_rag_rouge2_re_rank_impact.png")
+plot_top_rag_configs_with_reranking(all_results, "rouge2_score", "mean", 10, "{}/top_rag_rouge2_re_rank_impact.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 
 # Plot top 5 scores for RAG experiments for Rouge 2 with re-ranking enabled vs those without the technique
 # To enable easy visualisation of impact
-plot_reranking_comparison_summary(all_results, "rouge2_score", "mean", 5, "graphs/reranking_comparison_summary_rouge2_mean.png")
+plot_reranking_comparison_summary(all_results, "rouge2_score", "mean", 5, "{}/reranking_comparison_summary_rouge2_mean.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 
 # Plot top 10 hyperparameter configurations for Rouge L average scores for RAG experiments (also show re-ranking stats)
-plot_top_rag_configs_with_reranking(all_results, "rougeL_score", "mean", 10, "graphs/top_rag_rougeL_re_rank_impact.png")
+plot_top_rag_configs_with_reranking(all_results, "rougeL_score", "mean", 10, "{}/top_rag_rougeL_re_rank_impact.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 
 # Plot top 5 scores for RAG experiments for Rouge L with re-ranking enabled vs those without the technique
 # To enable easy visualisation of impact
-plot_reranking_comparison_summary(all_results, "rougeL_score", "mean", 5, "graphs/reranking_comparison_summary_rougeL_mean.png")
+plot_reranking_comparison_summary(all_results, "rougeL_score", "mean", 5, "{}/reranking_comparison_summary_rougeL_mean.png".format(GRAPH_OUTPUT_DIRECTORY_PATH))
 
 
