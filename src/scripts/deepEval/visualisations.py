@@ -17,16 +17,17 @@ def extract_contextual_relevancy_scores(target_metric):
     data = []
     
     # Get all JSON files in root directory (excluding .deepeval directory)
-    json_files = [f for f in os.listdir(".") if f.endswith(".json") and not f.startswith(".")]
+    json_files = [f for f in os.listdir("../data/deepEval") if f.endswith(".json") and not f.startswith(".")]
 
     # Initialise empty list for filtered contents
     filtered_file_contents = []
     
     # Loop over files
     for filename in json_files:
-        try:
+        try: 
+            file_path = os.path.join("../data/deepEval", filename)
             # Read the file contents
-            with open(filename, "r", encoding="utf-8") as f:
+            with open(file_path, "r", encoding="utf-8") as f:
                 content = json.load(f)
             
             # Extract hyperparameters from file_info
@@ -189,7 +190,7 @@ def plot_bar_comparison(data, metric_type):
     plt.xticks(rotation=45, ha="right")
     plt.grid(True, alpha=0.3, axis="y")
     plt.tight_layout()
-    plt.savefig("hyperparameter_scatter_{}.png".format(metric_type.lower().replace(" ", "_")), dpi=300, bbox_inches="tight")
+    plt.savefig("{}/hyperparameter_scatter_{}.png".format("../data/graphs/deepEval", metric_type.lower().replace(" ", "_")), dpi=300, bbox_inches="tight")
             
 
 
