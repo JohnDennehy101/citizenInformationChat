@@ -112,7 +112,55 @@ pipreqs ./src --force --savepath requirements.txt --ignore src/bin,src/lib
 python -m unittest discover -s tests
 ```
 
-### Commands
+### Running scripts in repository
+
+Install requirements
+
+```
+pip install -r requirements.txt
+```
+
+Move to scripts directory
+
+```
+cd src/scripts
+```
+
+NOTE: assumption for all scripts below that they are being run from terminal at `src/scripts` directory
+
+#### DeepEval
+
+Run DeepEval evaluation (note ollama must be running locally and correct model set with below command)
+
+```
+deepeval set-ollama hf.co/QuantFactory/Phi-3-mini-128k-instruct-GGUF:Q4_K_M
+```
+
+Then run the below (note target input files need to set at "input" directory relative to this):
+
+```
+python3 deepEval/deepEval.py
+```
+
+To run visualisations for DeepEval:
+
+```
+python3 deepEval/visualisations.py
+```
+
+#### Evaluation Graphs
+
+```
+python3 evaluationGraphs.py
+```
+
+#### Merge synthetic dataset sources into one file
+
+```
+python3 mergeJsonFiles.py
+```
+
+### Citizen Information Site Scraping Commands
 
 ##### Processing flag converts stored html files to markdown
 
