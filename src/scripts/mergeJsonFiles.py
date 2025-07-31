@@ -164,8 +164,8 @@ def main():
     print("*" * 60)
     
     # Expected File paths
-    standard_qa_file = "documents/merged_qa_docs_dataset.json"
-    oireachtas_file = "documents/merged_qa_oireachtas_dataset.json"
+    standard_qa_file = "../data/fine_tune_dataset/merged_qa_docs_dataset.json"
+    oireachtas_file = "../data/fine_tune_dataset/merged_qa_oireachtas_dataset.json"
     
     # Check if files exist
     if not os.path.exists(standard_qa_file):
